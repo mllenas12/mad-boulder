@@ -1,5 +1,5 @@
 import Map from "@/app/ui/Map/Map";
-export default function MapPage() {
+export default function MapAreaPage() {
   return (
     <div>
       {/* AREA MAP */}
