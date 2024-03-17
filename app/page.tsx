@@ -12,8 +12,6 @@ export default function HomePage() {
       <AreaFinder />
       <Explore />
       <Beta />
-      <Shop />
-      <Connect />
     </main>
   );
 }
