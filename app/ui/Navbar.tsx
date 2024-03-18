@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   const activeSearch = () => {
     setIsSearchActive((prev) => !prev);
   };
@@ -142,7 +142,7 @@ export default function Navbar() {
                 <a href="/about-us">ABOUT US</a>
               </li>
               <li className="bg-yellow-400 rounded">
-                <a href="/login">LOGIN</a>
+                <a href="/login">{isLogged ? "LOG OUT" : "LOG IN"}</a>
               </li>
             </ul>
           </div>
