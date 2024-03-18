@@ -1,6 +1,14 @@
+"use client";
+import { useState } from "react";
 import { AreaCard } from "../ui/Areas/AreaCard";
 import Map from "../ui/Map/Map";
+import zoneData from "@/app/lib/data/zoneData.json";
 export default function AreasPage() {
+  const data = zoneData.items;
+  const card = data.map((area) => {
+    return <AreaCard area={area} key={area.name} />;
+  });
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       {/* MAP: */}
@@ -18,11 +26,13 @@ export default function AreasPage() {
           placeholder="Filters"
           className="input input-bordered w-full "
         />
+
         <input
           type="text"
           placeholder="Zone"
           className="input input-bordered w-full "
         />
+
         <input
           type="text"
           placeholder="Order"
@@ -31,16 +41,7 @@ export default function AreasPage() {
       </div>
       {/* LIST OF AREA CARDS: */}
       <div className="p-10  sm:px-24 2xl:px-96 bg-neutral-100">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-          <AreaCard />
-        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">{card}</div>
       </div>
     </div>
   );
