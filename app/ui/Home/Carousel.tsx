@@ -54,13 +54,12 @@ export default function Carousel() {
     centerPadding: "60px",
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    //slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
           infinite: true,
         },
       },
@@ -68,14 +67,12 @@ export default function Carousel() {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],

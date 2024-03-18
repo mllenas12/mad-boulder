@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Link from "next/link";
 export const Beta = () => {
   return (
     <div
@@ -15,9 +15,12 @@ export const Beta = () => {
         to the project.
       </h3>
 
-      <button className="bg-yellow-400 z-10 text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-auto">
+      <Link
+        href="/video-uploader"
+        className="bg-yellow-400 z-10 text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-auto"
+      >
         UPLOADER
-      </button>
+      </Link>
     </div>
   );
 };

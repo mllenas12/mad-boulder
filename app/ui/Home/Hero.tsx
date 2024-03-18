@@ -15,7 +15,7 @@ const Hero = () => {
         Explore our available climbing areas and get all the information you
         need for your next climbing trip
       </h3>
-      <Button>EXPLORE MAP</Button>
+      <Button url="/areas">EXPLORE MAP</Button>
     </div>
   );
 };
