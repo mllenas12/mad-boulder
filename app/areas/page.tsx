@@ -1,13 +1,29 @@
-"use client";
-import { useState } from "react";
 import { AreaCard } from "../ui/Areas/AreaCard";
 import Map from "../ui/Map/Map";
 import zoneData from "@/app/lib/data/zoneData.json";
-export default function AreasPage() {
+import { AreasFilter } from "../ui/Areas/AreasFilter";
+
+export default function AreasPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   const data = zoneData.items;
-  const card = data.map((area) => {
-    return <AreaCard area={area} key={area.name} />;
-  });
+
+  const query =
+    typeof searchParams.search === "string"
+      ? searchParams.search.toLowerCase()
+      : undefined;
+
+  const cards = query
+    ? data
+        .filter((card) => card.name.toLowerCase().includes(query))
+        .map((card) => {
+          return <AreaCard area={card} key={card.name} />;
+        })
+    : data.map((area) => {
+        return <AreaCard area={area} key={area.name} />;
+      });
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
@@ -15,33 +31,10 @@ export default function AreasPage() {
       <Map />
       <h3 className="font-semibold text-xl px-4 lg:px-24">FIND YOUR ZONE:</h3>
       {/* FINDER: */}
-      <div className="grid grid-cols-2 gap-4 px-4 lg:px-24">
-        <input
-          type="text"
-          placeholder="Country"
-          className="input input-bordered w-full "
-        />
-        <input
-          type="text"
-          placeholder="Filters"
-          className="input input-bordered w-full "
-        />
-
-        <input
-          type="text"
-          placeholder="Zone"
-          className="input input-bordered w-full "
-        />
-
-        <input
-          type="text"
-          placeholder="Order"
-          className="input input-bordered w-full "
-        />
-      </div>
+      <AreasFilter />
       {/* LIST OF AREA CARDS: */}
       <div className="p-10  sm:px-24 2xl:px-96 bg-neutral-100">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">{card}</div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">{cards}</div>
       </div>
     </div>
   );
