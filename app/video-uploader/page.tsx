@@ -1,6 +1,6 @@
 export default function VideoUploaderPage() {
   return (
-    <div className="relative flex flex-col h-[830px] md:h-[700px]">
+    <div className="relative flex flex-col h-[950px] md:h-[700px]">
       <header className="flex justify-center bg-[url('/images/bg-example.jpg')] h-[150px] md:h-[200px] bg-cover bg-center">
         <h2 className="text-white font-semibold text-2xl pt-8">
           UPLOAD YOUR BETA
@@ -98,6 +98,9 @@ export default function VideoUploaderPage() {
               I wish to subscribe to MadBoulder&apos;s newsletter
             </label>
           </div>
+          <button className="col-span-2 bg-yellow-400  text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-auto">
+            Upload Video
+          </button>
         </form>
         <p className="text-[10px] text-center mt-4  w-64 md:w-96">
           MadBoulder reserves the right to not publish a video. Possible reasons

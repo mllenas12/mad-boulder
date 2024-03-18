@@ -1,5 +1,3 @@
-import Button from "../ui/Button";
-
 export default function AboutUsPage() {
   return (
     <div className="p-8 md:px-24 flex flex-col gap-8 text-center">
