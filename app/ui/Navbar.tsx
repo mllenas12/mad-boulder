@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className="navbar-center hidden pr-4 lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li className="hover:text-yellow-400">
-            <a href="/bouldering-areas-list">AREAS</a>
+            <a href="/areas">AREAS</a>
           </li>
           <li className="hover:text-yellow-400">
             <a href="/video-uploader">UPLOAD</a>
@@ -123,7 +123,7 @@ export default function Navbar() {
               className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a href="/bouldering-areas-list">AREAS</a>
+                <a href="/areas">AREAS</a>
               </li>
               <li>
                 <a href="/video-uploader">UPLOAD</a>

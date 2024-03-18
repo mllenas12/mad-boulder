@@ -1,5 +1,4 @@
 import { AreaHeader } from "@/app/ui/Areas/AreaHeader";
-
 export default function AreaNameLayout({
   children,
 }: {
