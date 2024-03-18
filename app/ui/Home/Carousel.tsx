@@ -89,7 +89,7 @@ export default function Carousel() {
               key={d.zone}
               className={`bg-white h-[370px] lg:h-[330px]  text-black rounded`}
             >
-              <img src={d.img} alt="" className={`rounded-t h-48 `} />
+              <img src={d.img} alt="" className={`rounded-t h-48 w-full `} />
               <div className="text-center flex flex-col gap-2 p-3">
                 <p className="font-semibold md:text-xl">{d.zone}</p>
                 <p className="text-xs">{d.description}</p>
