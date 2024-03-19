@@ -49,17 +49,17 @@ export default function SortButtons() {
   };
 
   return (
-    <div className="flex mb-4 justify-end gap-4">
+    <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-4 ">
       <button
         onClick={() => handleSort("videoCount")}
-        className="font-semibold text-sm flex gap-2 p-3 bg-white rounded"
+        className="font-semibold text-xs flex gap-1 py-3 px-2 bg-white rounded justify-center"
       >
         Number of Videos
         <SortArrow isOrdered={isSortedByVideos} />
       </button>
       <button
         onClick={() => handleSort("name")}
-        className="font-semibold text-sm flex gap-2 p-3 bg-white rounded"
+        className="font-semibold text-xs flex gap-1 py-3 px-2 bg-white rounded justify-center"
       >
         Alphabetically
         <SortArrow isOrdered={isSortedAlph} />

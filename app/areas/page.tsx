@@ -56,7 +56,7 @@ export default function AreasPage({
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       {/* MAP: */}
-      <Map />
+      <Map data={filteredData} />
       <h3 className="font-semibold text-xl px-4 lg:px-24">FIND YOUR ZONE:</h3>
       {/* FINDER: */}
       <AreasFilter />

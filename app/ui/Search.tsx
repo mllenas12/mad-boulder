@@ -22,7 +22,7 @@ export default function Search() {
       placeholder="Zone"
       name="search"
       onChange={(event) => handleSearch(event.target.value)}
-      defaultValue={searchParams.get("query")?.toString()}
+      defaultValue={searchParams.get("search")?.toString()}
       className="input input-bordered w-full h-[36px] "
     />
   );

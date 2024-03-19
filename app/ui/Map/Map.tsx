@@ -1,38 +1,27 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { MarkerComp } from "./MarkerComp";
-// import zone_data from "@/lib/data/zone_data.json";
-// import { IZone } from "@/lib/types";
-import MarkerClusterGroup from "react-leaflet-markercluster";
 import { Icon } from "leaflet";
-const Map = () => {
-  // const latitude = zone.latitude;
-  // const longitude = zone.longitude;
-  // const icon = new Icon({
-  //   iconUrl: "/logo/marker.webp",
-  //   iconSize: [32, 32],
-  // });
+import { IArea } from "@/app/lib/types";
+import MarkerClusterGroup from "react-leaflet-cluster";
 
-  // return (
-  //   <Marker position={[latitude, longitude]} icon={icon}>
-  //     <Popup>{zone.name}</Popup>
-  //   </Marker>
-
-  // const markers = zone_data.items.map((zone: IZone) => {
-  //   const latitude = zone.latitude;
-  //   const longitude = zone.longitude;
-  //   const icon = new Icon({
-  //     iconUrl: "/logo/marker.webp",
-  //     iconSize: [32, 32],
-  //   });
-  //   return (
-  //     <Marker position={[latitude, longitude]} icon={icon} key={zone.name}>
-  //       <Popup>{zone.name}</Popup>
-  //     </Marker>
-  //   );
-  // });
+const Map = ({ data }: { data: any }) => {
+  const markersList = data.map((area: IArea) => {
+    const icon = new Icon({
+      iconUrl: "/logo/marker.webp",
+      iconSize: [32, 32],
+    });
+    return (
+      <Marker
+        position={[area.latitude, area.longitude]}
+        icon={icon}
+        key={area.name}
+      >
+        <Popup>{area.name}</Popup>
+      </Marker>
+    );
+  });
 
   return (
     <MapContainer
@@ -45,25 +34,7 @@ const Map = () => {
         attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <MarkerClusterGroup>
-        {zone_data.items.map((zone: IZone) => {
-          const latitude = zone.latitude;
-          const longitude = zone.longitude;
-          const icon = new Icon({
-            iconUrl: "/logo/marker.webp",
-            iconSize: [32, 32],
-          });
-          return (
-            <Marker
-              position={[latitude, longitude]}
-              icon={icon}
-              key={zone.name}
-            >
-              <Popup>{zone.name}</Popup>
-            </Marker>
-          );
-        })}
-      </MarkerClusterGroup> */}
+      <MarkerClusterGroup>{markersList}</MarkerClusterGroup>
     </MapContainer>
   );
 };

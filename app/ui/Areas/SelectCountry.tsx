@@ -44,6 +44,8 @@ export const SelectCountry = () => {
       className="basic-multi-select"
       classNamePrefix="select"
       options={options}
+      //defaultValue={{ label: "", value: "" }}
+      // searchParams.get("search")?.toString()
       onChange={handleChange}
     />
   );
