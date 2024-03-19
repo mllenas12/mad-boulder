@@ -1,3 +1,4 @@
+import { ActionMeta, MultiValue } from "react-select";
 export interface IArea {
     name: string;
     latitude: number;
@@ -32,3 +33,20 @@ export interface IArea {
     video_count: number;
     thumbnail: string
 }[]
+
+
+export interface ICountry {
+    reduced_code: string;
+    code: string;
+    name: string[];
+    overview: string[];
+    states?: {
+        code: string;
+        name: string[];
+    }[];
+}[]
+
+export type TOptions = (
+    newValue: MultiValue<{ value: string; label: string }>,
+    actionMeta: ActionMeta<{ value: string; label: string }>
+) => void;

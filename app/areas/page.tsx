@@ -15,13 +15,23 @@ export default function AreasPage({
       ? searchParams.search.toLowerCase()
       : undefined;
 
+  const selectedCountries =
+    typeof searchParams.countries === "string"
+      ? decodeURIComponent(searchParams.countries).split(",")
+      : [];
+
+  const filteredData = data.filter(
+    (area) =>
+      selectedCountries.length == 0 || selectedCountries.includes(area.country)
+  );
+
   const cards = query
-    ? data
+    ? filteredData
         .filter((card) => card.name.toLowerCase().includes(query))
         .map((card) => {
           return <AreaCard area={card} key={card.name} />;
         })
-    : data.map((area) => {
+    : filteredData.map((area) => {
         return <AreaCard area={area} key={area.name} />;
       });
 
