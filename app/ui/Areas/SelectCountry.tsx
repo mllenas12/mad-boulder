@@ -1,8 +1,8 @@
+"use client";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
 import countries from "@/app/lib/data/countries.json";
 import { ICountry, TOptions } from "@/app/lib/types";
-import Select, { ActionMeta, MultiValue } from "react-select";
+import Select from "react-select";
 
 export const SelectCountry = () => {
   const { replace } = useRouter();

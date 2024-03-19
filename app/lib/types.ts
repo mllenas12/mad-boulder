@@ -50,3 +50,8 @@ export type TOptions = (
     newValue: MultiValue<{ value: string; label: string }>,
     actionMeta: ActionMeta<{ value: string; label: string }>
 ) => void;
+
+
+export type ArrowProps = {
+    isOrdered: boolean;
+};

@@ -23,7 +23,7 @@ export default function Search() {
       name="search"
       onChange={(event) => handleSearch(event.target.value)}
       defaultValue={searchParams.get("query")?.toString()}
-      className="input input-bordered w-full "
+      className="input input-bordered w-full h-[36px] "
     />
   );
 }
