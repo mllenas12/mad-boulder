@@ -1,4 +1,4 @@
-import { ActionMeta, MultiValue } from "react-select";
+import { ActionMeta, MultiValue } from 'react-select';
 export interface IArea {
     name: string;
     latitude: number;
@@ -57,7 +57,9 @@ export type ArrowProps = {
 };
 
 
-export type TParkings = | {
-    parking_latitude: number,
-    parking_longitude: number
-}[] | []
+export type TSector = {
+    name: string,
+    sector_code: string,
+    id: string,
+    video_count: number
+}

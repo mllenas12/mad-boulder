@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-
+import Link from "next/link";
 import {
   PiInfo,
   PiMapPin,
@@ -7,8 +8,14 @@ import {
   PiSun,
   PiNotebook,
 } from "react-icons/pi";
-
+import { usePathname } from "next/navigation";
 export const AreaHeader = ({ areaName }: { areaName: string }) => {
+  const pathname = usePathname();
+
+  const linkStyle = (isActive: boolean) => ({
+    color: isActive ? "black" : "gray",
+  });
+
   return (
     <header className="flex flex-col justify-center items-center pt-8 bg-stone-200">
       <h2 className="text-2xl font-semibold">
@@ -16,35 +23,35 @@ export const AreaHeader = ({ areaName }: { areaName: string }) => {
       </h2>
       <nav>
         <ul className="menu menu-horizontal flex justify-center gap-4">
-          <li>
-            <a href={`/areas/${areaName}/info`}>
-              <PiInfo style={{ color: "black" }} size="20px" />{" "}
+          <li style={linkStyle(pathname == `/areas/${areaName}/info`)}>
+            <Link href={`/areas/${areaName}/info`}>
+              <PiInfo size="20px" />{" "}
               <span className="hidden sm:flex">Info</span>
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href={`/areas/${areaName}/map`}>
-              <PiMapPin style={{ color: "gray" }} size="20px" />
+          <li style={linkStyle(pathname == `/areas/${areaName}/map`)}>
+            <Link href={`/areas/${areaName}/map`}>
+              <PiMapPin size="20px" />
               <span className="hidden sm:flex">Map</span>
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href={`/areas/${areaName}/explore`}>
-              <PiMapTrifoldLight style={{ color: "gray" }} size="20px" />
+          <li style={linkStyle(pathname == `/areas/${areaName}/explore`)}>
+            <Link href={`/areas/${areaName}/explore`}>
+              <PiMapTrifoldLight size="20px" />
               <span className="hidden sm:flex">Sectors</span>
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href={`/areas/${areaName}/weather`}>
-              <PiSun style={{ color: "gray" }} size="20px" />
+          <li style={linkStyle(pathname == `/areas/${areaName}/weather`)}>
+            <Link href={`/areas/${areaName}/weather`}>
+              <PiSun size="20px" />
               <span className="hidden sm:flex">Weather</span>
-            </a>
+            </Link>
           </li>
-          <li>
-            <a href={`/areas/${areaName}/guides`}>
-              <PiNotebook style={{ color: "gray" }} size="20px" />
+          <li style={linkStyle(pathname == `/areas/${areaName}/guides`)}>
+            <Link href={`/areas/${areaName}/guides`}>
+              <PiNotebook size="20px" />
               <span className="hidden sm:flex">Guides</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

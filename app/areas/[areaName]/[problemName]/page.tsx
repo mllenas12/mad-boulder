@@ -23,7 +23,7 @@ export default function ProblemPage() {
         </div>
       </div>
       <div className="relative">
-        <Map />
+        {/* <Map /> */}
 
         <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
           <button className="bg-yellow-400 p-2 rounded mx-2">

@@ -2,9 +2,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
-import "/Users/mariallenas/Desktop/DEVELOPMENT/IT ACADEMY/Especialització - REACT/s9.ProjecteFinal/madboulder-project/app/ui/Areas/cardflip.modules.css";
+import styles from "@/app/ui/Areas/cardflip.module.css";
 
-export const Card = () => {
+export const Card = ({
+  imageUrl,
+  title,
+}: {
+  imageUrl: string;
+  title: string;
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -46,7 +52,6 @@ export const Card = () => {
 };
 
 export const CardFlip = () => {
-  // Array de datos de las tarjetas
   const cardData = [
     {
       imageUrl:
@@ -54,12 +59,10 @@ export const CardFlip = () => {
       title: "Boulder En España Guide",
     },
     { imageUrl: "https://example.com/your-image-url.jpg", title: "Your Title" },
-    // Puedes añadir más objetos de datos aquí
   ];
 
   return (
     <div className="flex items-center justify-center gap-4">
-      {/* Mapeo sobre el array de datos y renderizo una tarjeta para cada objeto */}
       {cardData.map((card, index) => (
         <Card key={index} imageUrl={card.imageUrl} title={card.title} />
       ))}
