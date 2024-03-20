@@ -1,4 +1,3 @@
-import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { IArea } from "@/app/lib/types";
 import zoneData from "@/app/lib/data/zoneData.json";
 import Link from "next/link";

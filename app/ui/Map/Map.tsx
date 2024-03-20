@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import { IArea } from "@/app/lib/types";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
-const Map = ({ data }: { data: any }) => {
-  const markersList = data.map((area: IArea) => {
+const Map: React.FC<{ data: IArea[] }> = ({ data }) => {
+  const areaMarker = data.map((area: IArea) => {
     const icon = new Icon({
       iconUrl: "/logo/marker.webp",
       iconSize: [32, 32],
@@ -18,23 +18,53 @@ const Map = ({ data }: { data: any }) => {
         icon={icon}
         key={area.name}
       >
-        <Popup>{area.name}</Popup>
+        <Popup>
+          <a href={`/areas/${area.name}/info`}>{area.name}</a>
+        </Popup>
       </Marker>
     );
   });
 
+  const parkingMarkers = data.map((area: IArea) =>
+    area.parkings.map((parking) => {
+      const parkingIcon = new Icon({
+        iconUrl: "/logo/parking.png",
+        iconSize: [32, 32],
+      });
+      return (
+        <Marker
+          position={[parking.parking_latitude, parking.parking_longitude]}
+          icon={parkingIcon}
+          key={parking.parking_latitude}
+        >
+          <Popup>
+            <div>
+              Coord:{" "}
+              {[`${parking.parking_latitude} , ${parking.parking_longitude}`]}
+            </div>
+          </Popup>
+        </Marker>
+      );
+    })
+  );
+
   return (
     <MapContainer
       className="h-[350px] z-0"
-      center={[0, 0]}
-      zoom={2}
+      center={
+        areaMarker.length == 1 ? [data[0].latitude, data[0].longitude] : [0, 0]
+      }
+      zoom={areaMarker.length == 1 ? 10 : 2}
       scrollWheelZoom={false}
     >
       <TileLayer
         attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <MarkerClusterGroup>{markersList}</MarkerClusterGroup>
+      <MarkerClusterGroup>
+        {areaMarker}
+        {parkingMarkers}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 };

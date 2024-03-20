@@ -1,9 +1,27 @@
 import Map from "@/app/ui/Map/Map";
-export default function MapAreaPage() {
+import zoneData from "@/app/lib/data/zoneData.json";
+import { IArea } from "@/app/lib/types";
+
+export async function generateStaticParams() {
+  const areaNames = zoneData.items.map((area: IArea) =>
+    decodeURIComponent(area.name)
+  );
+  return areaNames.map((name) => ({ areaName: name }));
+}
+export default function MapAreaPage({
+  params,
+}: {
+  params: { areaName: string };
+}) {
+  const currentArea = decodeURIComponent(params.areaName);
+  const currentAreaData = zoneData.items.find(
+    (zone: IArea) => zone.name == currentArea
+  );
+
   return (
     <div>
       {/* AREA MAP */}
-      {/* <Map /> */}
+      <Map data={[currentAreaData]} parkings={[]} />
       {/* DESCRIPTION HOW TO ARRIVE */}
       <div className="p-8">
         <h5>Parkings:</h5>

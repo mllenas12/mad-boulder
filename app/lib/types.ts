@@ -55,3 +55,9 @@ export type TOptions = (
 export type ArrowProps = {
     isOrdered: boolean;
 };
+
+
+export type TParkings = | {
+    parking_latitude: number,
+    parking_longitude: number
+}[] | []
