@@ -1,5 +1,5 @@
 import { AreaCard } from "../ui/Areas/AreaCard";
-import Map from "../ui/Map/Map";
+import Map from "@/app/ui/Map/Map";
 import zoneData from "@/app/lib/data/zoneData.json";
 import { AreasFilter } from "../ui/Areas/AreasFilter";
 import SortButtons from "./SortButtons";
@@ -10,7 +10,6 @@ export default function AreasPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const data = zoneData.items;
-
   const query =
     typeof searchParams.search === "string"
       ? searchParams.search.toLowerCase()

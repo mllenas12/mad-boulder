@@ -1,5 +1,5 @@
 import React from "react";
-import { FaInfo, FaList, FaSun, FaMap } from "react-icons/fa6";
+
 import {
   PiInfo,
   PiMapPin,
@@ -8,7 +8,7 @@ import {
   PiNotebook,
 } from "react-icons/pi";
 
-export const AreaHeader = ({ areaName }: { areaName: string | string[] }) => {
+export const AreaHeader = ({ areaName }: { areaName: string }) => {
   return (
     <header className="flex flex-col justify-center items-center pt-8 bg-stone-200">
       <h2 className="text-2xl font-semibold">
@@ -29,7 +29,7 @@ export const AreaHeader = ({ areaName }: { areaName: string | string[] }) => {
             </a>
           </li>
           <li>
-            <a href={`/areas/${areaName}/sectors`}>
+            <a href={`/areas/${areaName}/explore`}>
               <PiMapTrifoldLight style={{ color: "gray" }} size="20px" />
               <span className="hidden sm:flex">Sectors</span>
             </a>

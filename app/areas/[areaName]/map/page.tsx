@@ -3,7 +3,7 @@ export default function MapAreaPage() {
   return (
     <div>
       {/* AREA MAP */}
-      <Map />
+      {/* <Map /> */}
       {/* DESCRIPTION HOW TO ARRIVE */}
       <div className="p-8">
         <h5>Parkings:</h5>

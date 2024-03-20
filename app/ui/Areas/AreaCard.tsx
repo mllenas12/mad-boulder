@@ -2,7 +2,7 @@ import { IArea } from "@/app/lib/types";
 import Link from "next/link";
 export const AreaCard = ({ area }: { area: IArea }) => {
   return (
-    <Link href={`/areas/${area.name}`}>
+    <Link href={`/areas/${area.name}/info`}>
       <img
         src={area.thumbnail}
         alt={`Card image of ${area.name}`}
