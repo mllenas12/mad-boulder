@@ -64,7 +64,7 @@ export default function ExplorePage({
         </div>
       </div>
       {/* List of videos */}
-      <SortButtons />
+      {/* <SortButtons /> */}
       <div>{problemsInfo}</div>
     </div>
   );
