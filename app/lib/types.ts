@@ -63,3 +63,8 @@ export type TSector = {
     id: string,
     video_count: number
 }
+
+export interface IParking {
+    parking_latitude?: number,
+    parking_longitude?: number
+}[]

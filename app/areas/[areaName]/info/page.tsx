@@ -23,9 +23,12 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
         style={{ backgroundImage: `url(${imageUrl})` }}
         className={`relative  bg-cover bg-center py-32 md:py-48 flex justify-center`}
       >
-        <button className=" absolute bottom-8 bg-yellow-400 text-neutral-700 font-semibold rounded px-4 py-2 ">
+        <Link
+          href={`/areas/${currentAreaData?.name}/explore`}
+          className=" absolute bottom-8 bg-yellow-400 text-neutral-700 font-semibold rounded px-4 py-2 "
+        >
           EXPLORE AREA
-        </button>
+        </Link>
       </div>
       <div>
         {/* DESCRIPTION: */}

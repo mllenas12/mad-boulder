@@ -38,10 +38,13 @@ const Map: React.FC<{ data: IArea[] }> = ({ data }) => {
           key={parking.parking_latitude}
         >
           <Popup>
-            <div>
-              Coord:{" "}
-              {[`${parking.parking_latitude} , ${parking.parking_longitude}`]}
-            </div>
+            <a
+              href={`https://www.google.com/maps/place/${parking.parking_latitude},${parking.parking_longitude}`}
+              target="_blank"
+              className="text-blue-400 underline"
+            >
+              Open in Google Maps
+            </a>
           </Popup>
         </Marker>
       );

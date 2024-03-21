@@ -1,6 +1,6 @@
 import Map from "@/app/ui/Map/Map";
 import zoneData from "@/app/lib/data/zoneData.json";
-import { IArea, TSector } from "@/app/lib/types";
+import { IArea, TSector, IParking } from "@/app/lib/types";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 import Search from "@/app/ui/Search";
@@ -47,6 +47,21 @@ export default function MapAreaPage({
     );
   });
 
+  const parkingList = currentAreaData.parkings.map((parking: IParking) => {
+    return (
+      <p key={nanoid()} className="px-4">
+        - Parking Coordinates:{" "}
+        <a
+          href={`https://www.google.com/maps/place/${parking.parking_latitude},${parking.parking_longitude}`}
+          target="_blank"
+          className="text-blue-400 underline"
+        >
+          Google Maps Location
+        </a>
+      </p>
+    );
+  });
+
   return (
     <div className="flex flex-col gap-4">
       {/* AREA MAP */}
@@ -58,11 +73,6 @@ export default function MapAreaPage({
           {/* LIST OF SECTORS:  */}
           <h3 className="text-xl font-semibold">Sectors in this area:</h3>
           <Search placeholder="Sector" />
-          {/* <input
-            type="text"
-            placeholder="Search"
-            className=" border border-neutral-600  px-2 rounded "
-          /> */}
           <div className="bg-white p-2 rounded">
             <nav className="font-semibold flex p-2">
               <p className="w-3/4 text-start">Name</p>
@@ -75,9 +85,11 @@ export default function MapAreaPage({
       </div>
       {/* DESCRIPTION HOW TO ARRIVE */}
       <div className="p-8">
-        <h5>Parkings:</h5>
-        <p>Parking 1: ...</p>
-        <p>Description...</p>
+        <h3 className="text-lg font-semibold">
+          Access and Parking Information
+        </h3>
+        <h5 className="font-semibold px-2">Parkings:</h5>
+        {parkingList}
       </div>
     </div>
   );
