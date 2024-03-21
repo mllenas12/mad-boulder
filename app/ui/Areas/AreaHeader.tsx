@@ -38,7 +38,7 @@ export const AreaHeader = ({ areaName }: { areaName: string }) => {
           <li style={linkStyle(pathname == `/areas/${areaName}/explore`)}>
             <Link href={`/areas/${areaName}/explore`}>
               <PiMapTrifoldLight size="20px" />
-              <span className="hidden sm:flex">Sectors</span>
+              <span className="hidden sm:flex">Explore</span>
             </Link>
           </li>
           <li style={linkStyle(pathname == `/areas/${areaName}/weather`)}>

@@ -13,7 +13,8 @@ export interface IArea {
     parkings: {
         parking_latitude: number;
         parking_longitude: number;
-    }[];
+    }[]
+    ;
     links?: {
         name: string;
         link: string;
@@ -33,6 +34,7 @@ export interface IArea {
     video_count: number;
     thumbnail: string
 }[]
+
 
 
 export interface ICountry {
@@ -67,4 +69,28 @@ export type TSector = {
 export interface IParking {
     parking_latitude?: number,
     parking_longitude?: number
+}[]
+
+export interface IProblemsData {
+    date: string;
+    items: IProblemArea[];
+}
+
+export interface IProblemArea {
+    name: string,
+    problem_list: IProblem[]
+}
+
+export interface IProblem {
+    name: string,
+    title: string,
+    grade: string,
+    grade_with_info: string,
+    zone: string,
+    sector: string,
+    climber: string,
+    boulder: string,
+    url: string,
+    date: string
+
 }[]
