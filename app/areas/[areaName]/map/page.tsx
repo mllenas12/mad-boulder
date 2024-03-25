@@ -68,11 +68,11 @@ export default function MapAreaPage({
       <Map data={[currentAreaData]} />
 
       {/* SECTORS: */}
-      <div className="p-8 bg-neutral-200">
+      <div className="p-8 bg-neutral-200 rounded">
         <div className="flex flex-col gap-4">
           {/* LIST OF SECTORS:  */}
           <h3 className="text-xl font-semibold">Sectors in this area:</h3>
-          <Search placeholder="Sector" />
+          <Search placeholder="Sector" paramName="sector" />
           <div className="bg-white p-2 rounded">
             <nav className="font-semibold flex p-2">
               <p className="w-3/4 text-start">Name</p>
