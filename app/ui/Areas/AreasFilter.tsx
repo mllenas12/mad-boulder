@@ -1,4 +1,4 @@
-import Search from "../Search";
+import Search from "@/app/ui/Search";
 import { SelectCountry } from "./SelectCountry";
 
 export const AreasFilter = () => {

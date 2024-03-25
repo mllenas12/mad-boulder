@@ -20,15 +20,16 @@ export default function Search({
     } else {
       params.delete(paramName);
     }
+
     replace(`${pathname}?${params.toString()}`);
   }, 300);
   return (
     <input
       type="text"
       placeholder={placeholder}
-      name="search"
+      name={paramName}
       onChange={(event) => handleSearch(event.target.value)}
-      defaultValue={searchParams.get("search")?.toString()}
+      defaultValue={searchParams.get(paramName)?.toString()}
       className="input input-bordered w-full h-[36px] "
     />
   );

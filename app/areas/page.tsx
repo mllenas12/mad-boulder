@@ -11,8 +11,8 @@ export default function AreasPage({
 }) {
   const data = zoneData.items;
   const query =
-    typeof searchParams.search === "string"
-      ? searchParams.search.toLowerCase()
+    typeof searchParams.zone === "string"
+      ? searchParams.zone.toLowerCase()
       : undefined;
 
   const selectedCountries =

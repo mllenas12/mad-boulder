@@ -5,6 +5,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import { IArea } from "@/app/lib/types";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import { nanoid } from "nanoid";
 
 const Map: React.FC<{ data: IArea[] }> = ({ data }) => {
   const areaMarker = data.map((area: IArea) => {
@@ -16,7 +17,7 @@ const Map: React.FC<{ data: IArea[] }> = ({ data }) => {
       <Marker
         position={[area.latitude, area.longitude]}
         icon={icon}
-        key={area.name}
+        key={nanoid()}
       >
         <Popup>
           <a href={`/areas/${area.name}/info`}>{area.name}</a>
@@ -35,7 +36,7 @@ const Map: React.FC<{ data: IArea[] }> = ({ data }) => {
         <Marker
           position={[parking.parking_latitude, parking.parking_longitude]}
           icon={parkingIcon}
-          key={parking.parking_latitude}
+          key={nanoid()}
         >
           <Popup>
             <a

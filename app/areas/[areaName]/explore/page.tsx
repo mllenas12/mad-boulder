@@ -7,6 +7,7 @@ import ex from "@/app/lib/data/ex.json";
 import SortButtons from "../../SortButtons";
 import { SelectSector } from "@/app/ui/Areas/SelectSector";
 import SortB from "@/app/ui/SortB";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -73,7 +74,8 @@ export default function ExplorePage({
     const imgUrl = ` https://img.youtube.com/vi/${ytID}/mqdefault.jpg`;
 
     return (
-      <div
+      <Link
+        href={`/problems/${problem.name}`}
         key={nanoid()}
         className="text-xs sm:text-base flex justify-between  gap-2 mb-4 bg-white rounded text-center md:text-start"
       >
@@ -90,7 +92,7 @@ export default function ExplorePage({
         </div>
 
         <p className="w-1/2 my-auto  md:mx-2">{problem.grade}</p>
-      </div>
+      </Link>
     );
   });
 

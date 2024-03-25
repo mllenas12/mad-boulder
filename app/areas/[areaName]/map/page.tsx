@@ -24,8 +24,8 @@ export default function MapAreaPage({
   );
 
   const query =
-    typeof searchParams.search === "string"
-      ? searchParams.search.toLowerCase()
+    typeof searchParams.sector === "string"
+      ? searchParams.sector.toLowerCase()
       : undefined;
 
   let filteredData = query
@@ -38,7 +38,7 @@ export default function MapAreaPage({
     return (
       <Link
         href={`/areas/${currentArea}/sector/${decodeURIComponent(sector.name)}`}
-        key={nanoid()}
+        key={sector.id}
         className="flex flex-row p-2 text-center text-sm gap-2"
       >
         <p className="w-3/4 my-auto font-semibold text-start">{sector.name}</p>
