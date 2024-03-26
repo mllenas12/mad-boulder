@@ -25,7 +25,7 @@ export default function ProblemPage({
     (problem: IProblem) => problem.name == currentProblem
   );
 
-  const url = currentProblemData.url.replace("watch?v=", "embed/");
+  const url = currentProblemData?.url.replace("watch?v=", "embed/");
 
   const hardcodeData = {
     name: "Ahedo",
