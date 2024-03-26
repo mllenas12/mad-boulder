@@ -2,14 +2,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
-import styles from "@/app/ui/Areas/cardflip.module.css";
+import styles from "./cardFlip.module.css";
+import { IArea } from "@/app/lib/types";
 
 export const Card = ({
   imageUrl,
   title,
+  link,
 }: {
   imageUrl: string;
   title: string;
+  link: string;
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -20,51 +23,53 @@ export const Card = ({
       setIsAnimating(!isAnimating);
     }
   }
-  return (
-    <div className="flex items-center justify-center">
-      <div
-        className="flip-card w-[120px] h-[180px] rounded-md"
-        onClick={handleFlip}
-      >
-        <motion.div
-          className="flip-card-inner w-[100%] h-[100%]"
-          initial={false}
-          animate={{ rotateY: isFlipped ? 180 : 360 }}
-          transition={{ duration: 0.2, animationDirection: "normal" }}
-          onAnimationComplete={() => setIsAnimating(false)}
-        >
-          <div className="flip-card-front w-[100%] h-[100%] bg-no-repeat bg-contain  text-white rounded-lg p-4 bg-[url('https://m.media-amazon.com/images/I/81UJX3rkGML._AC_UY218_.jpg')]"></div>
 
-          <div className="flip-card-back w-[100%] h-[100%] bg-cover border-[1px] text-center rounded-lg p-4 bg-neutral-300 flex flex-col justify-center gap-4">
-            <h4 className="font-semibold text-xs ">Boulder En España Guide</h4>
-            <a
-              className="bg-yellow-400 px-4 p-2 w-fit text-xs mx-auto rounded"
-              href="https://amzn.to/3UizeG0"
-              target="_blank"
-            >
-              BUY
-            </a>
-          </div>
-        </motion.div>
-      </div>
+  const imageThumbnail = imageUrl || "/images/example.jpeg";
+
+  return (
+    <div
+      className={`${styles.flipCard} w-[140px] h-[200px] rounded-md mx-auto`}
+      onClick={handleFlip}
+    >
+      <motion.div
+        className={`${styles.flipCardInner} w-[100%] h-[100%] `}
+        initial={false}
+        animate={{ rotateY: isFlipped ? 180 : 360 }}
+        transition={{ duration: 0.2, animationDirection: "normal" }}
+        onAnimationComplete={() => setIsAnimating(false)}
+      >
+        <img
+          className={`${styles.flipCardFront} w-full h-full text-white rounded-lg `}
+          src={imageThumbnail}
+        ></img>
+
+        <div
+          className={`${styles.flipCardBack} w-[100%] h-[100%] bg-cover border-[1px] text-center rounded-lg p-4 bg-neutral-300 flex flex-col justify-center gap-4`}
+        >
+          <h4 className="font-semibold text-xs ">{title}</h4>
+          <a
+            className="bg-yellow-400 px-4 p-2 w-fit text-xs mx-auto rounded"
+            href={link}
+            target="_blank"
+          >
+            BUY
+          </a>
+        </div>
+      </motion.div>
     </div>
   );
 };
 
-export const CardFlip = () => {
-  const cardData = [
-    {
-      imageUrl:
-        "https://m.media-amazon.com/images/I/81UJX3rkGML._AC_UY218_.jpg",
-      title: "Boulder En España Guide",
-    },
-    { imageUrl: "https://example.com/your-image-url.jpg", title: "Your Title" },
-  ];
-
+export const CardFlip = ({ data }: { data: IArea | undefined }) => {
   return (
-    <div className="flex items-center justify-center gap-4">
-      {cardData.map((card, index) => (
-        <Card key={index} imageUrl={card.imageUrl} title={card.title} />
+    <div className="flex flex-wrap gap-8">
+      {data?.guides.map((guide, index) => (
+        <Card
+          key={index}
+          imageUrl={guide.thumbnail}
+          title={guide.name}
+          link={guide.link[0]}
+        />
       ))}
     </div>
   );

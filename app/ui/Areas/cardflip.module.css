@@ -1,18 +1,18 @@
-.flip-card {
+.flipCard {
   perspective: 1000px;
 }
 
-.flip-card-inner {
+.flipCardInner {
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
 
-.flip-card-front,
-.flip-card-back {
+.flipCardFront,
+.flipCardBack {
   position: absolute;
   backface-visibility: hidden;
 }
 
-.flip-card-back {
+.flipCardBack {
   transform: rotateY(180deg);
 }

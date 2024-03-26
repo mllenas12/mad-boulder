@@ -145,7 +145,7 @@
                 {
                     "name": "Albarrac\u00edn Local Guidebook",
                     "link": "https://www.sofaboulder.com/producto/albarracin-local-guidebook/",
-                    "thumbnail": "static/images/guides/Albarracin-Local-Guidebook.webp"
+                    "thumbnail": "/static/images/guides/Albarracin-Local-Guidebook.webp"
                 },
                 {
                     "name": "The Guidebook about Albarracin Bouldering & Bezas",
@@ -724,7 +724,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -999,12 +999,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -1228,7 +1228,7 @@
                 {
                     "name": "Verzasca Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/Verzasca-Boulder.webp"
+                    "thumbnail": "/static/images/guides/Verzasca-Boulder.webp"
                 }
             ],
             "sectors": [
@@ -1535,7 +1535,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -2210,12 +2210,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -2521,7 +2521,7 @@
                 {
                     "name": "Chironico Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/ticino-chironico-boulder.webp"
+                    "thumbnail": "/static/images/guides/ticino-chironico-boulder.webp"
                 }
             ],
             "sectors": [
@@ -2872,7 +2872,7 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 }
             ],
             "sectors": [],
@@ -3066,7 +3066,7 @@
                 {
                     "name": "Cresciano Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/cresciano-bouldering-guidebook.webp"
+                    "thumbnail": "/static/images/guides/cresciano-bouldering-guidebook.webp"
                 }
             ],
             "sectors": [
@@ -3657,7 +3657,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -3796,7 +3796,7 @@
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 }
             ],
             "sectors": [],
@@ -4074,12 +4074,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -4269,7 +4269,7 @@
                 {
                     "name": "Gottardo Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/Gottardo-Boulder-guidebook.webp"
+                    "thumbnail": "/static/images/guides/Gottardo-Boulder-guidebook.webp"
                 }
             ],
             "sectors": [
@@ -4308,7 +4308,7 @@
                 {
                     "name": "Gottardo Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/Gottardo-Boulder-guidebook.webp"
+                    "thumbnail": "/static/images/guides/Gottardo-Boulder-guidebook.webp"
                 }
             ],
             "sectors": [
@@ -5310,7 +5310,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -5536,12 +5536,12 @@
                 {
                     "name": "Pedriza Boulder",
                     "link": "https://pedrizaguidebooks.com/",
-                    "thumbnail": "static/images/guides/pedriza-boulder.webp"
+                    "thumbnail": "/static/images/guides/pedriza-boulder.webp"
                 },
                 {
                     "name": "La Pedriza Gu\u00eda de Boque",
                     "link": "https://lapedrizaguiadebloque.webnode.es/",
-                    "thumbnail": "static/images/guides/la-pedriza-guia-de-bloque.webp"
+                    "thumbnail": "/static/images/guides/la-pedriza-guia-de-bloque.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -6892,12 +6892,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -7234,12 +7234,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -7749,7 +7749,7 @@
                 {
                     "name": "Gu\u00eda Pena Corneira",
                     "link": "https://www.libreriadesnivel.com/libros/pena-corneira/9788493990732/",
-                    "thumbnail": "static/images/guides/pena-corneira-guia.webp"
+                    "thumbnail": "/static/images/guides/pena-corneira-guia.webp"
                 },
                 {
                     "name": "Boulder En Galicia",
@@ -8690,7 +8690,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -8730,12 +8730,12 @@
                 {
                     "name": "San Francisco Bay Area Bouldering",
                     "link": "https://www.jimthornburg.com/bay-area-bouldering.html",
-                    "thumbnail": "static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/San-Francisco-Bay-Area-Bouldering.webp"
                 },
                 {
                     "name": "Golden State Bouldering",
                     "link": "https://www.goldenstatebouldering.com/",
-                    "thumbnail": "static/images/guides/Golden-State-Bouldering.webp"
+                    "thumbnail": "/static/images/guides/Golden-State-Bouldering.webp"
                 },
                 {
                     "name": "Bay Area Bouldering",
@@ -10061,7 +10061,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -10444,7 +10444,7 @@
                 {
                     "name": "Bouldering Val Calanca",
                     "link": "https://onlynuts.ch/en/product/bouldering-in-val-calanca-2/",
-                    "thumbnail": "static/images/guides/bouldering-val-calanca-guidebook.webp"
+                    "thumbnail": "/static/images/guides/bouldering-val-calanca-guidebook.webp"
                 }
             ],
             "sectors": [],
@@ -10957,7 +10957,7 @@
                         "https://amzn.to/3UjzUuF",
                         "https://amzn.to/3Sln51m"
                     ],
-                    "thumbnail": "static/images/guides/Boulder-asturias.webp"
+                    "thumbnail": "/static/images/guides/Boulder-asturias.webp"
                 },
                 {
                     "name": "Boulder en Espa\u00f1a",
@@ -11346,7 +11346,7 @@
                 {
                     "name": "Gottardo Boulder",
                     "link": "http://www.ticinoboulder.ch/ticino-guides",
-                    "thumbnail": "static/images/guides/Gottardo-Boulder-guidebook.webp"
+                    "thumbnail": "/static/images/guides/Gottardo-Boulder-guidebook.webp"
                 }
             ],
             "sectors": [
