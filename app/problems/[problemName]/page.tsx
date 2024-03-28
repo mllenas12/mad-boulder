@@ -1,6 +1,7 @@
 import Map from "@/app/ui/Map/Map";
 import problemsData from "@/app/lib/data/problemsData.json";
 import { IProblem, IProblemArea } from "@/app/lib/types";
+import Link from "next/link";
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
     area.problem_list.map((problem: IProblem) => problem.name)
@@ -77,6 +78,9 @@ export default function ProblemPage({
     video_count: 9,
     thumbnail: "https://i.ytimg.com/vi/TgxuSHTBgNU/maxresdefault.jpg",
   };
+
+  const sector = currentProblemData.sector.toLowerCase();
+
   return (
     <div>
       <header className="py-4 bg-neutral-300 text-center font-semibold text-2xl">
@@ -94,7 +98,14 @@ export default function ProblemPage({
           <p>Name: {currentProblemData?.name}</p>
           <p>Grade: {currentProblemData?.grade}</p>
           <p>Zone: {currentProblemData?.zone}</p>
-          <p>Sector: {currentProblemData?.sector}</p>
+          <p>
+            Sector:{" "}
+            <Link
+              href={`/areas/${currentProblemData?.zone}/explore?sectors=${currentProblemData.sector}`}
+            >
+              {currentProblemData?.sector}
+            </Link>
+          </p>
           <p>Boulder: {currentProblemData?.boulder}</p>
           <p>Climber: {currentProblemData?.climber}</p>
         </div>
