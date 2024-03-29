@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
+import { SignInForm } from "../ui/SignInForm";
 
 export default function SignInPage() {
   return (
@@ -20,57 +19,7 @@ export default function SignInPage() {
             Enter your email and password
           </p>
         </div>
-        <form className="flex flex-col justify-center items-center gap-5 px-9 ">
-          {/* onSubmit={handleSubmit} */}
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Email"
-            required
-            //onChange={handleChange}
-            className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
-          />
-          <input
-            type="password"
-            name="userPassword"
-            id="userPassword"
-            placeholder="Password"
-            required
-            //onChange={handleChange}
-            className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
-          />
-          {/* {error && (
-        <p className="text-red-800 text-center text-xs mt-2 font-semibold md:text-base">
-        {error}
-        </p> 
-      )}*/}
-          <button className="w-full md:w-1/2 bg-amber-400 text-white p-1">
-            LOG IN
-          </button>
-          <p className="text-center mt-2">
-            Don&apos;t you have an account?{" "}
-            <Link
-              href={"/sign-up"}
-              className="text-amber-400 font-semibold underline cursor-pointer"
-            >
-              Sign up
-            </Link>
-          </p>
-        </form>
-        <div className="flex flex-col gap-2">
-          <p>Sign in with</p>
-          <div className="flex justify-center gap-6 max-h-11">
-            <a href="">
-              <FcGoogle size={44} />
-            </a>
-            <a href="">
-              <FaFacebookSquare size={44} fill="#0A66C2" />
-            </a>
-            <a href="">
-              <FaLinkedin size={44} fill="#0A66C2" />
-            </a>
-          </div>
-        </div>
+        <SignInForm />
         <p>
           Upload without an account.{" "}
           <Link

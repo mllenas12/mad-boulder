@@ -220,3 +220,14 @@ export interface IWeatherData {
     date: string;
     info: IDayWeather;
 }
+
+export interface IFormErrors {
+    email: string
+    password: string
+}
+
+export interface IUser {
+    name: string,
+    email: string,
+    password: string,
+}

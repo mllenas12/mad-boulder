@@ -1,27 +1,25 @@
 import { auth } from "firebase-admin";
 import { customInitApp } from "@/app/lib/firebase/firebase-admin-config";
-import { ServerResponse, IncomingMessage } from "http";
 import { cookies, headers } from "next/headers";
-import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { NextResponse } from "next/server";
+import { ServerResponse, IncomingMessage } from "http";
+import { NextRequest, NextResponse } from "next/server";
 
 // iniciar firebase
 customInitApp();
 const COOKIE_SESSION_NAME = process.env.COOKIE_SESSION_NAME || 'sessionId';
-
-export async function POST(request: IncomingMessage, response: ServerResponse) {
+export async function POST(request: NextRequest, response: ServerResponse) {
     const authorization = headers().get("Authorization");
     if (authorization?.startsWith("Bearer ")) {
         const idToken = authorization.split("Bearer ")[1];
         const decodedToken = await auth().verifyIdToken(idToken);
 
         if (decodedToken) {
-            //Generate cookie
+            //Generar cookie
             const expiresIn = 60 * 60 * 24 * 1 * 1000;
             const sessionCookie = await auth().createSessionCookie(idToken, {
                 expiresIn,
             });
-            const options: ResponseCookie = {
+            const options = {
                 name: COOKIE_SESSION_NAME,
                 value: sessionCookie,
                 maxAge: expiresIn,
@@ -29,7 +27,7 @@ export async function POST(request: IncomingMessage, response: ServerResponse) {
                 secure: true,
             };
 
-            ///Add cookie to browser
+            //Agregar cookie al browser
             cookies().set(options);
         }
     }
@@ -37,16 +35,16 @@ export async function POST(request: IncomingMessage, response: ServerResponse) {
     return NextResponse.json({}, { status: 200 });
 }
 
-// User Auth
-export async function GET(request: IncomingMessage) {
+// autenticar usuario
+export async function GET(request: NextRequest) {
     const session = cookies().get(COOKIE_SESSION_NAME)?.value || "";
 
-    //Validate if cookie already exists
+    //Validar si la cookie existe
     if (!session) {
         return NextResponse.json({ isLogged: false }, { status: 401 });
     }
 
-    //Use Firebase to validate cookie
+    //Usar Firebase para validar la cookie
     const decodedClaims = await auth().verifySessionCookie(session, true);
 
     if (!decodedClaims) {
@@ -54,4 +52,4 @@ export async function GET(request: IncomingMessage) {
     }
 
     return NextResponse.json({ isLogged: true }, { status: 200 });
-} 
+}

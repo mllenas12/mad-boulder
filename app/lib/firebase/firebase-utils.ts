@@ -1,8 +1,7 @@
-import { NextRouter } from "next/router";
 import { auth } from "./firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-const getAuth = async (email: string, password: string, router: NextRouter, isSignUp: boolean) => {
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+const getAuth = async (email: string, password: string, router: AppRouterInstance, isSignUp: boolean) => {
     if (isSignUp) {
         createUserWithEmailAndPassword(auth, email, password)
             .then(async (userCred) => {
@@ -13,7 +12,7 @@ const getAuth = async (email: string, password: string, router: NextRouter, isSi
                     },
                 }).then((response) => {
                     if (response.status === 200) {
-                        router.push("/areas");
+                        router.push("/video-uploader");
                     }
                 })
             })
@@ -30,7 +29,7 @@ const getAuth = async (email: string, password: string, router: NextRouter, isSi
                     },
                 }).then((response) => {
                     if (response.status === 200) {
-                        router.push("/");
+                        router.push("/video-uploader");
                     }
                 })
             })
