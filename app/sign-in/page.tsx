@@ -7,7 +7,7 @@ export default function SignInPage() {
   return (
     <div className="flex flex-col text-center bg-neutral-100">
       {/* Header */}
-      <div className="bg-[#959595] h-48 flex items-center text-center">
+      <div className="bg-[#959595] h-48 flex items-center justify-center text-center">
         <h2 className="font-bold text-3xl p-8 text-white">
           Be part of the world&apos;s largest beta library
         </h2>
@@ -28,7 +28,7 @@ export default function SignInPage() {
             placeholder="Email"
             required
             //onChange={handleChange}
-            className="w-full h-9 mx-auto placeholder:px-2"
+            className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
           />
           <input
             type="password"
@@ -37,19 +37,21 @@ export default function SignInPage() {
             placeholder="Password"
             required
             //onChange={handleChange}
-            className="w-full h-9 mx-auto placeholder:px-2"
+            className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
           />
           {/* {error && (
         <p className="text-red-800 text-center text-xs mt-2 font-semibold md:text-base">
         {error}
         </p> 
       )}*/}
-          <button className="w-full bg-amber-400 text-white p-1">LOG IN</button>
+          <button className="w-full md:w-1/2 bg-amber-400 text-white p-1">
+            LOG IN
+          </button>
           <p className="text-center mt-2">
             Don&apos;t you have an account?{" "}
             <Link
               href={"/sign-up"}
-              className="text-amber-400 font-semibold underline"
+              className="text-amber-400 font-semibold underline cursor-pointer"
             >
               Sign up
             </Link>
@@ -73,7 +75,7 @@ export default function SignInPage() {
           Upload without an account.{" "}
           <Link
             href={"/video-uploader"}
-            className="text-amber-400 font-semibold underline"
+            className="text-amber-400 font-semibold underline cursor-pointer"
           >
             Skip now
           </Link>
