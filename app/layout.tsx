@@ -1,7 +1,7 @@
 import "./globals.css";
 import * as React from "react";
 import Navbar from "@/app/ui/Navbar";
-import { montserrat } from "@/app/ui/fonts";
+import { montserrat, raleway } from "@/app/ui/fonts";
 import { Footer } from "@/app/ui/Footer";
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className} antialiased flex flex-col min-h-screen`}
+        className={`${raleway.className} antialiased flex flex-col min-h-screen`}
       >
         <Navbar />
         {children}
