@@ -1,4 +1,4 @@
-export default function RegisterPage() {
+export default function SignUpPage() {
   return (
     <div className="p-8 flex flex-col gap-4">
       <h2 className="font-semibold text-2xl">Create Your Account</h2>

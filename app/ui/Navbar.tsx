@@ -66,7 +66,7 @@ export default function Navbar() {
         </div>
       ) : (
         <a
-          href="/log-in"
+          href="/sign-in"
           className="bg-yellow-400 text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-4 hidden lg:flex"
         >
           Log In
@@ -142,7 +142,7 @@ export default function Navbar() {
                 <a href="/about-us">ABOUT US</a>
               </li>
               <li className="bg-yellow-400 rounded">
-                <a href="/log-in">{isLogged ? "LOG OUT" : "LOG IN"}</a>
+                <a href="/sign-in">{isLogged ? "LOG OUT" : "LOG IN"}</a>
               </li>
             </ul>
           </div>
