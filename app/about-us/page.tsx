@@ -25,7 +25,7 @@ export default function AboutUsPage() {
           <h4>VIDEOS</h4>
         </div>
         <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/example.jpeg')]">
-          <h4>587</h4>
+          <h4>591</h4>
           <h4>CONTRIBUTORS</h4>
         </div>
       </div>

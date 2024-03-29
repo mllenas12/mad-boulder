@@ -1,106 +1,88 @@
 import React from "react";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 
 export default function SignInPage() {
   return (
-    <div className="flex flex-col gap-4 text-center bg-neutral-100">
+    <div className="flex flex-col text-center bg-neutral-100">
       {/* Header */}
-      <div className="bg-[#959595]">
-        <h2 className="font-bold text-2xl  p-8 text-white">
+      <div className="bg-[#959595] h-48 flex items-center text-center">
+        <h2 className="font-bold text-3xl p-8 text-white">
           Be part of the world&apos;s largest beta library
         </h2>
       </div>
       {/* Main */}
-      <div className="">
-        <div className="p-6">
+      <div className="py-8 flex flex-col gap-6">
+        <div className="">
           <h2 className="font-bold text-2xl">Sign in</h2>
-          <p className="text-neutral-400 text-xs py-2">
+          <p className="text-neutral-400 text-sm py-2">
             Enter your email and password
           </p>
         </div>
-        <form className="flex flex-col bg-white rounded-3xl mx-auto gap-2 md:px-20 text-black">
+        <form className="flex flex-col justify-center items-center gap-5 px-9 ">
           {/* onSubmit={handleSubmit} */}
-          <label htmlFor="userEmail" className="font-semibold md:text-xl">
-            Enter your email
-          </label>
           <input
             type="email"
             name="userEmail"
+            placeholder="Email"
             required
             //onChange={handleChange}
-            className="rounded w-full bg-slate-200  mx-auto mb-2 md:h-10"
+            className="w-full h-9 mx-auto placeholder:px-2"
           />
-          <label htmlFor="UserPassword" className="font-semibold md:text-xl">
-            Password
-          </label>
           <input
             type="password"
             name="userPassword"
             id="userPassword"
+            placeholder="Password"
             required
             //onChange={handleChange}
-            className="rounded w-full bg-slate-200  mx-auto  md:h-10"
+            className="w-full h-9 mx-auto placeholder:px-2"
           />
           {/* {error && (
         <p className="text-red-800 text-center text-xs mt-2 font-semibold md:text-base">
         {error}
         </p> 
       )}*/}
-          <p className="text-slate-400 text-xs text-center mt-2">
-            Don&apos;t have an account yet?{" "}
-            {/* <Link to={"/sign-up"} className="text-black underline"> */}
-            Sign up now
-            {/* </Link> */}
+          <button className="w-full bg-amber-400 text-white p-1">LOG IN</button>
+          <p className="text-center mt-2">
+            Don&apos;t you have an account?{" "}
+            <Link
+              href={"/sign-up"}
+              className="text-amber-400 font-semibold underline"
+            >
+              Sign up
+            </Link>
           </p>
-          <button className="md:w-full text-sm font-semibold p-2 px-6 w-fit mx-auto my-2 border rounded bg-yellow-400  hover:border-yellow-400 hover:bg-white">
-            Login
-          </button>
         </form>
+        <div className="flex flex-col gap-2">
+          <p>Sign in with</p>
+          <div className="flex justify-center gap-6 max-h-11">
+            <a href="">
+              <FcGoogle size={44} />
+            </a>
+            <a href="">
+              <FaFacebookSquare size={44} fill="#0A66C2" />
+            </a>
+            <a href="">
+              <FaLinkedin size={44} fill="#0A66C2" />
+            </a>
+          </div>
+        </div>
+        <p>
+          Upload without an account.{" "}
+          <Link
+            href={"/video-uploader"}
+            className="text-amber-400 font-semibold underline"
+          >
+            Skip now
+          </Link>
+        </p>
+        <div className="my-6 flex flex-col gap-2 justify-center h-[139px] w-[312px] mx-auto rounded text-white font-bold  text-center text-2xl bg-cover bg-[url('/images/example.jpeg')]">
+          <h4>591</h4>
+          <h4>CONTRIBUTORS</h4>
+        </div>
       </div>
     </div>
   );
 }
-
-{
-  /* <h2 className="font-semibold text-3xl">Log In</h2>
-      <p className="text-xs py-2">
-        Log into your Mad Boulder account to upload betas as a contributor.
-      </p> */
-}
-// <form className="flex flex-col bg-white rounded-3xl mx-auto gap-2 md:px-20 text-black">
-// {/* onSubmit={handleSubmit} */}
-// <label htmlFor="userEmail" className="font-semibold md:text-xl">
-//   Enter your email
-// </label>
-// <input
-//   type="email"
-//   name="userEmail"
-//   required
-//   //onChange={handleChange}
-//   className="rounded w-full bg-slate-200  mx-auto mb-2 md:h-10"
-// />
-// <label htmlFor="UserPassword" className="font-semibold md:text-xl">
-//   Password
-// </label>
-// <input
-//   type="password"
-//   name="userPassword"
-//   id="userPassword"
-//   required
-//   //onChange={handleChange}
-//   className="rounded w-full bg-slate-200  mx-auto  md:h-10"
-// />
-// {/* {error && (
-// <p className="text-red-800 text-center text-xs mt-2 font-semibold md:text-base">
-// {error}
-// </p>
-// )}*/}
-// <p className="text-slate-400 text-xs text-center mt-2">
-//   Don&apos;t have an account yet?{" "}
-//   {/* <Link to={"/sign-up"} className="text-black underline"> */}
-//   Sign up now
-//   {/* </Link> */}
-// </p>
-// <button className="md:w-full text-sm font-semibold p-2 px-6 w-fit mx-auto my-2 border rounded bg-yellow-400  hover:border-yellow-400 hover:bg-white">
-//   Login
-// </button>
-// </form>
