@@ -18,10 +18,9 @@ export const SignInForm = () => {
   const router = useRouter();
 
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     onAuthStateChanged(setUser);
-  }, []);
+  }, [user]);
 
   const validateEmail = (email: string) => {
     const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -30,7 +29,6 @@ export const SignInForm = () => {
 
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
-      .then(setUser)
       .then(() => router.push("/video-uploader"))
       .catch((err) => {
         console.log(err);
@@ -48,7 +46,7 @@ export const SignInForm = () => {
       formErrors.password = "Password is required";
     }
     if (formErrors.email === "" && formErrors.password === "") {
-      logIn();
+      logIn(email.trim(), password, router);
     } else {
       setErrors(formErrors);
     }
