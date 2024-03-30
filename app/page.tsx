@@ -11,6 +11,7 @@ export default function HomePage() {
     <>
       <Head>
         <title>Explore Rock Bouldering with Mad Boulder </title>
+        <link rel="icon" href="/logo/marker.webp" />
       </Head>
       <main className="flex-grow">
         <Hero />

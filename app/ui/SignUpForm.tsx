@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { getAuth } from "../lib/firebase/firebase-utils";
+import { signIn } from "../lib/firebase/firebase-utils";
 import { IFormErrors } from "../lib/types";
 
 export const SignUpForm = () => {
@@ -18,7 +18,6 @@ export const SignUpForm = () => {
   };
 
   const validatePassword = (password: string) => {
-    // Password with minimum of 6 characters
     return password.length >= 6;
   };
 
@@ -43,7 +42,7 @@ export const SignUpForm = () => {
     }
 
     if (formErrors.email === "" && formErrors.password === "") {
-      getAuth(email.trim(), password, router, true);
+      signIn(email.trim(), password, router);
     } else {
       setErrors(formErrors);
     }
