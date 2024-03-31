@@ -232,3 +232,15 @@ export interface IFormattedUser {
     username: string;
     email: string
 }
+
+export interface IFormData {
+    name: string,
+    email: string,
+    problem: string,
+    area: string,
+    sector: string,
+    grade: string,
+    message: string,
+    video: string,
+    isSubscribed: boolean,
+}

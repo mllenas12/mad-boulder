@@ -1,23 +1,35 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { auth } from "../lib/firebase/firebase-config";
-import { useUser } from "../lib/context/AuthProvider";
+//import { useUser } from "../lib/context/AuthProvider";
+import { useUser } from "../lib/firebase/firebase-utils";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const activeSearch = () => {
-    setIsSearchActive((prev) => !prev);
-  };
 
   const user = useUser();
   console.log(user);
 
+  const activeSearch = () => {
+    setIsSearchActive((prev) => !prev);
+  };
+
+  const changeLogState = () => {
+    if (user) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  };
+  useEffect(() => {
+    changeLogState();
+  }, [user]);
+
   return (
     <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between">
-      <div>{user ? user.displayName : "guest"}</div>
       <div className=" px-2 lg:flex-none">
         <a href="/">
           <img
@@ -27,13 +39,14 @@ export default function Navbar() {
           />
         </a>
       </div>
+      {/* Desktop: */}
       <div className="navbar-center hidden pr-4 lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li className="hover:text-yellow-400">
             <a href="/areas">AREAS</a>
           </li>
           <li className="hover:text-yellow-400">
-            <a href="/sign-in">UPLOAD</a>
+            <Link href={user ? "/video-uploader" : "/sign-in"}>UPLOAD</Link>
           </li>
           <li className="hover:text-yellow-400">
             <a href="https://www.blog.madboulder.org/" target="_blank">
@@ -51,11 +64,15 @@ export default function Navbar() {
         </ul>
       </div>
       {isLogged ? (
-        <div className="dropdown dropdown-end hidden lg:block">
+        <div className="dropdown dropdown-end h idden lg:block">
           <div tabIndex={0} role="button" className="btn btn-ghost w-20 flex">
             <img
               alt="Tailwind CSS Navbar component"
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              src={
+                user
+                  ? user.photoURL
+                  : "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              }
               className="rounded-full"
             />
           </div>
@@ -64,22 +81,17 @@ export default function Navbar() {
             className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/">PROFILE</a>
+              <button>PROFILE</button>
             </li>
             <li>
-              <a href="/">LOG OUT</a>
+              <button>LOG OUT</button>
             </li>
           </ul>
         </div>
       ) : (
-        <a
-          href="/sign-in"
-          className="bg-yellow-400 text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-4 hidden lg:flex"
-        >
-          Log In
-        </a>
+        <div></div>
       )}
-
+      {/* Mobile */}
       <div className="flex justify-end flex-1 px-2 lg:hidden">
         <div className="flex items-stretch relative">
           {isSearchActive ? (
@@ -133,7 +145,7 @@ export default function Navbar() {
                 <a href="/areas">AREAS</a>
               </li>
               <li>
-                <a href="/sign-in">UPLOAD</a>
+                <a href={user ? "/video-uploader" : "/sign-in"}>UPLOAD</a>
               </li>
               <li>
                 <a href="https://www.blog.madboulder.org/" target="_blank">
@@ -148,9 +160,26 @@ export default function Navbar() {
               <li>
                 <a href="/about-us">ABOUT US</a>
               </li>
-              <li className="bg-yellow-400 rounded">
-                <a href="/sign-in">{isLogged ? "LOG OUT" : "LOG IN"}</a>
-              </li>
+              {isLogged && (
+                <>
+                  <div className="divider my-0"></div>
+                  <li className="rounded">
+                    <a href="/sign-in">PROFILE</a>
+                    {/* <a href="/sign-in" className="flex justify-between">
+                      <p>PROFILE</p>
+
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                        className="rounded-full w-10"
+                      />
+                    </a> */}
+                  </li>
+                  <li className=" rounded">
+                    <a href="/sign-in">LOG OUT</a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

@@ -1,7 +1,10 @@
-import { auth } from "./firebase-config";
+import { auth, db } from "./firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile, signOut } from "firebase/auth";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { User } from "firebase/auth";
+import { IFormData } from "../types";
 export const signUp = async (email: string, password: string, displayName: string, router: AppRouterInstance) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -38,6 +41,22 @@ export const logIn = (email: string, password: string, router: AppRouterInstance
 // };
 
 
+export const useUser = () => {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+            setUser(authUser);
+        });
+
+        return () => {
+            unsubscribe(); // Detener el observador cuando el componente se desmonte
+        };
+    }, []);
+    return user
+}
+
+
 
 export const loginWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
@@ -47,4 +66,27 @@ export const loginWithGoogle = async () => {
 export const logOut = (router: AppRouterInstance) => {
     signOut(auth).then(() => router.push("/"))
         .catch((err) => console.log(err))
+}
+
+
+export const uploadVideo = async (formData: IFormData, user: User | null) => {
+    try {
+        const docRef = await addDoc(collection(db, "users"), {
+            name: formData.name,
+            email: formData.email,
+            problem: formData.problem,
+            area: formData.area,
+            sector: formData.sector,
+            grade: formData.grade,
+            message: formData.message,
+            video: formData.video,
+            isSubscribed: formData.isSubscribed,
+            createdAt: new Date(),
+            userId: user ? user.uid : ""
+
+        })
+
+    } catch (err) {
+        console.error("Error adding document:", err)
+    }
 }
