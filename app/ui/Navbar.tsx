@@ -1,6 +1,9 @@
 "use client";
+import React from "react";
 import { IoIosSearch } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth } from "../lib/firebase/firebase-config";
+import { useUser } from "../lib/context/AuthProvider";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -9,8 +12,12 @@ export default function Navbar() {
     setIsSearchActive((prev) => !prev);
   };
 
+  const user = useUser();
+  console.log(user);
+
   return (
     <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between">
+      <div>{user ? user.displayName : "guest"}</div>
       <div className=" px-2 lg:flex-none">
         <a href="/">
           <img
@@ -26,7 +33,7 @@ export default function Navbar() {
             <a href="/areas">AREAS</a>
           </li>
           <li className="hover:text-yellow-400">
-            <a href="/video-uploader">UPLOAD</a>
+            <a href="/sign-in">UPLOAD</a>
           </li>
           <li className="hover:text-yellow-400">
             <a href="https://www.blog.madboulder.org/" target="_blank">
@@ -126,7 +133,7 @@ export default function Navbar() {
                 <a href="/areas">AREAS</a>
               </li>
               <li>
-                <a href="/video-uploader">UPLOAD</a>
+                <a href="/sign-in">UPLOAD</a>
               </li>
               <li>
                 <a href="https://www.blog.madboulder.org/" target="_blank">

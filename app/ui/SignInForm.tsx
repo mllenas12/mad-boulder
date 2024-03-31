@@ -1,26 +1,17 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
 import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link.js";
 import { IFormErrors } from "@/app/lib/types";
-import {
-  onAuthStateChanged,
-  loginWithGoogle,
-  logIn,
-} from "@/app/lib/firebase/firebase-utils";
+import { loginWithGoogle, logIn } from "@/app/lib/firebase/firebase-utils";
 
 export const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
-
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    onAuthStateChanged(setUser);
-  }, [user]);
 
   const validateEmail = (email: string) => {
     const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -58,7 +49,6 @@ export const SignInForm = () => {
         className="flex flex-col justify-center items-center gap-5 px-9 "
         onSubmit={handleSubmit}
       >
-        {user ? <div>Hello user</div> : "need to login"}
         <input
           type="email"
           name="userEmail"

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "../lib/firebase/firebase-utils";
+import { signUp } from "../lib/firebase/firebase-utils";
 import { IFormErrors } from "../lib/types";
 
 export const SignUpForm = () => {
@@ -40,9 +40,8 @@ export const SignUpForm = () => {
     if (!validateConfirmedPassword(password)) {
       formErrors.password = "Passwords don't match";
     }
-
     if (formErrors.email === "" && formErrors.password === "") {
-      signIn(email.trim(), password, router);
+      signUp(email.trim(), password, name, router);
     } else {
       setErrors(formErrors);
     }

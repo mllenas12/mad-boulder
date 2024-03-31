@@ -8,7 +8,7 @@ export default function SignInPage() {
       {/* Header */}
       <div className="bg-[#959595] h-48 flex items-center justify-center text-center">
         <h2 className="font-bold text-3xl p-8 text-white">
-          Be part of the world&apos;s largest beta library
+          Now you can upload your videos as a Contributor
         </h2>
       </div>
       {/* Main */}
