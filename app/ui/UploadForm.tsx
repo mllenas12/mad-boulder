@@ -104,12 +104,11 @@ export const UploadForm = () => {
           <div className="col-span-2">
             <input
               type="text"
-              placeholder="Climber"
+              placeholder="Climber (Optional)"
               onChange={handleChange}
               name="climber"
               value={formData.climber}
               className="w-full pl-2 rounded"
-              required
             />
           </div>
 
@@ -134,6 +133,7 @@ export const UploadForm = () => {
           name="problem"
           value={formData.problem}
           className="w-full pl-2 rounded"
+          required
         />
       </div>
       <div className="col-span-2 md:col-span-1">
@@ -155,6 +155,7 @@ export const UploadForm = () => {
           name="sector"
           value={formData.sector}
           className="w-full pl-2 rounded"
+          required
         />
       </div>
       <div className="col-span-2 md:col-span-1">
@@ -165,6 +166,7 @@ export const UploadForm = () => {
           name="grade"
           value={formData.grade}
           className="w-full pl-2 rounded"
+          required
         />
       </div>
       <div className="col-span-2">

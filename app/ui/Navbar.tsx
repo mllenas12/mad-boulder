@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const [userPhotoUrl, setUserPhotoUrl] = useState("");
   const user = useUser();
   const router = useRouter();
 
@@ -17,11 +16,8 @@ export default function Navbar() {
     if (user) {
       console.log(user);
       setIsLogged(true);
-      const url = user.photoURL ? user.photoURL : "/images/user.png";
-      setUserPhotoUrl(url);
     } else {
       setIsLogged(false);
-      setUserPhotoUrl("/images/user.png");
     }
   }, [user]);
   const activeSearch = () => {
@@ -30,23 +26,23 @@ export default function Navbar() {
 
   return (
     <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between">
-      <div className=" px-2 lg:flex-none">
-        <a href="/">
+      <div className=" px-2 lg:w-[140px]">
+        <Link href="/">
           <img
             src="/logo/logo-menu.webp"
             alt="madboulder logo"
-            className="w-10 p-1"
+            className="w-10 "
           />
-        </a>
+        </Link>
       </div>
       {/* Desktop: */}
-      <div className="navbar-center hidden pr-4 lg:flex">
+      <div className="navbar-center hidden pr-4 lg:flex lg:w-6/8">
         <ul className="menu menu-horizontal px-1">
           <li className="hover:text-yellow-400">
             <a href="/areas">AREAS</a>
           </li>
           <li className="hover:text-yellow-400">
-            <Link href={user ? "/video-uploader" : "/sign-in"}>UPLOAD</Link>
+            <Link href={user ? "/profile" : "/contributors"}>CONTRIBUTORS</Link>
           </li>
           <li className="hover:text-yellow-400">
             <a href="https://www.blog.madboulder.org/" target="_blank">
@@ -64,14 +60,15 @@ export default function Navbar() {
         </ul>
       </div>
       {isLogged ? (
-        <div className="dropdown dropdown-end hidden lg:block">
-          <div tabIndex={0} role="button" className="btn btn-ghost w-20 flex">
-            <img
-              alt="user profile photo"
-              src={userPhotoUrl}
-              className="rounded-full bg-white"
-            />
+        <div className="dropdown dropdown-end hidden lg:block lg:w-1/8">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost flex lg:w-[140px]"
+          >
+            <p>Welcome {user?.displayName}!</p>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -85,7 +82,7 @@ export default function Navbar() {
           </ul>
         </div>
       ) : (
-        <div></div>
+        <div className="lg:w-[140px]"></div>
       )}
       {/* Mobile */}
       <div className="flex justify-end flex-1 px-2 lg:hidden">
@@ -141,7 +138,7 @@ export default function Navbar() {
                 <a href="/areas">AREAS</a>
               </li>
               <li>
-                <a href={user ? "/video-uploader" : "/sign-in"}>UPLOAD</a>
+                <a href={user ? "/video-uploader" : "/sign-in"}>CONTRIBUTORS</a>
               </li>
               <li>
                 <a href="https://www.blog.madboulder.org/" target="_blank">

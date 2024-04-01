@@ -80,7 +80,7 @@ export default function ProblemPage({
   };
 
   return (
-    <div>
+    <>
       <header className="py-4 bg-neutral-300 text-center font-semibold text-2xl">
         {currentProblemData?.name}
       </header>
@@ -120,6 +120,6 @@ export default function ProblemPage({
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }

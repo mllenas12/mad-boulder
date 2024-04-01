@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import { FaCheck } from "react-icons/fa";
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,6 +13,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
     },
   },
   darkMode: "class",

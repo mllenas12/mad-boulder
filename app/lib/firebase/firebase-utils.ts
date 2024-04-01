@@ -57,8 +57,6 @@ export const useUser = () => {
     return user
 }
 
-
-
 export const loginWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
     return signInWithPopup(auth, provider)

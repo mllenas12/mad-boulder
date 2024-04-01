@@ -16,7 +16,7 @@ export const Beta = () => {
       </h3>
 
       <Link
-        href="/video-uploader"
+        href="/contributors"
         className="bg-yellow-400 z-10 text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-auto"
       >
         UPLOADER
