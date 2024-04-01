@@ -234,13 +234,17 @@ export interface IFormattedUser {
 }
 
 export interface IFormData {
-    climber: string,
-    email: string,
-    problem: string,
     area: string,
-    sector: string,
+    climber?: string,
+    createdAt?: any,
+    email: string,
+    file?: string,
     grade: string,
-    message: string,
-    file: any,
-    isSubscribed: boolean,
+    id?: string,
+    isSubscribed?: boolean,
+    message?: string,
+    problem: string,
+    sector: string,
+    state: string,
+    userId?: string,
 }

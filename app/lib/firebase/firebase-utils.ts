@@ -6,6 +6,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { User } from "firebase/auth";
 import { IFormData } from "../types";
+import { getFormattedActualDate } from "../utils";
 export const signUp = async (email: string, password: string, displayName: string, router: AppRouterInstance) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -80,9 +81,9 @@ export const uploadFormToDb = async (formData: IFormData, user: User | null, vid
             message: formData.message,
             file: videoUrl,
             isSubscribed: formData.isSubscribed,
-            createdAt: new Date(),
+            state: "Pending",
+            createdAt: getFormattedActualDate(),
             userId: user ? user.uid : ""
-
         })
 
     } catch (err) {

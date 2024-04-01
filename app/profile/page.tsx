@@ -6,6 +6,7 @@ import {
   PiUploadBold,
   PiMoonBold,
   PiVideoBold,
+  PiGearBold,
 } from "react-icons/pi";
 import { IoLanguage } from "react-icons/io5";
 import { BsGraphUp } from "react-icons/bs";
@@ -67,6 +68,10 @@ export default function ProfilePage() {
           <ul className="flex gap-3 px-4">
             <PiMoonBold className="my-auto" />
             <p>Darkmode</p>
+          </ul>
+          <ul className="flex gap-3 px-4">
+            <PiGearBold className="my-auto" />
+            <p>Upload Profile</p>
           </ul>
         </li>
       </div>

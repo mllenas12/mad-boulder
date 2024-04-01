@@ -123,3 +123,23 @@ export const getShortDate = () => {
 export const getIdUrl = (iconId: string) => {
     return `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 };
+
+export const capitalizeFirstLetter = (word: string) => {
+    if (typeof word !== 'string' || word.length === 0) {
+        return word;
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+export const setRandomNumber = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+export const getFormattedActualDate = () => {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11, por eso se suma 1
+    const year = today.getFullYear();
+
+    return `${day}/${month}/${year}`;
+}

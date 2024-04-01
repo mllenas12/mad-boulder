@@ -50,7 +50,6 @@ export const UploadForm = () => {
         [name]: type === "checkbox" ? checked : value,
       };
     });
-    console.log(formData);
   };
 
   const handleTextareaChange = (
