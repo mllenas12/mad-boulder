@@ -64,7 +64,7 @@ export default function Navbar() {
         </ul>
       </div>
       {isLogged ? (
-        <div className="dropdown dropdown-end h idden lg:block">
+        <div className="dropdown dropdown-end hidden lg:block">
           <div tabIndex={0} role="button" className="btn btn-ghost w-20 flex">
             <img
               alt="Tailwind CSS Navbar component"
@@ -80,7 +80,7 @@ export default function Navbar() {
             className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <button>PROFILE</button>
+              <Link href="/profile">PROFILE</Link>
             </li>
             <li>
               <button>LOG OUT</button>
@@ -163,7 +163,7 @@ export default function Navbar() {
                 <>
                   <div className="divider my-0"></div>
                   <li className="rounded">
-                    <a href="/sign-in">PROFILE</a>
+                    <Link href="/profile">PROFILE</Link>
                     {/* <a href="/sign-in" className="flex justify-between">
                       <p>PROFILE</p>
 
