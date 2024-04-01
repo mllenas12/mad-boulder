@@ -1,5 +1,4 @@
 import {
-  PiMedal,
   PiMapTrifoldBold,
   PiHeartBold,
   PiStarBold,
@@ -16,7 +15,7 @@ export default function ProfilePage() {
   return (
     <>
       {/* Options */}
-      <div className="absolute top-[400px] list-none w-full md:w-2/3 md:mx-auto text-sm text-start">
+      <div className="list-none w-full md:w-2/3 md:mx-auto text-sm text-start">
         <li className="flex flex-col gap-2">
           <p className="font-semibold bg-neutral-100 px-6 py-1">Explore</p>
           <ul className="flex gap-3 px-4">

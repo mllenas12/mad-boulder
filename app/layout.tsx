@@ -11,12 +11,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${raleway.className} antialiased flex flex-col min-h-screen`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={`${raleway.className} antialiased flex flex-col h-full`}>
+        <div className="flex flex-col flex-grow">
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

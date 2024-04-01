@@ -6,11 +6,9 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <main className="lg:px-64 lg:py-10 h-[1000px] relative flex flex-col  text-center">
-        <ProfileHeader />
-        {children}
-      </main>
+    <div className="flex flex-col min-h-screen">
+      <ProfileHeader />
+      <main className="py-12">{children}</main>
     </div>
   );
 }

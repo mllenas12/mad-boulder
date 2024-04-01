@@ -1,4 +1,3 @@
-import Button from "./Button";
 import { FaInstagram, FaYoutube, FaShopify } from "react-icons/fa";
 export const Footer = () => {
   return (
