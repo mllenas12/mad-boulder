@@ -42,9 +42,7 @@ export const UploadForm = () => {
   const user = useUser();
   const router = useRouter();
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
     setFormData((prevData) => {
       return {
@@ -53,6 +51,16 @@ export const UploadForm = () => {
       };
     });
     console.log(formData);
+  };
+
+  const handleTextareaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handelVideoChange = async (
@@ -162,7 +170,7 @@ export const UploadForm = () => {
       <div className="col-span-2">
         <textarea
           placeholder="Message"
-          onChange={handleChange}
+          onChange={handleTextareaChange}
           name="message"
           value={formData.message}
           className="w-full h-20 resize-none pl-2 rounded"

@@ -1,10 +1,9 @@
 import zoneData from "@/app/lib/data/zoneData.json";
+import { IArea, IWeatherData } from "@/app/lib/types";
 import {
-  IArea,
-  IWeatherData,
-  IWeatherDataForecast,
-  IOpenWeatherData,
-} from "@/app/lib/types";
+  getWeatherInfoByCoord,
+  getCurrentTemperature,
+} from "@/app/api/fetchWeather";
 import { Suspense } from "react";
 import { formatWeatherData } from "@/app/lib/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
@@ -15,45 +14,6 @@ export function generateStaticParams() {
     decodeURIComponent(area.name)
   );
   return areaNames.map((name) => ({ areaName: name }));
-}
-
-export async function getWeatherInfoByCoord(
-  LAT: number | undefined,
-  LON: number | undefined,
-  apiKey: string | undefined
-): Promise<IWeatherDataForecast> {
-  try {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${apiKey}&units=metric`
-    );
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    return res.json();
-  } catch (error) {
-    console.error("Error fetching weather");
-    throw error;
-  }
-}
-
-export async function getCurrentTemperature(
-  LAT: number | undefined,
-  LON: number | undefined,
-  apiKey: string | undefined
-): Promise<IOpenWeatherData> {
-  try {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${apiKey}&units=metric`
-    );
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching weather");
-    throw error;
-  }
 }
 
 export default async function WeatherPage({

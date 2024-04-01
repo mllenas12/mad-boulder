@@ -79,8 +79,6 @@ export default function ProblemPage({
     thumbnail: "https://i.ytimg.com/vi/TgxuSHTBgNU/maxresdefault.jpg",
   };
 
-  const sector = currentProblemData.sector.toLowerCase();
-
   return (
     <div>
       <header className="py-4 bg-neutral-300 text-center font-semibold text-2xl">
@@ -101,7 +99,7 @@ export default function ProblemPage({
           <p>
             Sector:{" "}
             <Link
-              href={`/areas/${currentProblemData?.zone}/explore?sectors=${currentProblemData.sector}`}
+              href={`/areas/${currentProblemData?.zone}/explore?sectors=${currentProblemData?.sector}`}
             >
               {currentProblemData?.sector}
             </Link>
