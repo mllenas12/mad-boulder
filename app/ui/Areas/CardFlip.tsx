@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
-import styles from "./cardFlip.module.css";
 import { IArea } from "@/app/lib/types";
-import "./cardFlip.module.css";
+import styles from "/app/ui/Areas/cardflip.module.css";
+
 export const Card = ({
   imageUrl,
   title,

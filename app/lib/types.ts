@@ -234,13 +234,13 @@ export interface IFormattedUser {
 }
 
 export interface IFormData {
-    name: string,
+    climber: string,
     email: string,
     problem: string,
     area: string,
     sector: string,
     grade: string,
     message: string,
-    video: string,
+    file: any,
     isSubscribed: boolean,
 }
