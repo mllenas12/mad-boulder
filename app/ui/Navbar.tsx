@@ -3,30 +3,30 @@ import React from "react";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
-//import { useUser } from "../lib/context/AuthProvider";
-import { useUser } from "../lib/firebase/firebase-utils";
+import { useUser, logOut } from "../lib/firebase/firebase-utils";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-
+  const [userPhotoUrl, setUserPhotoUrl] = useState("");
   const user = useUser();
-  console.log(user);
+  const router = useRouter();
 
+  useEffect(() => {
+    if (user) {
+      console.log(user);
+      setIsLogged(true);
+      const url = user.photoURL ? user.photoURL : "/images/user.png";
+      setUserPhotoUrl(url);
+    } else {
+      setIsLogged(false);
+      setUserPhotoUrl("/images/user.png");
+    }
+  }, [user]);
   const activeSearch = () => {
     setIsSearchActive((prev) => !prev);
   };
-
-  const changeLogState = () => {
-    if (user) {
-      setIsLogged(true);
-    } else {
-      setIsLogged(false);
-    }
-  };
-  useEffect(() => {
-    changeLogState();
-  }, [user]);
 
   return (
     <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between">
@@ -67,12 +67,9 @@ export default function Navbar() {
         <div className="dropdown dropdown-end hidden lg:block">
           <div tabIndex={0} role="button" className="btn btn-ghost w-20 flex">
             <img
-              alt="Tailwind CSS Navbar component"
-              src={
-                user?.photoURL ??
-                "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              }
-              className="rounded-full"
+              alt="user profile photo"
+              src={userPhotoUrl}
+              className="rounded-full bg-white"
             />
           </div>
           <ul
@@ -83,7 +80,7 @@ export default function Navbar() {
               <Link href="/profile">PROFILE</Link>
             </li>
             <li>
-              <button>LOG OUT</button>
+              <button onClick={() => logOut(router)}>LOG OUT</button>
             </li>
           </ul>
         </div>
@@ -159,7 +156,7 @@ export default function Navbar() {
               <li>
                 <a href="/about-us">ABOUT US</a>
               </li>
-              {isLogged && (
+              {isLogged ? (
                 <>
                   <div className="divider my-0"></div>
                   <li className="rounded">
@@ -175,9 +172,11 @@ export default function Navbar() {
                     </a> */}
                   </li>
                   <li className=" rounded">
-                    <a href="/sign-in">LOG OUT</a>
+                    <button onClick={() => logOut(router)}>LOG OUT</button>
                   </li>
                 </>
+              ) : (
+                <></>
               )}
             </ul>
           </div>

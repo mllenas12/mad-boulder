@@ -65,7 +65,7 @@ export const loginWithGoogle = async () => {
 }
 
 export const logOut = (router: AppRouterInstance) => {
-    signOut(auth).then(() => router.push("/"))
+    signOut(auth).then(() => router.replace("/"))
         .catch((err) => console.log(err))
 }
 

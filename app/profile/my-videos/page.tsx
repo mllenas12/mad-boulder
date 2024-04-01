@@ -1,4 +1,3 @@
-import { AreaCard } from "@/app/ui/Areas/AreaCard";
 import { FaCircle } from "react-icons/fa";
 export default function MyVideosPage() {
   const videoData = {
@@ -8,8 +7,8 @@ export default function MyVideosPage() {
   };
 
   const videoCard = (
-    <div className="flex w-full px-4">
-      {/* <div className="flex w-full px-4 md:w-1/2 md:mx-auto"> */}
+    // <div className="flex w-full px-4">
+    <div className="flex w-full px-4 md:w-1/2 md:mx-auto">
       <img
         src="/images/bg-example.jpg"
         alt=""
@@ -30,8 +29,8 @@ export default function MyVideosPage() {
   return (
     <div className="text-center flex flex-col gap-4 ">
       <h3 className="text-xl font-semibold">Your uploaded videos:</h3>
-      {/* <div className="flex flex-col gap-4 "> */}
-      <div className="flex flex-col gap-4 md:px-8 md:grid md:grid-cols-2">
+      <div className="flex flex-col gap-4 ">
+        {/* <div className="flex flex-col gap-4 md:px-8 md:grid md:grid-cols-2"> */}
         {videoCard}
         {videoCard}
         {videoCard}
