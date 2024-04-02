@@ -26,7 +26,7 @@ export default function SortB({ sortBy }: { sortBy: string }) {
   };
 
   return (
-    <button onClick={() => handleSort()} className="flex gap-2 mx-auto md:mx-0">
+    <button onClick={() => handleSort()} className="flex gap-2">
       <p>{sortBy}</p>
       <SortArrow isOrdered={isSorted} />
     </button>

@@ -7,6 +7,7 @@ import { SelectInput } from "@/app/ui/SelectInput";
 import SortB from "@/app/ui/SortB";
 import Link from "next/link";
 import { orderSelectOptionsByGrade } from "@/app/lib/utils";
+import { ProblemList } from "@/app/ui/Areas/problems/ProblemList";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)
@@ -80,30 +81,7 @@ export default function ExplorePage({
   const sortedGradeOptionList = orderSelectOptionsByGrade(filteredProblems);
 
   const problemsInfo = sortedByGrade.map((problem: IProblem) => {
-    const ytID = problem.url.split("=")[1];
-    const imgUrl = ` https://img.youtube.com/vi/${ytID}/mqdefault.jpg`;
-
-    return (
-      <Link
-        href={`/problem/${problem.name}`}
-        key={nanoid()}
-        className="text-xs sm:text-base flex justify-between  gap-2 mb-4 bg-white rounded text-center md:text-start"
-      >
-        <div className="flex flex-col md:flex-row w-1/2 ">
-          <img
-            src={imgUrl}
-            alt={`Photo of problem ${problem.name} in ${problem.zone} boulder Area`}
-            className="w-30 h-16 rounded-l"
-          />
-          <div className=" flex flex-col gap-1 my-auto p-2">
-            <p className=" font-semibold">{problem.name}</p>
-            <p className="">{problem.sector}</p>
-          </div>
-        </div>
-
-        <p className="w-1/2 my-auto  md:mx-2">{problem.grade}</p>
-      </Link>
-    );
+    return <ProblemList problem={problem} key={problem.name} />;
   });
 
   return (
@@ -115,30 +93,34 @@ export default function ExplorePage({
           <div className="col-span-2">
             <Search placeholder="Name" paramName="name" />
           </div>
-          <SelectInput
-            placeholder={"Select Sector"}
-            optionsList={sectorOptionsList}
-            filterBy={"sectors"}
-            id={nanoid()}
-          />
-          <SelectInput
-            placeholder={"Select grade"}
-            optionsList={sortedGradeOptionList}
-            filterBy={"grade"}
-            id={nanoid()}
-          />
+          <div className="col-span-2 md:col-span-1">
+            <SelectInput
+              placeholder={"Select Sector"}
+              optionsList={sectorOptionsList}
+              filterBy={"sectors"}
+              id={nanoid()}
+            />
+          </div>
+          <div className="col-span-2 md:col-span-1">
+            <SelectInput
+              placeholder={"Select grade"}
+              optionsList={sortedGradeOptionList}
+              filterBy={"grade"}
+              id={nanoid()}
+            />
+          </div>
         </div>
       </div>
       {/* List of videos */}
       <div className="">
-        <nav className="font-semibold flex p-2 justify-between text-center md:text-start">
-          <p className="w-1/2">Problems:</p>
-          <div className="w-1/2 ">
+        <nav className="font-semibold flex p-2 justify-between text-start">
+          <p className="w-2/5">Problems:</p>
+          <div className="w-3/5 flex justify-end px-2">
             <SortB sortBy="Grade" />
           </div>
           <hr />
         </nav>
-        <div>{problemsInfo}</div>
+        <div className="flex flex-col gap-4">{problemsInfo}</div>
       </div>
     </div>
   );
