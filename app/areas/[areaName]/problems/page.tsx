@@ -1,21 +1,12 @@
 import zoneData from "@/app/lib/data/zoneData.json";
 import problemsData from "@/app/lib/data/problemsData.json";
-import {
-  IArea,
-  IProblemArea,
-  IProblemsData,
-  IProblem,
-  TSector,
-} from "@/app/lib/types";
+import { IArea, IProblemArea, IProblem, TSector } from "@/app/lib/types";
 import { nanoid } from "nanoid";
 import Search from "@/app/ui/Search";
-import ex from "@/app/lib/data/ex.json";
-import SortButtons from "../../SortButtons";
 import { SelectInput } from "@/app/ui/SelectInput";
-import { SelectSector } from "@/app/ui/Areas/SelectSector";
 import SortB from "@/app/ui/SortB";
 import Link from "next/link";
-
+import { orderSelectOptionsByGrade } from "@/app/lib/utils";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)
@@ -45,26 +36,28 @@ export default function ExplorePage({
       ? decodeURIComponent(searchParams.sectors).split(",")
       : [];
 
+  const selectedGrade =
+    typeof searchParams.grade === "string"
+      ? decodeURIComponent(searchParams.grade).split(",")
+      : [];
+
   const areaInfo = problemsData.items.find(
     (area: IProblemArea) => area.name == currentArea
   );
 
-  const filteredData = areaInfo
-    ? areaInfo.problem_list.filter(
-        (problem: IProblem) =>
-          selectedSectors.length == 0 ||
-          selectedSectors.includes(problem.sector)
-      )
+  const filteredProblems = areaInfo
+    ? areaInfo.problem_list.filter((problem: IProblem) => {
+        const isNameMatch = nameQuery
+          ? problem.name.toLowerCase().includes(nameQuery)
+          : true;
+        const isSectorMatch =
+          selectedSectors.length === 0 ||
+          selectedSectors.includes(problem.sector);
+        const isGradeMatch =
+          selectedGrade.length === 0 || selectedGrade.includes(problem.grade);
+        return isNameMatch && isSectorMatch && isGradeMatch;
+      })
     : [];
-
-  const filteredProblems = filteredData.filter((problem: IProblem) =>
-    nameQuery ? problem.name.toLowerCase().includes(nameQuery) : true
-  );
-  filteredProblems?.sort((a: IProblem, b: IProblem) => {
-    if (a.name > b.name) return 1;
-    if (a.name < b.name) return -1;
-    return 0;
-  });
 
   let sortedByGrade = [...filteredProblems];
   const orderDirection = searchParams.order;
@@ -80,9 +73,11 @@ export default function ExplorePage({
     return { name: sector.name };
   });
 
-  const optionsList = sectorsList?.map((sector) => {
+  const sectorOptionsList = sectorsList?.map((sector) => {
     return { value: sector.name, label: sector.name };
   });
+
+  const sortedGradeOptionList = orderSelectOptionsByGrade(filteredProblems);
 
   const problemsInfo = sortedByGrade.map((problem: IProblem) => {
     const ytID = problem.url.split("=")[1];
@@ -117,11 +112,20 @@ export default function ExplorePage({
       <div className="flex flex-col gap-4 py-8">
         <h3 className="text-xl font-semibold">Problems in this area:</h3>
         <div className=" py-2 grid grid-cols-2 gap-4 lg:px-24">
-          <Search placeholder="Name" paramName="name" />
+          <div className="col-span-2">
+            <Search placeholder="Name" paramName="name" />
+          </div>
           <SelectInput
             placeholder={"Select Sector"}
-            optionsList={optionsList}
+            optionsList={sectorOptionsList}
             filterBy={"sectors"}
+            id={nanoid()}
+          />
+          <SelectInput
+            placeholder={"Select grade"}
+            optionsList={sortedGradeOptionList}
+            filterBy={"grade"}
+            id={nanoid()}
           />
         </div>
       </div>

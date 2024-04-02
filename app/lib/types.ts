@@ -99,6 +99,10 @@ export interface IProblem {
 
 }[]
 
+export interface IUniqueGrades {
+    [grade: string]: boolean;
+}[]
+
 export interface IOpenWeatherData {
     base: string;
     clouds: {

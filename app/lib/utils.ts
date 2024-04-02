@@ -1,5 +1,5 @@
 
-import { IWeatherDataForecast, IWeatherData, IDayWeather } from "./types";
+import { IWeatherDataForecast, IUniqueGrades, IWeatherData, IDayWeather, IProblem, ISelectOptions } from "./types";
 
 export function formatWeatherData(data: IWeatherDataForecast): IWeatherData[] {
     const weatherPerDay = groupWeatherByDay(data);
@@ -142,4 +142,24 @@ export const getFormattedActualDate = () => {
     const year = today.getFullYear();
 
     return `${day}/${month}/${year}`;
+}
+
+export const orderSelectOptionsByGrade = (array: IProblem[]) => {
+    const gradeOptionsList: ISelectOptions[] = [];
+    const uniqueGrades: IUniqueGrades = {};
+
+    array.forEach((problem) => {
+        const grade = problem.grade.trim(); // Eliminar espacios en blanco alrededor de la calificación
+        if (!uniqueGrades.hasOwnProperty(grade)) {
+            uniqueGrades[grade] = true;
+            gradeOptionsList.push({
+                value: grade,
+                label: grade,
+            });
+        }
+    });
+
+    let sortedGradeList = [...gradeOptionsList];
+    sortedGradeList.sort((a, b) => a.value.localeCompare(b.value));
+    return sortedGradeList
 }

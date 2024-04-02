@@ -7,10 +7,12 @@ export const SelectInput = ({
   placeholder,
   optionsList,
   filterBy,
+  id,
 }: {
   placeholder: string;
   optionsList: ISelectOptions[] | undefined;
   filterBy: string;
+  id: string;
 }) => {
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -34,7 +36,8 @@ export const SelectInput = ({
 
   return (
     <Select
-      isMulti
+      id={id}
+      isMulti={true}
       placeholder={<div>{placeholder}</div>}
       name={filterBy}
       className="basic-multi-select"

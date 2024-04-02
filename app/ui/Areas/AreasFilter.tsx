@@ -1,6 +1,7 @@
 import Search from "@/app/ui/Search";
 import { SelectInput } from "../SelectInput";
 import { ISelectOptions } from "@/app/lib/types";
+import { nanoid } from "nanoid";
 
 export const AreasFilter = ({
   optionsList,
@@ -13,6 +14,7 @@ export const AreasFilter = ({
         placeholder={"Select Country"}
         optionsList={optionsList}
         filterBy={"countries"}
+        id={nanoid()}
       />
       <Search placeholder="Search by zone" paramName="zone" />
     </div>
