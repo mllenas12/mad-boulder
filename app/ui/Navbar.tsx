@@ -5,7 +5,7 @@ import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { useUser, logOut } from "../lib/firebase/firebase-utils";
 import { useRouter } from "next/navigation";
-
+import { FiMenu } from "react-icons/fi";
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -25,13 +25,13 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between">
-      <div className=" px-2 lg:w-[140px]">
+    <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between px-0">
+      <div className="lg:w-[140px]">
         <Link href="/">
           <img
             src="/logo/logo-menu.webp"
             alt="madboulder logo"
-            className="w-10 "
+            className="w-10 ms-4"
           />
         </Link>
       </div>
@@ -85,8 +85,8 @@ export default function Navbar() {
         <div className="lg:w-[140px]"></div>
       )}
       {/* Mobile */}
-      <div className="flex justify-end flex-1 px-2 lg:hidden">
-        <div className="flex items-stretch relative">
+      <div className="flex justify-end flex-1 lg:hidden">
+        <div className="flex  relative">
           {isSearchActive ? (
             <div className="my-auto">
               <label className="relative block">
@@ -104,35 +104,21 @@ export default function Navbar() {
             </div>
           ) : (
             <button onClick={activeSearch}>
-              <IoIosSearch className="my-auto" size="24px" />
+              <IoIosSearch className="my-auto" size="30px" />
             </button>
           )}
-
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost rounded-btn"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <FiMenu size={"30px"} />
             </div>
 
             <ul
               tabIndex={0}
-              className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-md dropdown-content rounded-b z-[1] shadow bg-neutral-800  w-screen"
             >
               <li>
                 <a href="/areas">AREAS</a>
@@ -155,20 +141,11 @@ export default function Navbar() {
               </li>
               {isLogged ? (
                 <>
-                  <div className="divider my-0"></div>
+                  <div className="divider divider-warning my-0 "></div>
                   <li className="rounded">
                     <Link href="/profile">PROFILE</Link>
-                    {/* <a href="/sign-in" className="flex justify-between">
-                      <p>PROFILE</p>
-
-                      <img
-                        alt="Tailwind CSS Navbar component"
-                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                        className="rounded-full w-10"
-                      />
-                    </a> */}
                   </li>
-                  <li className=" rounded">
+                  <li className="rounded">
                     <button onClick={() => logOut(router)}>LOG OUT</button>
                   </li>
                 </>
@@ -181,4 +158,63 @@ export default function Navbar() {
       </div>
     </div>
   );
+}
+
+{
+  /* <div className="dropdown dropdown-end">
+<div
+  tabIndex={0}
+  role="button"
+  className="btn btn-ghost rounded-btn"
+>
+  <FiMenu size={"24px"} />
+</div>
+
+<ul
+  tabIndex={0}
+  className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+>
+  <li>
+    <a href="/areas">AREAS</a>
+  </li>
+  <li>
+    <a href={user ? "/video-uploader" : "/sign-in"}>CONTRIBUTORS</a>
+  </li>
+  <li>
+    <a href="https://www.blog.madboulder.org/" target="_blank">
+      BLOG
+    </a>
+  </li>
+  <li>
+    <a href="https://shop.madboulder.org/" target="_blank">
+      SHOP
+    </a>
+  </li>
+  <li>
+    <a href="/about-us">ABOUT US</a>
+  </li>
+  {isLogged ? (
+    <>
+      <div className="divider my-0"></div>
+      <li className="rounded">
+        <Link href="/profile">PROFILE</Link>
+        {/* <a href="/sign-in" className="flex justify-between">
+          <p>PROFILE</p>
+
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            className="rounded-full w-10"
+          />
+        </a> 
+      </li>
+      <li className=" rounded">
+        <button onClick={() => logOut(router)}>LOG OUT</button>
+      </li>
+    </>
+  ) : (
+    <></>
+  )}
+</ul>
+</div> */
 }
