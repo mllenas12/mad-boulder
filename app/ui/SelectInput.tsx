@@ -1,33 +1,32 @@
 "use client";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import countries from "@/app/lib/data/countries.json";
-import { IArea, ICountry, TOptions, TSector } from "@/app/lib/types";
+import { TOptions, ISelectOptions } from "@/app/lib/types";
 import Select from "react-select";
 
-export const SelectSector = ({
-  currentAreaData,
+export const SelectInput = ({
+  placeholder,
+  optionsList,
+  filterBy,
 }: {
-  currentAreaData: IArea | undefined;
+  placeholder: string;
+  optionsList: ISelectOptions[] | undefined;
+  filterBy: string;
 }) => {
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const sectorsList = currentAreaData?.sectors.map((sector: TSector) => {
-    return { name: sector.name };
-  });
-
-  const options = sectorsList?.map((sector) => {
-    return { value: sector.name, label: sector.name };
+  const options = optionsList?.map((option) => {
+    return { value: option.value, label: option.label };
   });
 
   const handleChange: TOptions = (selectedOption) => {
     const options = selectedOption.map((option) => option.value).join(",");
     const params = new URLSearchParams(searchParams);
     if (options) {
-      params.set("sectors", options);
+      params.set(filterBy, options);
     } else {
-      params.delete("sectors");
+      params.delete(filterBy);
     }
     replace(`${pathname}?${params.toString()}`);
     return;
@@ -36,7 +35,8 @@ export const SelectSector = ({
   return (
     <Select
       isMulti
-      name="sectors"
+      placeholder={<div>{placeholder}</div>}
+      name={filterBy}
       className="basic-multi-select"
       classNamePrefix="select"
       options={options}

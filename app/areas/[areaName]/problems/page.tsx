@@ -1,10 +1,17 @@
 import zoneData from "@/app/lib/data/zoneData.json";
 import problemsData from "@/app/lib/data/problemsData.json";
-import { IArea, IProblemArea, IProblemsData, IProblem } from "@/app/lib/types";
+import {
+  IArea,
+  IProblemArea,
+  IProblemsData,
+  IProblem,
+  TSector,
+} from "@/app/lib/types";
 import { nanoid } from "nanoid";
 import Search from "@/app/ui/Search";
 import ex from "@/app/lib/data/ex.json";
 import SortButtons from "../../SortButtons";
+import { SelectInput } from "@/app/ui/SelectInput";
 import { SelectSector } from "@/app/ui/Areas/SelectSector";
 import SortB from "@/app/ui/SortB";
 import Link from "next/link";
@@ -69,13 +76,21 @@ export default function ExplorePage({
     );
   }
 
+  const sectorsList = currentAreaData?.sectors.map((sector: TSector) => {
+    return { name: sector.name };
+  });
+
+  const optionsList = sectorsList?.map((sector) => {
+    return { value: sector.name, label: sector.name };
+  });
+
   const problemsInfo = sortedByGrade.map((problem: IProblem) => {
     const ytID = problem.url.split("=")[1];
     const imgUrl = ` https://img.youtube.com/vi/${ytID}/mqdefault.jpg`;
 
     return (
       <Link
-        href={`/problems/${problem.name}`}
+        href={`/problem/${problem.name}`}
         key={nanoid()}
         className="text-xs sm:text-base flex justify-between  gap-2 mb-4 bg-white rounded text-center md:text-start"
       >
@@ -103,7 +118,11 @@ export default function ExplorePage({
         <h3 className="text-xl font-semibold">Problems in this area:</h3>
         <div className=" py-2 grid grid-cols-2 gap-4 lg:px-24">
           <Search placeholder="Name" paramName="name" />
-          <SelectSector currentAreaData={currentAreaData} />
+          <SelectInput
+            placeholder={"Select Sector"}
+            optionsList={optionsList}
+            filterBy={"sectors"}
+          />
         </div>
       </div>
       {/* List of videos */}

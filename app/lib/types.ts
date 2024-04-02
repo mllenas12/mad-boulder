@@ -53,6 +53,10 @@ export type TOptions = (
     actionMeta: ActionMeta<{ value: string; label: string }>
 ) => void;
 
+export interface ISelectOptions {
+    value: string,
+    label: string
+}
 
 export type ArrowProps = {
     isOrdered: boolean;
