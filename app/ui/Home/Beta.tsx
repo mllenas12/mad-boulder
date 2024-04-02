@@ -9,11 +9,11 @@ export const Beta = () => {
     >
       <div className="absolute inset-0 bg-black opacity-20"></div>
 
-      <h3 className="z-10  text-4xl font-bold relative">UPLOAD YOUR BETA</h3>
-      <h3 className="z-10 font-semibold  relative">
+      <h3 className="z-10 font-bold relative">UPLOAD YOUR BETA</h3>
+      <h4 className="z-10 font-semibold  relative">
         Do you want to help us in our journey? Upload your beta and contribute
         to the project.
-      </h3>
+      </h4>
 
       <Link
         href="/contributors"

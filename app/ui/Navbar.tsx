@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div className="navbar bg-neutral-800 text-white lg:flex lg:justify-between px-0">
-      <div className="lg:w-[140px]">
+      <div className="lg:w-[160px]">
         <Link href="/">
           <img
             src="/logo/logo-menu.webp"
@@ -64,7 +64,7 @@ export default function Navbar() {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost flex lg:w-[140px]"
+            className="btn btn-ghost flex lg:w-[160px]"
           >
             <p>Welcome {user?.displayName}!</p>
           </div>
@@ -158,63 +158,4 @@ export default function Navbar() {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="dropdown dropdown-end">
-<div
-  tabIndex={0}
-  role="button"
-  className="btn btn-ghost rounded-btn"
->
-  <FiMenu size={"24px"} />
-</div>
-
-<ul
-  tabIndex={0}
-  className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
->
-  <li>
-    <a href="/areas">AREAS</a>
-  </li>
-  <li>
-    <a href={user ? "/video-uploader" : "/sign-in"}>CONTRIBUTORS</a>
-  </li>
-  <li>
-    <a href="https://www.blog.madboulder.org/" target="_blank">
-      BLOG
-    </a>
-  </li>
-  <li>
-    <a href="https://shop.madboulder.org/" target="_blank">
-      SHOP
-    </a>
-  </li>
-  <li>
-    <a href="/about-us">ABOUT US</a>
-  </li>
-  {isLogged ? (
-    <>
-      <div className="divider my-0"></div>
-      <li className="rounded">
-        <Link href="/profile">PROFILE</Link>
-        {/* <a href="/sign-in" className="flex justify-between">
-          <p>PROFILE</p>
-
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-            className="rounded-full w-10"
-          />
-        </a> 
-      </li>
-      <li className=" rounded">
-        <button onClick={() => logOut(router)}>LOG OUT</button>
-      </li>
-    </>
-  ) : (
-    <></>
-  )}
-</ul>
-</div> */
 }

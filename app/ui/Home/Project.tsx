@@ -1,7 +1,7 @@
 const Project = () => {
   return (
     <div className="bg-neutral-300 h-80 flex flex-col text-center justify-center gap-4">
-      <h2 className="font-bold text-3xl">THE PROJECT</h2>
+      <h2 className="font-bold">THE PROJECT</h2>
       <p className="">
         Madboulder is a platform for climbers of all levels to learn, grow, and
         connect. We provide comprehensive information on climbing destinations,
