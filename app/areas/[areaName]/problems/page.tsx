@@ -6,7 +6,7 @@ import Search from "@/app/ui/Search";
 import { SelectInput } from "@/app/ui/SelectInput";
 import SortB from "@/app/ui/SortB";
 import Link from "next/link";
-import { orderSelectOptionsByGrade } from "@/app/lib/utils";
+import { orderSelectOptionsByGrade } from "@/app/lib/utils/utils";
 import { ProblemList } from "@/app/ui/Areas/problems/ProblemList";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>

@@ -3,7 +3,7 @@ import { IFormData } from "@/app/lib/types";
 import { FaCircle } from "react-icons/fa";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { capitalizeFirstLetter, setRandomNumber } from "@/app/lib/utils";
+import { capitalizeFirstLetter, setRandomNumber } from "@/app/lib/utils/utils";
 export const VideoCards = ({ video }: { video: IFormData }) => {
   const [color, setColor] = useState("");
   useEffect(() => {

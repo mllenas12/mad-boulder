@@ -1,3 +1,4 @@
+"use client";
 import {
   PiMapTrifoldBold,
   PiHeartBold,
@@ -8,11 +9,11 @@ import {
   PiVideoBold,
   PiGearBold,
 } from "react-icons/pi";
+import { BiLike } from "react-icons/bi";
 import { IoLanguage } from "react-icons/io5";
 import { BsGraphUp } from "react-icons/bs";
 import Link from "next/link";
-import { BiLike } from "react-icons/bi";
-export default function ProfilePage() {
+function ProfilePage() {
   return (
     <>
       {/* Options */}
@@ -78,3 +79,5 @@ export default function ProfilePage() {
     </>
   );
 }
+
+export default ProfilePage;

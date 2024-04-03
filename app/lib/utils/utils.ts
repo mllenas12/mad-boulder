@@ -1,5 +1,5 @@
 
-import { IWeatherDataForecast, IUniqueGrades, IWeatherData, IDayWeather, IProblem, ISelectOptions } from "./types";
+import { IWeatherDataForecast, IUniqueGrades, IWeatherData, IDayWeather, IProblem, ISelectOptions } from "../types";
 
 export function formatWeatherData(data: IWeatherDataForecast): IWeatherData[] {
     const weatherPerDay = groupWeatherByDay(data);

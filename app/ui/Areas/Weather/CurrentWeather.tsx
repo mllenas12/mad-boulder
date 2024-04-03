@@ -1,5 +1,5 @@
 import React from "react";
-import { getIdUrl, getShortDate } from "@/app/lib/utils";
+import { getIdUrl, getShortDate } from "@/app/lib/utils/utils";
 import FeatherIcon from "feather-icons-react";
 import { IWeatherData } from "@/app/lib/types";
 

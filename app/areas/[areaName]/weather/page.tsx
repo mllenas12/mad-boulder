@@ -5,7 +5,7 @@ import {
   getCurrentTemperature,
 } from "@/app/api/fetchWeather";
 import { Suspense } from "react";
-import { formatWeatherData } from "@/app/lib/utils";
+import { formatWeatherData } from "@/app/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
 

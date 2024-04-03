@@ -3,7 +3,7 @@ import { ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
 import { User } from "firebase/auth";
 import { IFormData } from "../types";
-import { getFormattedActualDate } from "../utils";
+import { getFormattedActualDate } from "../utils/utils";
 
 export const uploadFormToDb = async (formData: IFormData, user: User | null, videoUrl: string) => {
     try {
