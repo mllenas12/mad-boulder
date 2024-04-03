@@ -5,14 +5,14 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link.js";
 import { IFormErrors } from "@/app/lib/types";
-import { loginWithGoogle, logIn } from "@/app/lib/firebase/firebase-utils";
+import { useAuth } from "../lib/context/AuthProvider";
 
 export const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
-
+  const { loginWithGoogle, logIn } = useAuth();
   const validateEmail = (email: string) => {
     const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     return re.test(email.trim());
@@ -21,7 +21,7 @@ export const SignInForm = () => {
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
       .then(() => router.push("/video-uploader"))
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       });
   };

@@ -1,15 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signUp } from "../lib/firebase/firebase-utils";
 import { IFormErrors } from "../lib/types";
-
+import { useAuth } from "../lib/context/AuthProvider";
 export const SignUpForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [confirmedPassword, setConfifmedPassword] = useState("");
+  const { signUp } = useAuth();
   const router = useRouter();
 
   const validateEmail = (email: string) => {

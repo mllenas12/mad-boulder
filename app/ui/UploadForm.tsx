@@ -2,25 +2,17 @@
 import { storage } from "../lib/firebase/firebase-config";
 import { useState, useEffect } from "react";
 import { getBytes, getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import {
-  useUser,
-  uploadFormToDb,
-  uploadVideo,
-} from "../lib/firebase/firebase-utils";
+import { uploadFormToDb, uploadVideo } from "../lib/firebase/firebase-utils";
+import { useAuth } from "../lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 export const UploadForm = () => {
+  const { getUser } = useAuth();
+
   const FORM_STATES = {
     USER_NOT_KNOWN: 0,
     LOADING: 1,
     SUCCESS: 2,
     ERROR: -1,
-  };
-
-  const VIDEO_STATES = {
-    ERROR: -1,
-    NONE: 0,
-    UPLOADING: 2,
-    COMPLETE: 3,
   };
 
   const [formData, setFormData] = useState({
@@ -39,7 +31,7 @@ export const UploadForm = () => {
   const [file, setFile] = useState<any>("");
   const [videoUrl, setVideoUrl] = useState("");
   const [status, setStatus] = useState(FORM_STATES.USER_NOT_KNOWN);
-  const user = useUser();
+  const user = getUser();
   const router = useRouter();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

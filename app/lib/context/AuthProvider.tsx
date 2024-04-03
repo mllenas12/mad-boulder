@@ -1,26 +1,96 @@
-// "use client";
-// import React, { useEffect, useContext, createContext } from "react";
-// import { auth } from "@/app/lib/firebase/firebase-config";
-// import { useState } from "react";
-// import { onAuthStateChanged } from "firebase/auth";
-// import { User } from "firebase/auth";
+"use client";
+import React, { useEffect, useContext, createContext } from "react";
+import { auth } from "@/app/lib/firebase/firebase-config";
+import { useState } from "react";
+import { User } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  updateProfile,
+  signOut,
+} from "firebase/auth";
 
-// const AuthContext = createContext<User | null>(null);
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+interface IContext {
+  user: User | null;
+  useUser: () => User | null;
+}
 
-// export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-//   const [user, setUser] = useState<User | null>(null);
+export const AuthContext = createContext<any>("");
 
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-//       setUser(authUser);
-//     });
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
-//     return () => {
-//       unsubscribe(); // Detener el observador cuando el componente se desmonte
-//     };
-//   }, []);
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-//   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
-// };
+  const logIn = (
+    email: string,
+    password: string,
+    router: AppRouterInstance
+  ) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => router.push("/video-uploader"))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-// export const useUser = () => useContext(AuthContext);
+  const signUp = async (
+    email: string,
+    password: string,
+    displayName: string,
+    router: AppRouterInstance
+  ) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user) {
+          updateProfile(user, { displayName });
+          router.push("/success");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const loginWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
+  const logOut = (router: AppRouterInstance) => {
+    signOut(auth)
+      .then(() => router.replace("/"))
+      .catch((err) => console.log(err));
+  };
+
+  const getUser = () => {
+    return auth.currentUser;
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      setCurrentUser(authUser);
+      setLoading(false);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return (
+    <AuthContext.Provider
+      value={{ currentUser, getUser, logIn, signUp, logOut, loginWithGoogle }}
+    >
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};

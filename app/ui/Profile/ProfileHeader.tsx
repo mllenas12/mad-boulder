@@ -1,10 +1,10 @@
 "use client";
-import { useUser } from "@/app/lib/firebase/firebase-utils";
 import { PiMedal } from "react-icons/pi";
 import { useState, useEffect } from "react";
-
+import { useAuth } from "@/app/lib/context/AuthProvider";
 export const ProfileHeader = () => {
-  const user = useUser();
+  const { getUser } = useAuth();
+  const user = getUser();
   const uid = user?.uid;
   const [userPhotoUrl, setUserPhotoUrl] = useState("");
 

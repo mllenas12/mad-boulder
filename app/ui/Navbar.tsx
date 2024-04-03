@@ -3,18 +3,18 @@ import React from "react";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { useUser, logOut } from "../lib/firebase/firebase-utils";
+import { useAuth } from "../lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 import { FiMenu } from "react-icons/fi";
+
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const user = useUser();
+  const { logOut, getUser } = useAuth();
   const router = useRouter();
-
+  const user = getUser();
   useEffect(() => {
     if (user) {
-      console.log(user);
       setIsLogged(true);
     } else {
       setIsLogged(false);
@@ -124,7 +124,9 @@ export default function Navbar() {
                 <a href="/areas">AREAS</a>
               </li>
               <li>
-                <a href={user ? "/video-uploader" : "/sign-in"}>CONTRIBUTORS</a>
+                <a href={user ? "/video-uploader" : "/contributors"}>
+                  CONTRIBUTORS
+                </a>
               </li>
               <li>
                 <a href="https://www.blog.madboulder.org/" target="_blank">

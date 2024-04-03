@@ -65,8 +65,7 @@ export default function MapAreaPage({
   return (
     <div className="flex flex-col gap-4">
       {/* AREA MAP */}
-      <Map data={[currentAreaData]} />
-
+      <Map data={[currentAreaData]} height={350} />
       {/* SECTORS: */}
       <div className="p-8 bg-neutral-200 rounded">
         <div className="flex flex-col gap-4">

@@ -9,7 +9,6 @@ export async function generateStaticParams() {
   );
   return areaNames.map((name) => ({ areaName: name }));
 }
-
 export default function GuidesPage({
   params,
 }: {

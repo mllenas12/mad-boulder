@@ -253,6 +253,6 @@ export interface IFormData {
     message?: string,
     problem: string,
     sector: string,
-    state: string,
+    state?: string,
     userId?: string,
 }

@@ -1,21 +1,16 @@
 "use client";
-import { useUser } from "@/app/lib/firebase/firebase-utils";
 import { IFormData } from "@/app/lib/types";
 import { PiVideo } from "react-icons/pi";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { useAuth } from "@/app/lib/context/AuthProvider";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/app/lib/firebase/firebase-config";
 import { useEffect, useState } from "react";
 import { VideoCards } from "@/app/ui/Profile/VideoCards";
 import Link from "next/link";
+
 export default function MyVideosPage() {
-  const user = useUser();
+  const { currentUser } = useAuth();
+  const user = currentUser;
   const uid = user?.uid;
 
   const [videos, setVideos] = useState<IFormData[]>([]);
@@ -23,6 +18,7 @@ export default function MyVideosPage() {
 
   useEffect(() => {
     if (uid) {
+      console.log(uid);
       getVideos();
     }
   }, [uid]);
