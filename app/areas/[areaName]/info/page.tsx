@@ -1,7 +1,7 @@
 import { IArea } from "@/app/lib/types";
 import zoneData from "@/app/lib/data/zoneData.json";
 import Link from "next/link";
-
+import { capitalizeFirstLetter } from "@/app/lib/utils/utils";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)
@@ -32,9 +32,22 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
       </div>
       <div>
         {/* DESCRIPTION: */}
-        <p className="p-8 text-xs text-center">
-          {currentAreaData?.overview[0]}
-        </p>
+        <div className="flex flex-col items-center p-8 gap-8">
+          <p className="text-xs text-center">{currentAreaData?.overview[0]}</p>
+          <div className="flex gap-8 border rounded-3xl p-4 w-full md:w-1/2 lg:w-1/3 justify-center bg-yellow-400">
+            <p className="text-xs">
+              <strong className="text-xs">Rock type:</strong>
+              {"  "}
+              {capitalizeFirstLetter(currentAreaData?.rock_type)}
+              stone
+            </p>
+            <p className="text-xs">
+              <strong className="text-xs">Altitude:</strong>
+              {"  "}
+              {currentAreaData?.altitude}m
+            </p>
+          </div>
+        </div>
         {/* SUMMARY: */}
         <div className="bg-neutral-400 p-8 flex gap-4 justify-center">
           <Link

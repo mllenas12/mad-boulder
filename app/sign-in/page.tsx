@@ -1,35 +1,16 @@
 import React from "react";
-import Link from "next/link";
-import { SignInForm } from "../ui/SignInForm";
+import { SignInForm } from "@/app/ui/SignInForm";
 
 export default function SignInPage() {
   return (
-    <div className="flex flex-col text-center bg-neutral-100">
+    <div className="flex flex-col text-center bg-neutral-100 py-16">
       {/* Header */}
-      <div className="bg-[#959595] h-48 flex items-center justify-center text-center">
-        <h2 className="font-bold text-3xl p-8 text-white">
-          Now you can upload your videos as a Contributor
-        </h2>
-      </div>
+      <img src="/logo/MB_empty_back.png" alt="" className="w-32 mx-auto" />
       {/* Main */}
-      <div className="py-8 flex flex-col gap-6">
-        <div className="">
-          <h2 className="font-bold text-2xl">Sign in</h2>
-          <p className="text-neutral-400 text-sm py-2">
-            Enter your email and password
-          </p>
-        </div>
+      <div className="py-8 flex flex-col gap-6 w-2/3 md:w-1/2 mx-auto">
+        <h2 className="font-semibold">Log In to your account</h2>
         <SignInForm />
-        <p>
-          Upload without an account.{" "}
-          <Link
-            href={"/video-uploader"}
-            className="text-amber-400 font-semibold underline cursor-pointer"
-          >
-            Skip now
-          </Link>
-        </p>
-        <div className="my-6 flex flex-col gap-2 justify-center h-[139px] w-[312px] mx-auto rounded text-white font-bold  text-center text-2xl bg-cover bg-[url('/images/example.jpeg')]">
+        <div className="my-2 flex flex-col gap-2 justify-center h-[139px] w-full mx-auto rounded text-white font-bold  text-center text-2xl bg-cover bg-[url('/images/example.jpeg')]">
           <h4>591</h4>
           <h4>CONTRIBUTORS</h4>
         </div>

@@ -1,4 +1,6 @@
 import { FaInstagram, FaYoutube, FaShopify } from "react-icons/fa";
+import Link from "next/link";
+
 export const Footer = () => {
   return (
     <footer className="footer p-10 bg-neutral-300 text-base-content flex flex-col mt-auto">
@@ -33,12 +35,12 @@ export const Footer = () => {
             All Rights Reserved. 2023. <br />
           </p>
           <div>
-            <a href="/privacy-policy">
+            <Link href="/privacy-policy">
               <span className="underline">Privacy Policy</span> |{" "}
-            </a>
-            <a href="cookies-policy" className="underline">
+            </Link>
+            <Link href="cookies-policy" className="underline">
               Cookies
-            </a>
+            </Link>
           </div>
         </aside>
       </div>

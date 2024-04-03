@@ -124,7 +124,7 @@ export const getIdUrl = (iconId: string) => {
     return `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 };
 
-export const capitalizeFirstLetter = (word: string) => {
+export const capitalizeFirstLetter = (word: string | undefined) => {
     if (typeof word !== 'string' || word.length === 0) {
         return word;
     }

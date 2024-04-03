@@ -23,6 +23,7 @@ export const SelectInput = ({
   });
 
   const handleChange: TOptions = (selectedOption) => {
+    event?.preventDefault();
     const options = selectedOption.map((option) => option.value).join(",");
     const params = new URLSearchParams(searchParams);
     if (options) {

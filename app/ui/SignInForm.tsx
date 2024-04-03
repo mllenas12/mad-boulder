@@ -44,9 +44,9 @@ export const SignInForm = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <form
-        className="flex flex-col justify-center items-center gap-5 px-9 "
+        className="flex flex-col justify-center items-center gap-5"
         onSubmit={handleSubmit}
       >
         <input
@@ -55,7 +55,7 @@ export const SignInForm = () => {
           placeholder="Email"
           required
           onChange={(e) => setEmail(e.target.value.trim())}
-          className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
+          className="w-full  h-9 mx-auto placeholder:px-4"
         />
         <input
           type="password"
@@ -64,7 +64,7 @@ export const SignInForm = () => {
           placeholder="Password"
           required
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full md:w-1/2 h-9 mx-auto placeholder:px-2"
+          className="w-full h-9 mx-auto placeholder:px-4"
         />
         {errors.password && (
           <p className="text-red-500 text-xs font-semibold ">
@@ -74,13 +74,10 @@ export const SignInForm = () => {
         {errors.email && (
           <p className="text-red-500 text-xs font-semibold">{errors.email}</p>
         )}
-        <button
-          type="submit"
-          className="w-full md:w-1/2 bg-amber-400 text-white p-1"
-        >
+        <button type="submit" className="w-full bg-amber-400 text-white p-1">
           LOG IN
         </button>
-        <p className="text-center mt-2">
+        <p className="text-center">
           Don&apos;t you have an account?{" "}
           <Link
             href={"/sign-up"}
@@ -90,21 +87,15 @@ export const SignInForm = () => {
           </Link>
         </p>
       </form>
+      <div className="divider text-xs">OR</div>
 
-      <div className="flex flex-col gap-2">
-        <p>Sign in with</p>
-        <div className="flex justify-center gap-6 max-h-11">
-          <button onClick={handleLoginWithGoogle}>
-            <FcGoogle size={44} />
-          </button>
-          <a href="">
-            <FaFacebookSquare size={44} fill="#0A66C2" />
-          </a>
-          <a href="">
-            <FaLinkedin size={44} fill="#0A66C2" />
-          </a>
-        </div>
-      </div>
-    </>
+      <button
+        onClick={handleLoginWithGoogle}
+        className="w-full flex border p-2 justify-center gap-2 bg-white"
+      >
+        <FcGoogle className="my-auto" />
+        <p>Continue with Google</p>
+      </button>
+    </div>
   );
 };

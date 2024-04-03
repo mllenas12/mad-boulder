@@ -51,14 +51,16 @@ export default async function WeatherPage({
         Weather Forecast in {currentArea} Boulder
       </h3>
       <Suspense fallback="Loading...">
-        <div className="flex flex-col gap-4">
-          <div>
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="md:w-1/2 ">
             <CurrentWeather
               data={currentWeatherInfo}
               currentTemp={currentTemp}
             />
           </div>
-          <div className="flex flex-col gap-4">{displayForecast}</div>
+          <div className="flex flex-col gap-4  md:w-1/2 ">
+            {displayForecast}
+          </div>
         </div>
       </Suspense>
     </div>

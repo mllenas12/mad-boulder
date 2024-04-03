@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useContext, createContext } from "react";
+import React, { useEffect, useContext, createContext, Suspense } from "react";
 import { auth } from "@/app/lib/firebase/firebase-config";
 import { useState } from "react";
 import { User } from "firebase/auth";
@@ -27,7 +27,6 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
 
   const logIn = (
     email: string,
@@ -78,7 +77,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       setCurrentUser(authUser);
-      setLoading(false);
     });
 
     return () => {
@@ -90,7 +88,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <AuthContext.Provider
       value={{ currentUser, getUser, logIn, signUp, logOut, loginWithGoogle }}
     >
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };
