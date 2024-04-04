@@ -14,7 +14,7 @@ export default function IsAuth({
     const auth = isAuthenticated(user);
 
     if (!auth) {
-      redirect("/");
+      redirect("/log-in");
     }
   }, [user]);
 

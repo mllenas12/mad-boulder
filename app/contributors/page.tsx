@@ -39,7 +39,7 @@ export default function ContributorsPage() {
           <p className="text-xs text-center">
             Already have an account?{" "}
             <Link
-              href={"/sign-in"}
+              href={"/log-in"}
               className="text-yellow-500 font-semibold underline cursor-pointer"
             >
               Log in here!

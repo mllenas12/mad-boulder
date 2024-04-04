@@ -65,9 +65,11 @@ export default function MapAreaPage({
   return (
     <div className="flex flex-col gap-4">
       {/* AREA MAP */}
-      <Map data={[currentAreaData]} height={350} />
+      <div className="h-[400px]">
+        {currentAreaData && <Map data={[currentAreaData]} />}
+      </div>
       {/* SECTORS: */}
-      <div className="p-8 bg-neutral-200 rounded">
+      <div className="p-6 bg-neutral-200 rounded">
         <div className="flex flex-col gap-4">
           {/* LIST OF SECTORS:  */}
           <h3 className="text-xl font-semibold">Sectors in this area:</h3>
@@ -83,7 +85,7 @@ export default function MapAreaPage({
         </div>
       </div>
       {/* DESCRIPTION HOW TO ARRIVE */}
-      <div className="p-8">
+      <div className="p-6 bg-neutral-100 rounded">
         <h3 className="text-lg font-semibold">
           Access and Parking Information
         </h3>

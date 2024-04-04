@@ -21,7 +21,7 @@ export default function Search({
       params.delete(paramName);
     }
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 300);
   return (
     <input

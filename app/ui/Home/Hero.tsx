@@ -8,7 +8,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 bg-black opacity-20"></div>
 
-      <h1 className="z-5 px-4 font-bold relative">
+      <h1 className="z-5 px-4 font-bold relative text-mbblue-200">
         ROCK CLIMBING ACCESSIBLE FOR EVERYONE
       </h1>
       <h3 className="z-10 font-semibold p-8 relative">

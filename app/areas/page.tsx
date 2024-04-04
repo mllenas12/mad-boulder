@@ -72,7 +72,9 @@ export default function AreasPage({
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       {/* MAP: */}
-      <Map data={filteredData} height={350} mdHeight={400} />
+      <div className="h-[400px]">
+        {filteredData && <Map data={filteredData} />}
+      </div>
       <h3 className="font-semibold text-xl px-4 lg:px-24">FIND YOUR ZONE:</h3>
       {/* FINDER: */}
       <AreasFilter optionsList={optionsList} />

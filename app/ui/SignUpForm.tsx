@@ -1,23 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { IFormErrors } from "@/app/lib/types";
-import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { useAuth } from "@/app/lib/context/AuthProvider";
+import { nanoid } from "nanoid";
 export const SignUpForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState<string[]>([]);
   const [confirmedPassword, setConfifmedPassword] = useState("");
-  const { signUp, loginWithGoogle } = useAuth();
+  const [displayErrors, setDisplayErrors] = useState<any>();
+  const { signUp } = useAuth();
   const router = useRouter();
-
-  const validateEmail = (email: string) => {
-    const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    return re.test(email);
-  };
 
   const validatePassword = (password: string) => {
     return password.length >= 6;
@@ -27,35 +23,80 @@ export const SignUpForm = () => {
     return password === confirmedPassword;
   };
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    setErrors({ email: "", password: "" });
+    console.log(errors);
+    let formErrors: string[] = [];
 
-    let formErrors: IFormErrors = { email: "", password: "" };
-
-    if (!validateEmail(email)) {
-      formErrors.email = "Invalid email adress";
-    }
     if (!validatePassword(password)) {
-      formErrors.password = "Password must be at least 6 characters long";
+      formErrors.push("Password must be at least 6 characters long");
     }
     if (!validateConfirmedPassword(password)) {
-      formErrors.password = "Passwords don't match";
+      formErrors.push("Passwords don't match");
     }
-    if (formErrors.email === "" && formErrors.password === "") {
-      signUp(email.trim(), password, name, router);
-    } else {
-      setErrors(formErrors);
+    if (formErrors.length == 0) {
+      try {
+        await signUp(email.trim(), password, name, router);
+      } catch (error) {
+        const errorCode = error.code
+          .split("auth/")[1]
+          .replaceAll("-", " ")
+          .toUpperCase();
+
+        formErrors.push("jelou");
+      }
     }
+    setErrors((prevErrors: string[]) => [...prevErrors, ...formErrors]);
   };
 
-  const handleLoginWithGoogle = () => {
-    loginWithGoogle()
-      .then(() => router.push("/video-uploader"))
-      .catch((err: string) => {
-        console.log(err);
-      });
-  };
+  const getErrors = errors.map((errors: string) => {
+    return (
+      <p key={nanoid()} className="text-red-500 text-xs font-semibold ">
+        {errors}
+      </p>
+    );
+  });
+
+  // const [errors, setErrors] = useState({ email: "", password: "" });
+
+  // const [confirmedPassword, setConfifmedPassword] = useState("");
+  // const { signUp } = useAuth();
+  // const router = useRouter();
+
+  // const validateEmail = (email: string) => {
+  //   const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  //   return re.test(email);
+  // };
+
+  // const validatePassword = (password: string) => {
+  //   return password.length >= 6;
+  // };
+
+  // const validateConfirmedPassword = (password: string) => {
+  //   return password === confirmedPassword;
+  // };
+
+  // const handleSubmit = (event: React.SyntheticEvent) => {
+  //   event.preventDefault();
+  //   setErrors({ email: "", password: "" });
+
+  //   let formErrors: IFormErrors = { email: "", password: "" };
+
+  //   if (!validateEmail(email)) {
+  //     formErrors.email = "Invalid email adress";
+  //   }
+  //   if (!validatePassword(password)) {
+  //     formErrors.password = "Password must be at least 6 characters long";
+  //   }
+  //   if (!validateConfirmedPassword(password)) {
+  //     formErrors.password = "Passwords don't match";
+  //   }
+  //   if (formErrors.email === "" && formErrors.password === "") {
+  //     signUp(email.trim(), password, name, router);
+  //   } else {
+  //     setErrors(formErrors);
+  //   }
+  // };
 
   return (
     <div className="flex flex-col gap-2">
@@ -101,14 +142,16 @@ export const SignUpForm = () => {
           className="w-full h-9 mx-auto placeholder:px-4"
         />
 
-        {errors.password && (
+        <div className="flex flex-col">{displayErrors}</div>
+
+        {/* {errors.password && (
           <p className="text-red-500 text-xs font-semibold ">
             {errors.password}
           </p>
         )}
         {errors.email && (
           <p className="text-red-500 text-xs font-semibold">{errors.email}</p>
-        )}
+        )} */}
         <div className="w-full mx-auto text-start flex flex-col gap-1">
           <div className="flex gap-2">
             <input
@@ -140,15 +183,6 @@ export const SignUpForm = () => {
 
         <button type="submit" className="w-full bg-amber-400 text-white p-1">
           SIGN UP
-        </button>
-        <div className="divider text-xs">OR</div>
-
-        <button
-          onClick={handleLoginWithGoogle}
-          className="w-full flex border p-2 justify-center gap-2 bg-white"
-        >
-          <FcGoogle className="my-auto" />
-          <p>Continue with Google</p>
         </button>
       </form>
     </div>

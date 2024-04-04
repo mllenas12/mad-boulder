@@ -7,15 +7,7 @@ import { IArea } from "@/app/lib/types";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { nanoid } from "nanoid";
 
-const Map = ({
-  data,
-  height,
-  mdHeight,
-}: {
-  data: IArea[];
-  height: number;
-  mdHeight: number;
-}) => {
+const Map = ({ data }: { data: IArea[] }) => {
   const areaMarker = data.map((area: IArea) => {
     const icon = new Icon({
       iconUrl: "/logo/marker.webp",
@@ -62,7 +54,7 @@ const Map = ({
 
   return (
     <MapContainer
-      className={`h-[${height}px] md:h-[${mdHeight}px] z-0`}
+      className={"h-full md:h-full z-0"}
       center={
         areaMarker.length == 1
           ? [data[0].latitude, data[0].longitude]

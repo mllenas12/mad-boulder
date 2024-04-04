@@ -17,14 +17,14 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
 
   const imageUrl = currentAreaData?.thumbnail || "/images/example.jpeg";
   return (
-    <div>
+    <div className="px-8 py-6 bg-neutral-100 rounded">
       {/* PHOTO + CTA EXPLORE: */}
       <div
         style={{ backgroundImage: `url(${imageUrl})` }}
         className={`relative  bg-cover bg-center py-32 md:py-48 flex justify-center`}
       >
         <Link
-          href={`/areas/${currentAreaData?.name}/explore`}
+          href={`/areas/${currentAreaData?.name}/problems`}
           className=" absolute bottom-8 bg-yellow-400 text-neutral-700 font-semibold rounded px-4 py-2 "
         >
           EXPLORE AREA
@@ -34,7 +34,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
         {/* DESCRIPTION: */}
         <div className="flex flex-col items-center p-8 gap-8">
           <p className="text-xs text-center">{currentAreaData?.overview[0]}</p>
-          <div className="flex gap-8 border rounded-3xl p-4 w-full md:w-1/2 lg:w-1/3 justify-center bg-yellow-400">
+          <div className="flex border rounded-3xl p-4 px-8 w-full md:w-2/3 lg:w-1/2 justify-between md:justify-center md:gap-6 bg-yellow-400">
             <p className="text-xs">
               <strong className="text-xs">Rock type:</strong>
               {"  "}
@@ -49,7 +49,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
           </div>
         </div>
         {/* SUMMARY: */}
-        <div className="bg-neutral-400 p-8 flex gap-4 justify-center">
+        <div className="bg-neutral-300 p-8 flex gap-4 justify-center">
           <Link
             href={`/areas/${currentAreaData?.name}/map`}
             className="h-40 w-40 rounded bg-[url('/images/stats-sectors.webp')] bg-cover bg-center flex justify-center items-center"
@@ -60,7 +60,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
             </p>
           </Link>
           <Link
-            href={`/areas/${currentAreaData?.name}/explore`}
+            href={`/areas/${currentAreaData?.name}/problems`}
             className="h-40 w-40 rounded bg-[url('/images/stats-videos.webp')] bg-cover bg-center flex justify-center items-center"
           >
             <p className="text-2xl text-white font-bold text-center">

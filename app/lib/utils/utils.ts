@@ -33,7 +33,6 @@ function groupWeatherByDay(data: IWeatherDataForecast): {
 
         updateDayWeather(weatherPerDay[dateParts], forecast);
     });
-
     return weatherPerDay;
 }
 
@@ -138,7 +137,7 @@ export const setRandomNumber = (min: number, max: number) => {
 export const getFormattedActualDate = () => {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11, por eso se suma 1
+    const month = String(today.getMonth() + 1).padStart(2, '0');
     const year = today.getFullYear();
 
     return `${day}/${month}/${year}`;

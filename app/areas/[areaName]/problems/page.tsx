@@ -85,9 +85,9 @@ export default function ExplorePage({
   });
 
   return (
-    <div className="px-8 pb-12 bg-neutral-200 rounded">
+    <div className="px-8 py-6 bg-neutral-100 rounded">
       {/* Search: */}
-      <div className="flex flex-col gap-4 py-8">
+      <div className="flex flex-col gap-4">
         <h3 className="text-xl font-semibold">Problems in this area:</h3>
         <div className=" py-2 grid grid-cols-2 gap-4 lg:px-24">
           <div className="col-span-2">
@@ -112,7 +112,7 @@ export default function ExplorePage({
         </div>
       </div>
       {/* List of videos */}
-      <div className="">
+      <div className="py-4">
         <nav className="font-semibold flex p-2 justify-between text-start">
           <p className="w-2/5">Problems:</p>
           <div className="w-3/5 flex justify-end px-2">

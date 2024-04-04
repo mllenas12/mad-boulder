@@ -10,7 +10,7 @@ export default function AreaNameLayout({
   return (
     <div>
       <AreaHeader areaName={decodeURIComponent(params.areaName)} />
-      <main className="lg:px-64 lg:py-10">{children}</main>
+      <main className="py-6 md:w-3/4 lg:w-2/3 md:mx-auto">{children}</main>
     </div>
   );
 }

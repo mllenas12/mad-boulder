@@ -28,30 +28,42 @@ export default async function WeatherPage({
 
   const LAT = currentAreaData?.latitude;
   const LON = currentAreaData?.longitude;
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.WEATHER_API_KEY;
+
+  const getData = () => {
+    return getWeatherInfoByCoord(LAT, LON, apiKey)
+      .then((data) => {
+        const weatherInfo = formatWeatherData(data);
+        return weatherInfo;
+      })
+      .catch((error) => {
+        console.error("Error al obtener los datos del clima:", error);
+        return null;
+      });
+  };
 
   const data = await getWeatherInfoByCoord(LAT, LON, apiKey);
+  const weatherInfo = formatWeatherData(data);
 
   const currentData = getCurrentTemperature(LAT, LON, apiKey);
   const currentTemp = Math.round((await currentData).main.temp);
 
-  const weatherInfo = formatWeatherData(data);
-
   const currentWeatherInfo = weatherInfo[0];
+
   let forecastInfo = [...weatherInfo];
   forecastInfo.shift();
 
-  const displayForecast = forecastInfo.map((day: IWeatherData) => {
-    return <Forecast data={day} key={day.date} />;
+  const displayForecast = forecastInfo.map((dayData: IWeatherData) => {
+    return <Forecast data={dayData} key={dayData.date} />;
   });
 
   return (
-    <div className="p-8">
-      <h3 className="font-semibold text-xl py-2">
+    <div className="px-8 bg-neutral-100 rounded flex flex-col gap-4 py-6">
+      <h3 className="font-semibold text-xl">
         Weather Forecast in {currentArea} Boulder
       </h3>
       <Suspense fallback="Loading...">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-4 md:">
           <div className="md:w-1/2 ">
             <CurrentWeather
               data={currentWeatherInfo}

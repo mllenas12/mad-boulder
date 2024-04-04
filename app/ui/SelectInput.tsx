@@ -31,7 +31,8 @@ export const SelectInput = ({
     } else {
       params.delete(filterBy);
     }
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
+
     return;
   };
 

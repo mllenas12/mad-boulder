@@ -76,7 +76,7 @@ export const UploadForm = () => {
       })
       .then(() => setStatus(FORM_STATES.SUCCESS))
       .then(() => {
-        router.push("/");
+        router.push("/video-uploader/success-upload");
       })
       .catch((err) => {
         console.log(err);

@@ -37,7 +37,7 @@ export default function SortButtons() {
     params.set("sortby", orderBy);
     params.set("order", direction);
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const changeArrow = (orderBy: string) => {

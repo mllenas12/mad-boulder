@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SignUpForm } from "../ui/SignUpForm";
+import { SignUpGoogle } from "../ui/SignUpGoogle";
 export default function SignUpPage() {
   return (
     <div className="flex flex-col text-center bg-neutral-100 py-16">
@@ -14,13 +15,15 @@ export default function SignUpPage() {
           </p>
         </div>
         <SignUpForm />
+        <div className="divider text-xs">OR</div>
+        <SignUpGoogle />
         <p>
-          Upload without an account.{" "}
+          Already have an account?{" "}
           <Link
-            href={"/video-uploader"}
+            href={"/log-in"}
             className="text-amber-400 font-semibold underline cursor-pointer"
           >
-            Skip now
+            Log in here
           </Link>
         </p>
         <div className="my-2 flex flex-col gap-2 justify-center h-[139px] w-full mx-auto rounded text-white font-bold  text-center text-2xl bg-cover bg-[url('/images/example.jpeg')]">

@@ -35,42 +35,52 @@ export default function ProblemPage({
 
   return (
     <>
-      <header className="py-4 bg-neutral-300 text-center font-semibold text-2xl">
-        {currentProblemData?.name}
+      <header className="py-8 bg-neutral-200 text-center">
+        <h2 className="font-semibold">{currentProblemData?.name}</h2>
+        <h5>
+          {currentProblemData?.grade_with_info}, {currentProblemData?.sector},{" "}
+          {currentProblemData?.zone}
+        </h5>
       </header>
-      <div className=" flex flex-col justify-center ">
+      <div className="bg-neutral-100 rounded flex flex-col gap-4 px-8 py-6 lg:mx-64 md:mx-36 my-6">
         <iframe
           width="100%"
           height="100%"
           src={url}
           allowFullScreen
-          className="mx-auto py-4 h-[250px] md:h-[400px] lg:h-[450px]"
+          className="mx-auto h-[250px] lg:h-[400px]"
         ></iframe>
-        <div className="p-8 bg-neutral-200">
-          <p>Name: {currentProblemData?.name}</p>
-          <p>Grade: {currentProblemData?.grade}</p>
-          <p>
-            Zone:{" "}
+        <ul className="p-6  list-disc">
+          <li>
+            <strong>Name:</strong> {currentProblemData?.name}
+          </li>
+          <li>
+            <strong>Grade:</strong> {currentProblemData?.grade}
+          </li>
+          <li>
+            <strong>Zone:</strong>{" "}
             <Link href={`/areas/${currentProblemData?.zone}/info`}>
               {currentProblemData?.zone}
             </Link>
-          </p>
-          <p>
-            Sector:{" "}
+          </li>
+          <li>
+            <strong>Sector:</strong>{" "}
             <Link
               href={`/areas/${currentProblemData?.zone}/explore?sectors=${currentProblemData?.sector}`}
             >
               {currentProblemData?.sector}
             </Link>
-          </p>
-          <p>Boulder: {currentProblemData?.boulder}</p>
-          <p>Climber: {currentProblemData?.climber}</p>
+          </li>
+          <li>
+            <strong>Boulder:</strong> {currentProblemData?.boulder}
+          </li>
+          <li>
+            <strong>Climber:</strong> {currentProblemData?.climber}
+          </li>
+        </ul>
+        <div className="h-[200px]">
+          {currentAreaData && <Map data={[currentAreaData]} />}
         </div>
-      </div>
-      <div className="">
-        {currentAreaData && (
-          <Map data={[currentAreaData]} height={250} mdHeight={440} />
-        )}
       </div>
     </>
   );
