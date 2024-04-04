@@ -58,7 +58,7 @@ export default async function WeatherPage({
   });
 
   return (
-    <div className="px-8 bg-neutral-100 rounded flex flex-col gap-4 py-6">
+    <div className="px-8  rounded flex flex-col gap-4">
       <h3 className="font-semibold text-xl">
         Weather Forecast in {currentArea} Boulder
       </h3>

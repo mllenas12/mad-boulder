@@ -73,7 +73,11 @@ export default function MapAreaPage({
         <div className="flex flex-col gap-4">
           {/* LIST OF SECTORS:  */}
           <h3 className="text-xl font-semibold">Sectors in this area:</h3>
-          <Search placeholder="Sector" paramName="sector" />
+          <Search
+            placeholder="Sector"
+            paramName="sector"
+            className="input input-bordered w-full h-[36px]"
+          />
           <div className="bg-white p-2 rounded">
             <nav className="font-semibold flex p-2">
               <p className="w-3/4 text-start">Name</p>

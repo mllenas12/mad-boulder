@@ -91,7 +91,11 @@ export default function ExplorePage({
         <h3 className="text-xl font-semibold">Problems in this area:</h3>
         <div className=" py-2 grid grid-cols-2 gap-4 lg:px-24">
           <div className="col-span-2">
-            <Search placeholder="Name" paramName="name" />
+            <Search
+              placeholder="Name"
+              paramName="name"
+              className="input input-bordered w-full h-[36px]"
+            />
           </div>
           <div className="col-span-2 md:col-span-1">
             <SelectInput

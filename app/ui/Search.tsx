@@ -5,9 +5,11 @@ import { useDebouncedCallback } from "use-debounce";
 export default function Search({
   placeholder,
   paramName,
+  className,
 }: {
   placeholder: string;
   paramName: string;
+  className: string;
 }) {
   const { replace } = useRouter();
   const searchParams = useSearchParams();
@@ -30,7 +32,7 @@ export default function Search({
       name={paramName}
       onChange={(event) => handleSearch(event.target.value)}
       defaultValue={searchParams.get(paramName)?.toString()}
-      className="input input-bordered w-full h-[36px] "
+      className={className}
     />
   );
 }

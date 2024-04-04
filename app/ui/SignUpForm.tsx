@@ -37,7 +37,7 @@ export const SignUpForm = () => {
     if (formErrors.length == 0) {
       try {
         await signUp(email.trim(), password, name, router);
-      } catch (error) {
+      } catch (error: any) {
         const errorCode = error.code
           .split("auth/")[1]
           .replaceAll("-", " ")
@@ -57,47 +57,6 @@ export const SignUpForm = () => {
     );
   });
 
-  // const [errors, setErrors] = useState({ email: "", password: "" });
-
-  // const [confirmedPassword, setConfifmedPassword] = useState("");
-  // const { signUp } = useAuth();
-  // const router = useRouter();
-
-  // const validateEmail = (email: string) => {
-  //   const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  //   return re.test(email);
-  // };
-
-  // const validatePassword = (password: string) => {
-  //   return password.length >= 6;
-  // };
-
-  // const validateConfirmedPassword = (password: string) => {
-  //   return password === confirmedPassword;
-  // };
-
-  // const handleSubmit = (event: React.SyntheticEvent) => {
-  //   event.preventDefault();
-  //   setErrors({ email: "", password: "" });
-
-  //   let formErrors: IFormErrors = { email: "", password: "" };
-
-  //   if (!validateEmail(email)) {
-  //     formErrors.email = "Invalid email adress";
-  //   }
-  //   if (!validatePassword(password)) {
-  //     formErrors.password = "Password must be at least 6 characters long";
-  //   }
-  //   if (!validateConfirmedPassword(password)) {
-  //     formErrors.password = "Passwords don't match";
-  //   }
-  //   if (formErrors.email === "" && formErrors.password === "") {
-  //     signUp(email.trim(), password, name, router);
-  //   } else {
-  //     setErrors(formErrors);
-  //   }
-  // };
-
   return (
     <div className="flex flex-col gap-2">
       <form
@@ -111,7 +70,7 @@ export const SignUpForm = () => {
           placeholder="Full name"
           required
           onChange={(e) => setName(e.target.value)}
-          className="w-full  h-9 mx-auto placeholder:px-4"
+          className="w-full  h-9 mx-auto placeholder:px-4 rounded"
         />
         <input
           type="email"
@@ -120,7 +79,7 @@ export const SignUpForm = () => {
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4"
+          className="w-full h-9 mx-auto placeholder:px-4 rounded"
         />
         <input
           type="password"
@@ -130,7 +89,7 @@ export const SignUpForm = () => {
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4"
+          className="w-full h-9 mx-auto placeholder:px-4 rounded"
         />
         <input
           type="password"
@@ -139,7 +98,7 @@ export const SignUpForm = () => {
           placeholder="Confirm your password"
           required
           onChange={(e) => setConfifmedPassword(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4"
+          className="w-full h-9 mx-auto placeholder:px-4 rounded"
         />
 
         <div className="flex flex-col">{displayErrors}</div>
@@ -166,7 +125,7 @@ export const SignUpForm = () => {
               I agreed to the{" "}
               <Link
                 href={"/video-uploader"}
-                className="text-amber-400 font-semibold  cursor-pointer"
+                className="text-semantic2-800 font-semibold cursor-pointer"
               >
                 Terms and Conditions <span className="text-red-500">*</span>
               </Link>
@@ -181,7 +140,10 @@ export const SignUpForm = () => {
           </div>
         </div>
 
-        <button type="submit" className="w-full bg-amber-400 text-white p-1">
+        <button
+          type="submit"
+          className="w-full bg-semantic2-700 text-white p-1 rounded"
+        >
           SIGN UP
         </button>
       </form>

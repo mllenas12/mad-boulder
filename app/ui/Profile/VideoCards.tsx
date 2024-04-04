@@ -11,7 +11,7 @@ export const VideoCards = ({ video }: { video: IFormData }) => {
     console.log(video.state);
   }),
     [video.state];
-  const setStatusColor = (status: string) => {
+  const setStatusColor = (status: string | undefined) => {
     if (status == "Pending") {
       setColor("#FAC12E");
     } else if (status == "Published") {

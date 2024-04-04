@@ -13,7 +13,7 @@ export const CurrentWeather = ({
   const iconUrl = getIdUrl(data.info.icon);
   const currentShortDate = getShortDate();
   return (
-    <div className="flex flex-col bg-slate-600 rounded-2xl p-4 text-center text-white">
+    <div className="flex flex-col bg-sky-800 rounded-2xl p-4 text-center text-white">
       <div className="flex flex-col mx-auto">
         <img src={iconUrl} alt="Current weather icon" className="w-32" />
         <div className="text-white flex flex-col gap-2">

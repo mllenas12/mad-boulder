@@ -53,7 +53,7 @@ export default function SortButtons() {
     <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-4 ">
       <button
         onClick={(event) => handleSort("videoCount", event)}
-        className="font-semibold text-xs flex gap-1 py-3 px-2 bg-white rounded justify-center"
+        className="font-semibold text-xs flex gap-1 p-2 my-auto bg-white  rounded justify-center"
         type="button"
       >
         Number of Videos
@@ -61,7 +61,7 @@ export default function SortButtons() {
       </button>
       <button
         onClick={(event) => handleSort("name", event)}
-        className="font-semibold text-xs flex gap-1 py-3 px-2 bg-white rounded justify-center"
+        className="font-semibold text-xs flex gap-1 p-2 my-auto bg-white rounded justify-center"
         type="submit"
       >
         Alphabetically

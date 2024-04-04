@@ -13,11 +13,11 @@ export const AreaHeader = ({ areaName }: { areaName: string }) => {
   const pathname = usePathname();
 
   const linkStyle = (isActive: boolean) => ({
-    color: isActive ? "black" : "gray",
+    color: isActive ? "#4C68D5" : "gray",
   });
 
   return (
-    <header className="flex flex-col justify-center items-center pt-8 bg-stone-200">
+    <header className="flex flex-col justify-center items-center pt-8 bg-neutral-200">
       <h2 className="text-2xl font-semibold">
         {areaName.toUpperCase()} BOULDER
       </h2>
