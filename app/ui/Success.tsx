@@ -28,6 +28,3 @@ export default function Success({
     </div>
   );
 }
-// ¡Register Success!
-// Your account has been successfully created
-// /video-uploader

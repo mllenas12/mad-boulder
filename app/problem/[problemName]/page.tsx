@@ -1,11 +1,8 @@
-import Map from "@/app/ui/Map/Map";
 import problemsData from "@/app/lib/data/problemsData.json";
 import zoneData from "@/app/lib/data/zoneData.json";
 import { IProblem, IProblemArea } from "@/app/lib/types";
 import Link from "next/link";
-
 import dynamic from "next/dynamic";
-import { VideoProblem } from "../../ui/VideoProblem";
 
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
@@ -16,17 +13,12 @@ export async function generateStaticParams() {
   }));
 }
 
-// const DynamicVideoProblem = dynamic(() => import("./VideoProblem"), {
-//   ssr: false,
-//   loading: () => <p>Loading</p>,
-// });
-
-// export const DynamicVideo = dynamic(() => import("@/app/ui/VideoProblem"), {
-//   ssr: false,
-//   loading: () => <p>Loading...</p>,
-// });
-
 const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+
+const DynamicVideoProblem = dynamic(() => import("@/app/ui/VideoProblem"), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
@@ -61,7 +53,7 @@ export default function ProblemPage({
         </h5>
       </header>
       <div className="bg-neutral-100 rounded flex flex-col gap-4 px-8 py-6 lg:mx-64 md:mx-36 my-6">
-        {/* <DynamicVideoProblem {...url} /> */}
+        <DynamicVideoProblem url={url} />
 
         <ul className="p-6  list-disc">
           <li>
