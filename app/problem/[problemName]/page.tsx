@@ -3,6 +3,8 @@ import zoneData from "@/app/lib/data/zoneData.json";
 import { IProblem, IProblemArea } from "@/app/lib/types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
@@ -15,12 +17,16 @@ export async function generateStaticParams() {
 
 const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <GeneralSkeleton />,
 });
 
 const DynamicVideoProblem = dynamic(() => import("@/app/ui/VideoProblem"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => (
+    <div className="h-[250px] lg:h-[400px]">
+      <GeneralSkeleton />
+    </div>
+  ),
 });
 
 export default function ProblemPage({
@@ -54,7 +60,6 @@ export default function ProblemPage({
       </header>
       <div className="bg-neutral-100 rounded flex flex-col gap-4 px-8 py-6 lg:mx-64 md:mx-36 my-6">
         <DynamicVideoProblem url={url} />
-
         <ul className="p-6  list-disc">
           <li>
             <strong>Name:</strong> {currentProblemData?.name}
