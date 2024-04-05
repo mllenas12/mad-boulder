@@ -1,9 +1,10 @@
-import Map from "@/app/ui/Map/Map";
 import zoneData from "@/app/lib/data/zoneData.json";
 import { IArea, TSector, IParking } from "@/app/lib/types";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 import Search from "@/app/ui/Search";
+import dynamic from "next/dynamic";
+import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -11,6 +12,12 @@ export async function generateStaticParams() {
   );
   return areaNames.map((name) => ({ areaName: name }));
 }
+
+const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
+  ssr: false,
+  loading: () => <GeneralSkeleton />,
+});
+
 export default function MapAreaPage({
   params,
   searchParams,
@@ -66,7 +73,7 @@ export default function MapAreaPage({
     <div className="flex flex-col gap-4">
       {/* AREA MAP */}
       <div className="h-[400px]">
-        {currentAreaData && <Map data={[currentAreaData]} />}
+        {currentAreaData && <DynamicMap data={[currentAreaData]} />}
       </div>
       {/* SECTORS: */}
       <div className="p-6 bg-neutral-200 rounded">

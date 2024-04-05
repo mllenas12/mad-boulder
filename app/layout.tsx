@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.className} bg-neutral-100 antialiased flex flex-col min-h-screen`}
+        className={`${raleway.className} bg-white antialiased flex flex-col min-h-screen`}
       >
         <AuthProvider>
           <Navbar />

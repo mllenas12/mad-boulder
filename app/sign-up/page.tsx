@@ -3,7 +3,7 @@ import { SignUpForm } from "../ui/SignUpForm";
 import { SignUpGoogle } from "../ui/SignUpGoogle";
 export default function SignUpPage() {
   return (
-    <div className="flex flex-col text-center rounded-xl w-4/5 md:w-1/2 bg-semantic2-300 mx-auto my-16 py-8 text-white">
+    <div className="flex flex-col text-center rounded-xl w-4/5 md:w-1/2 bg-neutral-400 mx-auto my-16 py-8 text-white">
       {/* Header */}
       <img src="/logo/MB_empty_back.png" alt="" className="w-20 mx-auto" />
       {/* Main */}

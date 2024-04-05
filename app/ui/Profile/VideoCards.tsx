@@ -3,7 +3,8 @@ import { IFormData } from "@/app/lib/types";
 import { FaCircle } from "react-icons/fa";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { capitalizeFirstLetter, setRandomNumber } from "@/app/lib/utils/utils";
+import { setRandomNumber } from "@/app/lib/utils/utils";
+
 export const VideoCards = ({ video }: { video: IFormData }) => {
   const [color, setColor] = useState("");
   useEffect(() => {
@@ -23,7 +24,6 @@ export const VideoCards = ({ video }: { video: IFormData }) => {
 
   return (
     <div key={video.id} className="flex w-full px-4">
-      {/* <div className="flex w-full px-4 md:w-1/2 md:mx-auto"> */}
       <video
         controls
         width="100%"

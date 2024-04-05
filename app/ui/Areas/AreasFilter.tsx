@@ -17,9 +17,9 @@ export const AreasFilter = ({
         id={nanoid()}
       />
       <Search
-        placeholder="Search by zone"
+        placeholder="Search by area"
         paramName="zone"
-        className="px-2 rounded border border-neutral-300 placeholder:text-bneutral-300 h-[38px] "
+        className="px-2 rounded border block w-full border-neutral-300 placeholder:text-bneutral-300 h-[38px] "
       />
     </div>
   );

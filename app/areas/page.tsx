@@ -70,19 +70,19 @@ export default function AreasPage({
   });
 
   return (
-    <div className="flex flex-col gap-6 lg:gap-8 bg-neutral-100">
+    <div className="flex flex-col md:gap-8">
       {/* MAP: */}
       <div className="h-[400px]">
         {filteredData && <Map data={filteredData} />}
       </div>
-      <div className="flex flex-col gap-4 w-4/5 md:w-3/4 mx-auto pb-10">
+      <div className="flex flex-col gap-6 md:w-4/5 mx-auto mb-10 p-6 bg-neutral-100 lg:p-8 rounded-lg">
         {/* FINDER: */}
-        <h3 className="font-semibold text-xl">FIND YOUR ZONE:</h3>
+        <h2 className="font-semibold ">FIND YOUR AREA:</h2>
         <AreasFilter optionsList={optionsList} />
-
         {/* LIST OF AREA CARDS: */}
         <div className=" ">
-          <div className="hidden md:block">
+          {/* <div className="hidden md:block"> */}
+          <div className="">
             <SortButtons />
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">{cards}</div>

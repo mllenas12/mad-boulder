@@ -3,7 +3,6 @@ import zoneData from "@/app/lib/data/zoneData.json";
 import { IProblem, IProblemArea } from "@/app/lib/types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 
 export async function generateStaticParams() {

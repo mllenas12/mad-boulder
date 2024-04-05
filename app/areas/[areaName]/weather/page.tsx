@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { formatWeatherData } from "@/app/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
+import WeatherSkeleton from "@/app/ui/Skeletons/WeatherSkeleton";
 
 export function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -30,17 +31,17 @@ export default async function WeatherPage({
   const LON = currentAreaData?.longitude;
   const apiKey = process.env.WEATHER_API_KEY;
 
-  const getData = () => {
-    return getWeatherInfoByCoord(LAT, LON, apiKey)
-      .then((data) => {
-        const weatherInfo = formatWeatherData(data);
-        return weatherInfo;
-      })
-      .catch((error) => {
-        console.error("Error al obtener los datos del clima:", error);
-        return null;
-      });
-  };
+  // const getData = () => {
+  //   return getWeatherInfoByCoord(LAT, LON, apiKey)
+  //     .then((data) => {
+  //       const weatherInfo = formatWeatherData(data);
+  //       return weatherInfo;
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error al obtener los datos del clima:", error);
+  //       return null;
+  //     });
+  // };
 
   const data = await getWeatherInfoByCoord(LAT, LON, apiKey);
   const weatherInfo = formatWeatherData(data);
@@ -62,19 +63,12 @@ export default async function WeatherPage({
       <h3 className="font-semibold text-xl">
         Weather Forecast in {currentArea} Boulder
       </h3>
-      <Suspense fallback="Loading...">
-        <div className="flex flex-col md:flex-row gap-4 md:">
-          <div className="md:w-1/2 ">
-            <CurrentWeather
-              data={currentWeatherInfo}
-              currentTemp={currentTemp}
-            />
-          </div>
-          <div className="flex flex-col gap-4  md:w-1/2 ">
-            {displayForecast}
-          </div>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="md:w-1/2 ">
+          <CurrentWeather data={currentWeatherInfo} currentTemp={currentTemp} />
         </div>
-      </Suspense>
+        <div className="flex flex-col gap-4  md:w-1/2 ">{displayForecast}</div>
+      </div>
     </div>
   );
 }

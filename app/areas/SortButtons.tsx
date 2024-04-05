@@ -50,23 +50,23 @@ export default function SortButtons() {
   };
 
   return (
-    <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-4 ">
+    <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-4">
       <button
         onClick={(event) => handleSort("videoCount", event)}
-        className="font-semibold text-xs flex gap-1 p-2 my-auto bg-white  rounded justify-center"
+        className="font-semibold text-xs lg:flex gap-1 p-2 my-auto bg-white  rounded justify-center hidden "
         type="button"
       >
         Number of Videos
         <SortArrow isOrdered={isSortedByVideos} />
       </button>
-      <button
+      {/* <button
         onClick={(event) => handleSort("name", event)}
         className="font-semibold text-xs flex gap-1 p-2 my-auto bg-white rounded justify-center"
         type="submit"
       >
         Alphabetically
         <SortArrow isOrdered={isSortedAlph} />
-      </button>
+      </button> */}
     </div>
   );
 }

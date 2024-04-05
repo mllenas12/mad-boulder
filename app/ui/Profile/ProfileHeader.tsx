@@ -5,7 +5,6 @@ import { useAuth } from "@/app/lib/context/AuthProvider";
 export const ProfileHeader = () => {
   const { getUser } = useAuth();
   const user = getUser();
-  const uid = user?.uid;
   const [userPhotoUrl, setUserPhotoUrl] = useState("");
 
   useEffect(() => {

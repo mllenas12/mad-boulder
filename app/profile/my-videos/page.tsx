@@ -7,14 +7,13 @@ import { db } from "@/app/lib/firebase/firebase-config";
 import { useEffect, useState } from "react";
 import { VideoCards } from "@/app/ui/Profile/VideoCards";
 import Link from "next/link";
-
+import { Suspense } from "react";
 export default function MyVideosPage() {
   const { currentUser } = useAuth();
   const user = currentUser;
   const uid = user?.uid;
 
   const [videos, setVideos] = useState<IFormData[]>([]);
-  const [color, setColor] = useState("");
 
   useEffect(() => {
     if (uid) {
@@ -46,22 +45,26 @@ export default function MyVideosPage() {
     <div className="text-center flex flex-col gap-4 ">
       <h3 className="text-xl font-semibold">Your uploaded videos:</h3>
       {/* <div className="flex flex-col gap-4 "> */}
-      {videos.length == 0 ? (
-        <div className="py-2 mx-auto">
-          No videos uploaded yet. Try to upload your first video{" "}
-          <Link
-            href="/video-uploader"
-            className="text-amber-400 font-semibold underline text-center"
-          >
-            here!
-          </Link>
-          <PiVideo size={"40px"} className="mx-auto my-4" />
-        </div>
-      ) : (
-        <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2">
-          {videoCard}
-        </div>
-      )}
+      <Suspense
+        fallback={<span className="loading loading-spinner loading-xs"></span>}
+      >
+        {videos.length == 0 ? (
+          <div className="py-2 mx-auto">
+            No videos uploaded yet. Try to upload your first video{" "}
+            <Link
+              href="/video-uploader"
+              className="text-amber-400 font-semibold underline text-center"
+            >
+              here!
+            </Link>
+            <PiVideo size={"40px"} className="mx-auto my-4" />
+          </div>
+        ) : (
+          <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2">
+            {videoCard}
+          </div>
+        )}
+      </Suspense>
     </div>
   );
 }

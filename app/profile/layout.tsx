@@ -14,7 +14,7 @@ export default function ProfileLayout({
     <IsAuth user={user}>
       <div className="flex flex-col min-h-screen">
         <ProfileHeader />
-        <main className="py-12">{children}</main>
+        <main className="py-12 ">{children}</main>
       </div>
     </IsAuth>
   );
