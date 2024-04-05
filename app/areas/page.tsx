@@ -79,6 +79,7 @@ export default function AreasPage({
         {/* FINDER: */}
         <h3 className="font-semibold text-xl">FIND YOUR ZONE:</h3>
         <AreasFilter optionsList={optionsList} />
+
         {/* LIST OF AREA CARDS: */}
         <div className=" ">
           <div className="hidden md:block">

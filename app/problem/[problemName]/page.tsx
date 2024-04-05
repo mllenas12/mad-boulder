@@ -3,17 +3,33 @@ import problemsData from "@/app/lib/data/problemsData.json";
 import zoneData from "@/app/lib/data/zoneData.json";
 import { IProblem, IProblemArea } from "@/app/lib/types";
 import Link from "next/link";
-import { VideoProblem } from "@/app/ui/VideoProblem";
+
 import dynamic from "next/dynamic";
+import { VideoProblem } from "../../ui/VideoProblem";
+
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
     area.problem_list.map((problem: IProblem) => problem.name)
   );
-
   return problemsList.map((problem: string) => ({
     problemName: problem,
   }));
 }
+
+// const DynamicVideoProblem = dynamic(() => import("./VideoProblem"), {
+//   ssr: false,
+//   loading: () => <p>Loading</p>,
+// });
+
+// export const DynamicVideo = dynamic(() => import("@/app/ui/VideoProblem"), {
+//   ssr: false,
+//   loading: () => <p>Loading...</p>,
+// });
+
+const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function ProblemPage({
   params,
@@ -45,7 +61,8 @@ export default function ProblemPage({
         </h5>
       </header>
       <div className="bg-neutral-100 rounded flex flex-col gap-4 px-8 py-6 lg:mx-64 md:mx-36 my-6">
-        {/* <VideoProblemDynamic url={url} /> */}
+        {/* <DynamicVideoProblem {...url} /> */}
+
         <ul className="p-6  list-disc">
           <li>
             <strong>Name:</strong> {currentProblemData?.name}
@@ -75,7 +92,7 @@ export default function ProblemPage({
           </li>
         </ul>
         <div className="h-[200px]">
-          {currentAreaData && <Map data={[currentAreaData]} />}
+          {currentAreaData && <DynamicMap data={[currentAreaData]} />}
         </div>
       </div>
     </>
