@@ -72,7 +72,7 @@ export default function AreasPage({
   return (
     <div className="flex flex-col md:gap-8">
       {/* MAP: */}
-      <div className="h-[400px]">
+      <div className="h-[300px] md:h-[420px]">
         {filteredData && <Map data={filteredData} />}
       </div>
       <div className="flex flex-col gap-6 md:w-4/5 mx-auto mb-10 p-6 bg-neutral-100 lg:p-8 rounded-lg">

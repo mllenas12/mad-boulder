@@ -22,7 +22,7 @@ export default function SortB({ sortBy }: { sortBy: string }) {
     setOrderDirection((prev) => !prev);
     setIsSorted((prev) => !prev);
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (

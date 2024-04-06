@@ -118,7 +118,7 @@ export default function Navbar() {
 
             <ul
               tabIndex={0}
-              className="menu menu-md dropdown-content rounded-b z-[1] shadow bg-neutral-800  w-screen"
+              className="menu menu-md dropdown-content rounded-b z-[2] shadow bg-neutral-800  w-screen"
             >
               <li>
                 <a href="/areas">AREAS</a>

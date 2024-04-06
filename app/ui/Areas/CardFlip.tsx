@@ -3,7 +3,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
 import { IArea } from "@/app/lib/types";
-import styles from "/app/ui/Areas/cardflip.module.css";
+//import styles from "/app/ui/Areas/cardflip.module.css";
+import styles from "./cardflip.module.css";
 
 export const Card = ({
   imageUrl,
@@ -27,7 +28,7 @@ export const Card = ({
   const imageThumbnail = imageUrl || "/images/example.jpeg";
 
   return (
-    <div
+    <button
       className={`${styles.flipCard} w-[140px] h-[200px] rounded-md mx-auto`}
       onClick={handleFlip}
     >
@@ -56,7 +57,7 @@ export const Card = ({
           </a>
         </div>
       </motion.div>
-    </div>
+    </button>
   );
 };
 

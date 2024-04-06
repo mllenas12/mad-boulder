@@ -8,10 +8,10 @@ const Hero = () => {
     >
       <div className="absolute inset-0 bg-black opacity-20"></div>
 
-      <h1 className="z-5 px-4 font-bold relative">
+      <h1 className="z-5 px-4 font-bold relative drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
         ROCK CLIMBING ACCESSIBLE FOR EVERYONE
       </h1>
-      <h3 className="z-10 font-semibold p-8 relative">
+      <h3 className="z-10 font-semibold p-8 relative drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
         Explore our available climbing areas and get all the information you
         need for your next climbing trip
       </h3>

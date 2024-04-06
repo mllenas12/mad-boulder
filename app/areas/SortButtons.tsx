@@ -53,7 +53,7 @@ export default function SortButtons() {
     <div className="grid grid-cols-2 md:flex md:justify-end gap-4 mb-4">
       <button
         onClick={(event) => handleSort("videoCount", event)}
-        className="font-semibold text-xs lg:flex gap-1 p-2 my-auto bg-white  rounded justify-center hidden "
+        className="font-semibold text-xs lg:flex gap-1 p-2 my-auto justify-center hidden "
         type="button"
       >
         Number of Videos

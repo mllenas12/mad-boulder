@@ -5,9 +5,9 @@ import { nanoid } from "nanoid";
 import Search from "@/app/ui/Search";
 import { SelectInput } from "@/app/ui/SelectInput";
 import SortB from "@/app/ui/SortB";
-import Link from "next/link";
 import { orderSelectOptionsByGrade } from "@/app/lib/utils/utils";
 import { ProblemList } from "@/app/ui/Areas/problems/ProblemList";
+import { useRouter } from "next/navigation";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)
@@ -27,6 +27,7 @@ export default function ExplorePage({
   const currentAreaData: IArea | undefined = zoneData.items.find(
     (zone: IArea) => zone.name == currentArea
   );
+
   const nameQuery =
     typeof searchParams.name === "string"
       ? searchParams.name.toLowerCase()
@@ -84,6 +85,13 @@ export default function ExplorePage({
     return <ProblemList problem={problem} key={problem.name} />;
   });
 
+  const defaultValue = selectedSectors.map((sector: string) => {
+    return {
+      label: sector,
+      value: sector,
+    };
+  });
+
   return (
     <div className="px-8 py-6 bg-neutral-100 rounded">
       {/* Search: */}
@@ -97,11 +105,13 @@ export default function ExplorePage({
               className="input input-bordered w-full h-[36px]"
             />
           </div>
+
           <div className="col-span-2 md:col-span-1">
             <SelectInput
               placeholder={"Select Sector"}
               optionsList={sectorOptionsList}
               filterBy={"sectors"}
+              defaultValue={defaultValue}
               id={nanoid()}
             />
           </div>
@@ -111,6 +121,7 @@ export default function ExplorePage({
               optionsList={sortedGradeOptionList}
               filterBy={"grade"}
               id={nanoid()}
+              defaultValue=""
             />
           </div>
         </div>

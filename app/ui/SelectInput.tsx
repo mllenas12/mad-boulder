@@ -8,11 +8,13 @@ export const SelectInput = ({
   optionsList,
   filterBy,
   id,
+  defaultValue,
 }: {
   placeholder: string;
   optionsList: ISelectOptions[] | undefined;
   filterBy: string;
   id: string;
+  defaultValue: any;
 }) => {
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -23,7 +25,6 @@ export const SelectInput = ({
   });
 
   const handleChange: TOptions = (selectedOption) => {
-    event?.preventDefault();
     const options = selectedOption.map((option) => option.value).join(",");
     const params = new URLSearchParams(searchParams);
     if (options) {
@@ -46,6 +47,7 @@ export const SelectInput = ({
       classNamePrefix="select"
       options={options}
       onChange={handleChange}
+      defaultValue={defaultValue}
     />
   );
 };

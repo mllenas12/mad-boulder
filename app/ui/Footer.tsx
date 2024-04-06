@@ -34,7 +34,7 @@ export const Footer = () => {
           <p>
             All Rights Reserved. 2023. <br />
           </p>
-          <div>
+          <div className="mx-auto">
             <Link href="/privacy-policy">
               <span className="underline">Privacy Policy</span> |{" "}
             </Link>

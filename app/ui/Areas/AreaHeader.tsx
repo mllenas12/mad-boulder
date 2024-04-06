@@ -13,43 +13,41 @@ export const AreaHeader = ({ areaName }: { areaName: string }) => {
   const pathname = usePathname();
 
   const linkStyle = (isActive: boolean) => ({
-    color: isActive ? "#4C68D5" : "gray",
+    color: isActive ? "#f59e0b" : "gray",
   });
 
   return (
     <header className="flex flex-col justify-center items-center pt-8 bg-neutral-200">
-      <h2 className="text-2xl font-semibold">
-        {areaName.toUpperCase()} BOULDER
-      </h2>
+      <h2 className=" font-semibold">{areaName.toUpperCase()}</h2>
       <nav>
-        <ul className="menu menu-horizontal flex justify-center gap-4">
+        <ul className="flex justify-between gap-12 py-4">
           <li style={linkStyle(pathname == `/areas/${areaName}/info`)}>
-            <Link href={`/areas/${areaName}/info`}>
-              <PiInfo size="20px" />{" "}
+            <Link href={`/areas/${areaName}/info`} className="flex gap-2">
+              <PiInfo size="20px" className="my-auto" />{" "}
               <span className="hidden sm:flex">Info</span>
             </Link>
           </li>
           <li style={linkStyle(pathname == `/areas/${areaName}/map`)}>
-            <Link href={`/areas/${areaName}/map`}>
-              <PiMapPin size="20px" />
+            <Link href={`/areas/${areaName}/map`} className="flex gap-2">
+              <PiMapPin size="20px" className="my-auto" />
               <span className="hidden sm:flex">Map</span>
             </Link>
           </li>
           <li style={linkStyle(pathname == `/areas/${areaName}/problems`)}>
-            <Link href={`/areas/${areaName}/problems`}>
-              <PiMapTrifoldLight size="20px" />
+            <Link href={`/areas/${areaName}/problems`} className="flex gap-2">
+              <PiMapTrifoldLight size="20px" className="my-auto" />
               <span className="hidden sm:flex">Problems</span>
             </Link>
           </li>
           <li style={linkStyle(pathname == `/areas/${areaName}/weather`)}>
-            <Link href={`/areas/${areaName}/weather`}>
-              <PiSun size="20px" />
+            <Link href={`/areas/${areaName}/weather`} className="flex gap-2">
+              <PiSun size="20px" className="my-auto" />
               <span className="hidden sm:flex">Weather</span>
             </Link>
           </li>
           <li style={linkStyle(pathname == `/areas/${areaName}/guides`)}>
-            <Link href={`/areas/${areaName}/guides`}>
-              <PiNotebook size="20px" />
+            <Link href={`/areas/${areaName}/guides`} className="flex gap-2">
+              <PiNotebook size="20px" className="my-auto" />
               <span className="hidden sm:flex">Guides</span>
             </Link>
           </li>

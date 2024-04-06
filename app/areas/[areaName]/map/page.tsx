@@ -44,7 +44,9 @@ export default function MapAreaPage({
   const sectors = filteredData?.map((sector: TSector) => {
     return (
       <Link
-        href={`/areas/${currentArea}/sector/${decodeURIComponent(sector.name)}`}
+        href={`/areas/${currentArea}/problems?sectors=${decodeURIComponent(
+          sector.name
+        )}`}
         key={sector.id}
         className="flex flex-row p-2 text-center text-sm gap-2"
       >

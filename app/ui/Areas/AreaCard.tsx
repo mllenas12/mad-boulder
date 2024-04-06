@@ -7,10 +7,10 @@ export const AreaCard = ({ area }: { area: IArea }) => {
         style={{ backgroundImage: `url(${area.thumbnail})` }}
         className="relative bg-no-repeat h-48 lg:h-52 bg-cover bg-center text-center flex flex-col text-white justify-center rounded-lg shadow-xl"
       >
-        <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
-        <div className="relative z-10 px-2">
+        <div className="absolute inset-0 bg-black opacity-40 rounded-lg  "></div>
+        <div className="relative z-2 px-2 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           <h3 className="font-semibold ">{area.name}</h3>
-          <h4>
+          <h4 className="">
             {area.video_count} video{area.video_count > 1 && "s"}
           </h4>
         </div>
