@@ -20,7 +20,7 @@ export const AreasFilter = ({
       <Search
         placeholder="Search by area"
         paramName="zone"
-        className="px-2 rounded border block w-full border-neutral-300 placeholder:text-bneutral-300 h-[38px] "
+        className="px-2 rounded border block w-full border-[#CCCCCC] placeholder:text-bneutral-300 h-[38px]"
       />
     </div>
   );

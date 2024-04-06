@@ -6,7 +6,7 @@ import Search from "@/app/ui/Search";
 import { SelectInput } from "@/app/ui/SelectInput";
 import SortB from "@/app/ui/SortB";
 import { orderSelectOptionsByGrade } from "@/app/lib/utils/utils";
-import { ProblemList } from "@/app/ui/Areas/problems/ProblemList";
+import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
 import { useRouter } from "next/navigation";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -81,8 +81,8 @@ export default function ExplorePage({
 
   const sortedGradeOptionList = orderSelectOptionsByGrade(filteredProblems);
 
-  const problemsInfo = sortedByGrade.map((problem: IProblem) => {
-    return <ProblemList problem={problem} key={problem.name} />;
+  const problemList = sortedByGrade.map((problem: IProblem) => {
+    return <ProblemCard problem={problem} key={problem.name} />;
   });
 
   const defaultValue = selectedSectors.map((sector: string) => {
@@ -93,20 +93,20 @@ export default function ExplorePage({
   });
 
   return (
-    <div className="px-8 py-6 bg-neutral-100 rounded">
+    <div className="px-6 py-6 bg-neutral-100 rounded">
       {/* Search: */}
-      <div className="flex flex-col gap-4">
-        <h3 className="text-xl font-semibold">Problems in this area:</h3>
-        <div className=" py-2 grid grid-cols-2 gap-4 lg:px-24">
-          <div className="col-span-2">
+      <div className="flex flex-col gap-2">
+        <h3 className="font-semibold">Problems in this area:</h3>
+        <div className=" py-2 grid grid-cols-2 md:flex gap-4 md:gap-2 ">
+          <div className="col-span-2 md:w-1/3">
             <Search
-              placeholder="Name"
+              placeholder="Search by name"
               paramName="name"
-              className="input input-bordered w-full h-[36px]"
+              className="px-4 rounded border block w-full border-[#b3b3b3] placeholder:text-bneutral-300 h-[38px]"
             />
           </div>
 
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-2 md:col-span-1 md:w-1/3">
             <SelectInput
               placeholder={"Select Sector"}
               optionsList={sectorOptionsList}
@@ -115,27 +115,26 @@ export default function ExplorePage({
               id={nanoid()}
             />
           </div>
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-2 md:col-span-1 md:w-1/3">
             <SelectInput
               placeholder={"Select grade"}
               optionsList={sortedGradeOptionList}
               filterBy={"grade"}
               id={nanoid()}
-              defaultValue=""
+              defaultValue={[]}
             />
           </div>
         </div>
       </div>
       {/* List of videos */}
       <div className="py-4">
-        <nav className="font-semibold flex p-2 justify-between text-start">
-          <p className="w-2/5">Problems:</p>
+        <nav className="font-semibold flex p-2 justify-end text-start">
           <div className="w-3/5 flex justify-end px-2">
             <SortB sortBy="Grade" />
           </div>
           <hr />
         </nav>
-        <div className="flex flex-col gap-4">{problemsInfo}</div>
+        <div className="flex flex-col gap-6 ">{problemList}</div>
       </div>
     </div>
   );

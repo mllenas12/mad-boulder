@@ -28,7 +28,7 @@ export default function Search({
   return (
     <label className="relative block">
       <span className="absolute inset-y-0 right-0 flex items-center pr-2">
-        <PiMagnifyingGlass />
+        <PiMagnifyingGlass color="gray" />
       </span>
       <input
         placeholder={placeholder}

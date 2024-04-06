@@ -13,7 +13,8 @@ export const AreaHeader = ({ areaName }: { areaName: string }) => {
   const pathname = usePathname();
 
   const linkStyle = (isActive: boolean) => ({
-    color: isActive ? "#f59e0b" : "gray",
+    fontWeight: isActive ? "600" : "normal",
+    color: isActive ? "black" : "#a3a0a0",
   });
 
   return (

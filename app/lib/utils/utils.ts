@@ -142,23 +142,19 @@ export const getFormattedActualDate = () => {
 
     return `${day}/${month}/${year}`;
 }
-
 export const orderSelectOptionsByGrade = (array: IProblem[]) => {
-    const gradeOptionsList: ISelectOptions[] = [];
-    const uniqueGrades: IUniqueGrades = {};
+    const uniqueGrades: string[] = [];
 
     array.forEach((problem) => {
-        const grade = problem.grade.trim(); // Eliminar espacios en blanco alrededor de la calificación
-        if (!uniqueGrades.hasOwnProperty(grade)) {
-            uniqueGrades[grade] = true;
-            gradeOptionsList.push({
-                value: grade,
-                label: grade,
-            });
+        const grade = problem.grade.trim();
+        if (!uniqueGrades.includes(grade)) {
+            uniqueGrades.push(grade);
         }
     });
 
-    let sortedGradeList = [...gradeOptionsList];
-    sortedGradeList.sort((a, b) => a.value.localeCompare(b.value));
-    return sortedGradeList
-}
+    uniqueGrades.sort();
+    const gradeList = uniqueGrades.map((grade: string) => {
+        return { value: grade, label: grade }
+    })
+    return gradeList
+};

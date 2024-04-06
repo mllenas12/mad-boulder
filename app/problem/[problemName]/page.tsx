@@ -57,9 +57,9 @@ export default function ProblemPage({
           {currentProblemData?.zone}
         </h5>
       </header>
-      <div className="bg-neutral-100 rounded flex flex-col gap-4 px-8 py-6 lg:mx-64 md:mx-36 my-6">
+      <div className="bg-neutral-100 rounded flex flex-col gap-8 md:p-8 md:w-3/4 lg:w-3/5 md:mx-auto md:my-6">
         <DynamicVideoProblem url={url} />
-        <ul className="p-6  list-disc">
+        <ul className="px-12  list-disc">
           <li>
             <strong>Name:</strong> {currentProblemData?.name}
           </li>
@@ -88,7 +88,9 @@ export default function ProblemPage({
           </li>
         </ul>
         <div className="h-[200px]">
-          {currentAreaData && <DynamicMap data={[currentAreaData]} />}
+          {currentAreaData && (
+            <DynamicMap className="rounded" data={[currentAreaData]} />
+          )}
         </div>
       </div>
     </>

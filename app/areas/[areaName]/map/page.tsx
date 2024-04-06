@@ -5,7 +5,7 @@ import Link from "next/link";
 import Search from "@/app/ui/Search";
 import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
-
+import { PiMapPin } from "react-icons/pi";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)
@@ -55,11 +55,10 @@ export default function MapAreaPage({
       </Link>
     );
   });
-
   const parkingList = currentAreaData.parkings.map((parking: IParking) => {
     return (
-      <p key={nanoid()} className="px-4">
-        - Parking Coordinates:{" "}
+      <p key={nanoid()} className="px-4 flex gap-1">
+        <PiMapPin className="my-auto" /> Parking:
         <a
           href={`https://www.google.com/maps/place/${parking.parking_latitude},${parking.parking_longitude}`}
           target="_blank"
@@ -72,20 +71,22 @@ export default function MapAreaPage({
   });
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col md:gap-4">
       {/* AREA MAP */}
-      <div className="h-[400px]">
-        {currentAreaData && <DynamicMap data={[currentAreaData]} />}
+      <div className="h-72 md:h-80 lg:h-96">
+        {currentAreaData && (
+          <DynamicMap className="rounded" data={[currentAreaData]} />
+        )}
       </div>
       {/* SECTORS: */}
-      <div className="p-6 bg-neutral-200 rounded">
+      <div className="p-6 bg-neutral-100 rounded">
         <div className="flex flex-col gap-4">
           {/* LIST OF SECTORS:  */}
           <h3 className="text-xl font-semibold">Sectors in this area:</h3>
           <Search
             placeholder="Sector"
             paramName="sector"
-            className="input input-bordered w-full h-[36px]"
+            className="px-4 rounded border block w-full border-[#CCCCCC] placeholder:text-bneutral-300 h-[38px]"
           />
           <div className="bg-white p-2 rounded">
             <nav className="font-semibold flex p-2">
@@ -93,17 +94,24 @@ export default function MapAreaPage({
               <p className="w-1/4 text-center">Problems</p>
             </nav>
             <hr />
-            {sectors}
+            {currentAreaData.sectors.length == 0 ? (
+              <p className="p-2">- No sectors available -</p>
+            ) : (
+              sectors
+            )}
           </div>
         </div>
       </div>
       {/* DESCRIPTION HOW TO ARRIVE */}
-      <div className="p-6 bg-neutral-100 rounded">
+      <div className="p-6 bg-white md:bg-neutral-100 rounded">
         <h3 className="text-lg font-semibold">
           Access and Parking Information
         </h3>
-        <h5 className="font-semibold px-2">Parkings:</h5>
-        {parkingList}
+        {currentAreaData.parkings.length == 0 ? (
+          <p className="p-2">- No parking available -</p>
+        ) : (
+          parkingList
+        )}
       </div>
     </div>
   );

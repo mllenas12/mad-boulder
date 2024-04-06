@@ -24,9 +24,9 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
       {/* PHOTO + CTA EXPLORE: */}
       <div
         style={{ backgroundImage: `url(${imageUrl})` }}
-        className="relative bg-no-repeat h-72 md:h-80 bg-cover bg-center text-center  text-white  shadow-xl md:rounded-t"
+        className="relative bg-no-repeat h-72 md:h-80 bg-cover bg-center text-center  text-white  shadow md:rounded-t"
       >
-        <div className="absolute inset-0 bg-black opacity-10 md:rounded-t"></div>
+        {/* <div className="absolute inset-0 bg-black opacity-10 md:rounded-t"></div> */}
         <Link
           href={`/areas/${currentAreaData?.name}/problems`}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-amber-400 text-neutral-600 font-semibold rounded px-4 py-2"
@@ -37,7 +37,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
 
       {/* DESCRIPTION: */}
       <div className="flex flex-col px-6 gap-4 md:rounded-b bg-neutral-100 py-6">
-        <p className="text-center text-neutral-600">
+        <p className="text-center text-neutral-600 md:px-4">
           {currentAreaData?.overview[0]}
         </p>
         <div className=" flex justify-center gap-6 rounded-b ">
@@ -50,7 +50,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
           <p className="w-28 h-28 rounded-full border bg-white text-amber-500 border-amber-500 flex flex-col items-center justify-center">
             <strong className="">Altitude:</strong>
             {"  "}
-            {currentAreaData?.altitude}m
+            {currentAreaData?.altitude}
           </p>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
           </div>
         </Link>
         <Link
-          href={`/areas/${currentAreaData?.name}/map`}
+          href={`/areas/${currentAreaData?.name}/problems`}
           className="rounded-lg "
         >
           <div

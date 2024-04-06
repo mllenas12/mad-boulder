@@ -9239,14 +9239,14 @@
                     "video_count": 30
                 },
                 {
-                    "name": "del Bosc",
-                    "sector_code": "del-bosc",
+                    "name": "Bosc",
+                    "sector_code": "bosc",
                     "id": "PLlwn5IhJiUnPre11_9fpWUBu_l2CkMqgV",
                     "video_count": 81
                 },
                 {
-                    "name": "del Dau",
-                    "sector_code": "del-dau",
+                    "name": "Dau",
+                    "sector_code": "dau",
                     "id": "PLlwn5IhJiUnP61PG-dEdw5glgR267xnOn",
                     "video_count": 59
                 }
