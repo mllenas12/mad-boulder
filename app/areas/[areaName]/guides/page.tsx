@@ -25,7 +25,7 @@ export default function GuidesPage({
         key={link.link}
         href={link.link}
         target="_blank"
-        className="flex gap-2 border rounded p-2 mx-8 bg-white font-semibold"
+        className="flex gap-2 border rounded p-2 bg-white font-semibold"
       >
         <FeatherIcon icon="book" className="text-neutral-600" /> {link.name}
       </a>

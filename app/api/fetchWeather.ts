@@ -9,6 +9,7 @@ export async function getWeatherInfoByCoord(
     apiKey: string | undefined
 ): Promise<IWeatherDataForecast> {
     try {
+
         const res = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${apiKey}&units=metric`
         );

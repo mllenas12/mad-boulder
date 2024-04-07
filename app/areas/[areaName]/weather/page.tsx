@@ -31,18 +31,6 @@ export default async function WeatherPage({
   const LON = currentAreaData?.longitude;
   const apiKey = process.env.WEATHER_API_KEY;
 
-  // const getData = () => {
-  //   return getWeatherInfoByCoord(LAT, LON, apiKey)
-  //     .then((data) => {
-  //       const weatherInfo = formatWeatherData(data);
-  //       return weatherInfo;
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error al obtener los datos del clima:", error);
-  //       return null;
-  //     });
-  // };
-
   const data = await getWeatherInfoByCoord(LAT, LON, apiKey);
   const weatherInfo = formatWeatherData(data);
 
@@ -60,7 +48,7 @@ export default async function WeatherPage({
 
   return (
     <div className="px-8  rounded flex flex-col gap-4">
-      <h3 className="font-semibold text-xl">
+      <h3 className="font-semibold">
         Weather Forecast in {currentArea} Boulder
       </h3>
       <div className="flex flex-col md:flex-row gap-4">

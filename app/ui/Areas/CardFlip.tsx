@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
 import { IArea } from "@/app/lib/types";
-//import styles from "/app/ui/Areas/cardflip.module.css";
 import styles from "./cardflip.module.css";
 
 export const Card = ({
@@ -17,7 +16,6 @@ export const Card = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
   function handleFlip() {
     if (!isAnimating) {
       setIsFlipped(!isFlipped);
@@ -62,16 +60,23 @@ export const Card = ({
 };
 
 export const CardFlip = ({ data }: { data: IArea | undefined }) => {
-  return (
-    <div className="flex flex-wrap gap-8">
-      {data?.guides.map((guide, index) => (
-        <Card
-          key={index}
-          imageUrl={guide.thumbnail}
-          title={guide.name}
-          link={guide.link[0]}
-        />
-      ))}
-    </div>
-  );
+  const cards = data?.guides.map((guide, index) => {
+    let link = "";
+    if (Array.isArray(guide.link) && guide.link.length > 0) {
+      link = guide.link[0];
+    } else if (typeof guide.link === "string") {
+      link = guide.link;
+    }
+    console.log(link);
+    return (
+      <Card
+        key={index}
+        imageUrl={guide.thumbnail}
+        title={guide.name}
+        link={link}
+      />
+    );
+  });
+
+  return <div className="flex flex-wrap gap-8">{cards}</div>;
 };
