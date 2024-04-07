@@ -246,7 +246,7 @@ export interface IFormData {
     climber?: string,
     createdAt?: any,
     email: string,
-    file?: string,
+    file?: any,
     grade: string,
     id?: string,
     isSubscribed?: boolean,

@@ -1,5 +1,5 @@
-import { db, storage } from "./firebase-config";
-import { ref, uploadBytes } from "firebase/storage";
+'use client'
+import { db } from "./firebase-config";
 import { addDoc, collection } from "firebase/firestore";
 import { User } from "firebase/auth";
 import { IFormData } from "../types";
@@ -25,17 +25,4 @@ export const uploadFormToDb = async (formData: IFormData, user: User | null, vid
     } catch (err) {
         console.error("Error adding document:", err)
     }
-}
-
-export const uploadVideo = (file: any) => {
-    const videoRef = ref(storage, `videos/${file.name}`)
-    const task = uploadBytes(videoRef, file)
-        .then((snapshot) => {
-            console.log("uploaded a file")
-            return snapshot
-        })
-        .catch((err) => {
-            console.error('Error uploading file:', err)
-        })
-    return task
 }

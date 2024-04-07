@@ -17,7 +17,6 @@ export default function MyVideosPage() {
 
   useEffect(() => {
     if (uid) {
-      console.log(uid);
       getVideos();
     }
   }, [uid]);
@@ -44,12 +43,11 @@ export default function MyVideosPage() {
   return (
     <div className="text-center flex flex-col gap-4 ">
       <h3 className="text-xl font-semibold">Your uploaded videos:</h3>
-      {/* <div className="flex flex-col gap-4 "> */}
       <Suspense
         fallback={<span className="loading loading-spinner loading-xs"></span>}
       >
         {videos.length == 0 ? (
-          <div className="py-2 mx-auto">
+          <div className="py-10 mx-auto">
             No videos uploaded yet. Try to upload your first video{" "}
             <Link
               href="/video-uploader"

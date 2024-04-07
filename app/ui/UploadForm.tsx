@@ -1,13 +1,17 @@
 "use client";
 import { storage } from "../lib/firebase/firebase-config";
-import { useState, useEffect } from "react";
-import { getBytes, getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { uploadFormToDb, uploadVideo } from "../lib/firebase/firebase-utils";
+import { useState } from "react";
+import { getDownloadURL, ref } from "firebase/storage";
+import { uploadFormToDb } from "../lib/firebase/firebase-utils";
 import { useAuth } from "../lib/context/AuthProvider";
+import { uploadBytesResumable } from "firebase/storage";
 import { useRouter } from "next/navigation";
+import { IFormData } from "../lib/types";
+
 export const UploadForm = () => {
   const { getUser } = useAuth();
-
+  const router = useRouter();
+  const user = getUser();
   const FORM_STATES = {
     USER_NOT_KNOWN: 0,
     LOADING: 1,
@@ -15,7 +19,7 @@ export const UploadForm = () => {
     ERROR: -1,
   };
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IFormData>({
     climber: "",
     email: "",
     problem: "",
@@ -23,17 +27,12 @@ export const UploadForm = () => {
     sector: "",
     grade: "",
     message: "",
-    file: undefined,
+    file: "",
     isSubscribed: true,
   });
 
-  //const [task, setTask] = useState<any>();
-  const [file, setFile] = useState<any>("");
-  const [videoUrl, setVideoUrl] = useState("");
+  const [uploadProgress, setUploadProgress] = useState(2);
   const [status, setStatus] = useState(FORM_STATES.USER_NOT_KNOWN);
-  const user = getUser();
-  const router = useRouter();
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
     setFormData((prevData) => {
@@ -58,32 +57,57 @@ export const UploadForm = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const fileVideo = event.target.files ? event.target.files[0] : null;
-    setFile(fileVideo);
+    setFormData((prevData) => ({
+      ...prevData,
+      file: fileVideo,
+    }));
+  };
+
+  const uploadVideo = (file: any): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const videoRef = ref(storage, `videos/${file.name}`);
+      const uploadTask = uploadBytesResumable(videoRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
+        },
+        (error) => {
+          console.error("Error uploading file:", error);
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((downloadURL) => {
+              console.log("Success upload");
+              resolve(downloadURL);
+            })
+            .catch((error) => {
+              console.error("Error getting download URL:", error);
+              reject(error);
+            });
+        }
+      );
+    });
   };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setStatus(FORM_STATES.LOADING);
-    uploadVideo(file)
-      .then(() => {
-        const videoRef = ref(storage, `videos/${file?.name}`);
-        return getDownloadURL(videoRef);
-      })
-      .then((url) => {
-        setVideoUrl(url);
-        return uploadFormToDb(formData, user, url);
-      })
-      .then(() => setStatus(FORM_STATES.SUCCESS))
-      .then(() => {
-        router.push("/video-uploader/success-upload");
-      })
-      .catch((err) => {
-        console.log(err);
-        setStatus(FORM_STATES.ERROR);
-      });
+    try {
+      const url = await uploadVideo(formData.file);
+      await uploadFormToDb(formData, user, url);
+      setStatus(FORM_STATES.SUCCESS);
+      router.push("/video-uploader/success-upload");
+    } catch (err) {
+      console.error(err);
+      setStatus(FORM_STATES.ERROR);
+    }
   };
-
   const isButtonDisabled = status === FORM_STATES.LOADING;
   return (
     <form
@@ -176,7 +200,6 @@ export const UploadForm = () => {
           //onChange={(e) => handelVideoChange(e.target.files[0])}
           name="file"
           accept="file"
-          value={formData.file}
           className="file-input file-input-bordered file-input-xs w-full max-w-xs"
           required
         />
@@ -216,6 +239,12 @@ export const UploadForm = () => {
       >
         Upload Video
       </button>
+      <div className="col-span-2 w-full bg-gray-200 rounded-md overflow-hidden mx-auto">
+        <div
+          className={`bg-yellow-400 h-2 transition-all`}
+          style={{ width: `${uploadProgress}%` }}
+        ></div>
+      </div>
     </form>
   );
 };

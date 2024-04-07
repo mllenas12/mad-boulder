@@ -25,7 +25,6 @@ export const SignUpForm = () => {
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log(errors);
     let formErrors: string[] = [];
 
     if (!validatePassword(password)) {
@@ -43,7 +42,7 @@ export const SignUpForm = () => {
           .replaceAll("-", " ")
           .toUpperCase();
 
-        formErrors.push("jelou");
+        formErrors.push("");
       }
     }
     setErrors((prevErrors: string[]) => [...prevErrors, ...formErrors]);
@@ -70,7 +69,7 @@ export const SignUpForm = () => {
           placeholder="Full name"
           required
           onChange={(e) => setName(e.target.value)}
-          className="w-full  h-9 mx-auto placeholder:px-4 rounded"
+          className="w-full px-4 h-9 mx-auto  rounded"
         />
         <input
           type="email"
@@ -79,7 +78,7 @@ export const SignUpForm = () => {
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4 rounded"
+          className="w-full h-9 mx-auto px-4 rounded"
         />
         <input
           type="password"
@@ -89,7 +88,7 @@ export const SignUpForm = () => {
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4 rounded"
+          className="w-full h-9 mx-auto px-4 rounded"
         />
         <input
           type="password"
@@ -98,7 +97,7 @@ export const SignUpForm = () => {
           placeholder="Confirm your password"
           required
           onChange={(e) => setConfifmedPassword(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4 rounded"
+          className="w-full h-9 mx-auto px-4 rounded"
         />
 
         <div className="flex flex-col">{displayErrors}</div>
@@ -125,7 +124,7 @@ export const SignUpForm = () => {
               I agreed to the{" "}
               <Link
                 href={"/video-uploader"}
-                className="text-semantic2-800 font-semibold cursor-pointer"
+                className="text-amber-400 font-semibold cursor-pointer"
               >
                 Terms and Conditions <span className="text-red-500">*</span>
               </Link>
@@ -142,7 +141,7 @@ export const SignUpForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-semantic2-700 text-white p-1 rounded"
+          className="w-full bg-amber-400 text-white p-1 rounded"
         >
           SIGN UP
         </button>

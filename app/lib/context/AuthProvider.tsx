@@ -27,6 +27,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const logIn = (
     email: string,
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const user = userCredential.user;
         if (user) {
           updateProfile(user, { displayName });
-          router.push("/success");
+          router.push("/sign-up/success");
         }
       })
       .catch((err) => {
@@ -66,7 +67,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logOut = (router: AppRouterInstance) => {
     signOut(auth)
-      .then(() => router.replace("/"))
+      .then(() => {
+        console.log("Successfult logout");
+        router.replace("/");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -75,8 +79,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       setCurrentUser(authUser);
+      setIsLoading(false);
     });
 
     return () => {
@@ -86,7 +92,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ currentUser, getUser, logIn, signUp, logOut, loginWithGoogle }}
+      value={{
+        currentUser,
+        getUser,
+        logIn,
+        signUp,
+        logOut,
+        loginWithGoogle,
+        isLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>

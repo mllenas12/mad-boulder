@@ -20,7 +20,7 @@ export const SignUpGoogle = () => {
       className="w-full flex border p-2 justify-center gap-2 bg-white"
     >
       <FcGoogle className="my-auto" />
-      <p className="text-semantic2-800">Continue with Google</p>
+      <p>Continue with Google</p>
     </button>
   );
 };

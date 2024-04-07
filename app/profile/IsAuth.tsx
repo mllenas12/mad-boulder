@@ -1,7 +1,6 @@
 "use client";
-import { isAuthenticated } from "../lib/utils/protect-utils";
-import { useEffect } from "react";
 import { redirect } from "next/navigation";
+import { useAuth } from "../lib/context/AuthProvider";
 
 export default function IsAuth({
   user,
@@ -10,17 +9,12 @@ export default function IsAuth({
   user: any;
   children: any;
 }) {
-  useEffect(() => {
-    const auth = isAuthenticated(user);
-
-    if (!auth) {
-      redirect("/log-in");
-    }
-  }, [user]);
+  const { isLoading } = useAuth();
+  if (isLoading) return null;
 
   if (!user) {
-    return null;
+    redirect("/log-in");
+  } else {
+    return children;
   }
-
-  return children;
 }

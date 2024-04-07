@@ -25,7 +25,7 @@ export default function GuidesPage({
         key={link.link}
         href={link.link}
         target="_blank"
-        className="flex gap-2 border rounded p-2 bg-white font-semibold"
+        className="flex gap-2 border rounded p-2 bg-neutral-100 font-semibold"
       >
         <FeatherIcon icon="book" className="text-neutral-600" /> {link.name}
       </a>
@@ -33,11 +33,15 @@ export default function GuidesPage({
   });
 
   return (
-    <div className="px-8 bg-neutral-100 rounded flex flex-col gap-4 py-6">
+    <div className="md:px-8 bg-neutral-100 rounded flex flex-col gap-6 py-6">
       {/* Guides Images: */}
       <CardFlip data={currentAreaData} />
       {/* LINKS: */}
-      <div className="flex flex-col gap-4">{links}</div>
+      <div className="bg-white p-8">
+        <h4 className="font-semibold">Websites of interest:</h4>
+        <div className="divider"></div>
+        <div className="flex flex-col gap-4">{links}</div>
+      </div>
     </div>
   );
 }

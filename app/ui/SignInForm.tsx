@@ -55,7 +55,7 @@ export const SignInForm = () => {
           placeholder="Email"
           required
           onChange={(e) => setEmail(e.target.value.trim())}
-          className="w-full  h-9 mx-auto placeholder:px-4"
+          className="w-full  h-9 mx-auto px-4"
         />
         <input
           type="password"
@@ -64,7 +64,7 @@ export const SignInForm = () => {
           placeholder="Password"
           required
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full h-9 mx-auto placeholder:px-4"
+          className="w-full h-9 mx-auto px-4"
         />
         {errors.password && (
           <p className="text-red-500 text-xs font-semibold ">

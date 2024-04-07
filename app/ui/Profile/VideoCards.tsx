@@ -9,7 +9,6 @@ export const VideoCards = ({ video }: { video: IFormData }) => {
   const [color, setColor] = useState("");
   useEffect(() => {
     setStatusColor(video.state);
-    console.log(video.state);
   }),
     [video.state];
   const setStatusColor = (status: string | undefined) => {

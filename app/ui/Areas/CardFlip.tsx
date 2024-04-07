@@ -45,9 +45,9 @@ export const Card = ({
         <div
           className={`${styles.flipCardBack} w-[100%] h-[100%] bg-cover border-[1px] text-center rounded-lg p-4 bg-neutral-300 flex flex-col justify-center gap-4`}
         >
-          <h4 className="font-semibold text-xs ">{title}</h4>
+          <h6 className="font-semibold">{title}</h6>
           <a
-            className="bg-yellow-400 px-4 p-2 w-fit text-xs mx-auto rounded"
+            className="bg-amber-300 px-4 p-2 w-fit text-xs mx-auto rounded"
             href={link}
             target="_blank"
           >
@@ -67,7 +67,7 @@ export const CardFlip = ({ data }: { data: IArea | undefined }) => {
     } else if (typeof guide.link === "string") {
       link = guide.link;
     }
-    console.log(link);
+
     return (
       <Card
         key={index}
