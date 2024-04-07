@@ -2,14 +2,19 @@
 import React from "react";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
+import zoneData from "@/app/lib/data/zoneData.json";
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 import { FiMenu } from "react-icons/fi";
+import { IArea } from "../lib/types";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
+  const areaList = zoneData.items.map((area: IArea) => area.name);
+  const [query, setQuery] = useState("");
+
   const { logOut, getUser } = useAuth();
   const router = useRouter();
   const user = getUser();
@@ -71,7 +76,7 @@ export default function Navbar() {
 
           <ul
             tabIndex={0}
-            className="menu menu-md dropdown-content text-black  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-md dropdown-content text-black  mt-3 z-2 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link href="/profile">PROFILE</Link>
@@ -98,11 +103,44 @@ export default function Navbar() {
                   placeholder="Search"
                   type="text"
                   name="search"
-                  //onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => setQuery(event.target.value)}
                 />
               </label>
+              <div
+                className={`absolute mt-1 z-10 w-full p-2 bg-white shadow-lg rounded-bl rounded-br overflow-y-auto ${
+                  query == "" && "hidden"
+                }`}
+              >
+                {areaList
+                  .filter((area) => area.toLocaleLowerCase().includes(query))
+                  .map((area, index) => {
+                    return (
+                      <Link
+                        key={index}
+                        href={`areas/${area}/info`}
+                        className={`relative z-40 text-xs p-2 text-start hover:bg-black hover:bg-opacity-10 flex flex-col `}
+                      >
+                        <p className="text-black">{area}</p>
+                      </Link>
+                    );
+                  })}
+              </div>
             </div>
           ) : (
+            // <div className="my-auto">
+            //   <label className="relative block">
+            //     <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+            //       <img src="/lupa.svg" alt="" className="w-4" />
+            //     </span>
+            //     <input
+            //       className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border text-black border-slate-300 rounded-md py-2 pl-3  shadow-sm focus:outline-none  sm:text-sm"
+            //       placeholder="Search"
+            //       type="text"
+            //       name="search"
+            //       onChange={(event) => setQuery(event.target.value)}
+            //     />
+            //   </label>
+            // </div>
             <button onClick={activeSearch}>
               <IoIosSearch className="my-auto" size="30px" />
             </button>

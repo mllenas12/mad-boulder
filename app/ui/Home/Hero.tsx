@@ -7,7 +7,7 @@ const Hero = () => {
       style={{ backgroundImage: "url('/images/backgrounds/bg-md-3.jpeg')" }}
     >
       <div className="absolute inset-0 bg-black opacity-20 px-4"></div>
-      <div className="z-3 relative text-end px-6 md:px-10 flex flex-col  gap-8">
+      <div className="z-1 relative text-end px-6 md:px-10 flex flex-col  gap-8">
         <h1 className="md:w-3/4 lg:w-1/2 md:ml-auto font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           ROCK CLIMBING ACCESSIBLE FOR EVERYONE
         </h1>

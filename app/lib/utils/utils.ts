@@ -151,8 +151,8 @@ export const orderSelectOptionsByGrade = (array: IProblem[]) => {
             uniqueGrades.push(grade);
         }
     });
-
-    uniqueGrades.sort();
+    uniqueGrades.sort((a, b) => a.localeCompare(b))
+    //uniqueGrades.sort();
     const gradeList = uniqueGrades.map((grade: string) => {
         return { value: grade, label: grade }
     })

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import zoneData from "@/app/lib/data/zoneData.json";
-import { useDebouncedCallback } from "use-debounce";
 import { IArea } from "@/app/lib/types";
 import Link from "next/link";
 export const AreaFinder = () => {
@@ -21,7 +20,9 @@ export const AreaFinder = () => {
             placeholder="Search by zone"
             type="text"
             name="search"
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) =>
+              setQuery(event.target.value.toLocaleLowerCase())
+            }
           />
         </label>
         {/* Search Results Container */}

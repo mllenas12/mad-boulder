@@ -8,7 +8,9 @@ export const Explore = () => {
       <p>The best boulder climbing destinations only one click away.</p>
       <Carousel />
 
-      <Button url="/areas">BROWSE BOULDERING AREAS</Button>
+      <Button url="/areas" className="">
+        BROWSE BOULDERING AREAS
+      </Button>
     </div>
   );
 };
