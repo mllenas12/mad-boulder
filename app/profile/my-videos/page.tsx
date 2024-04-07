@@ -41,7 +41,7 @@ export default function MyVideosPage() {
   });
 
   return (
-    <div className="text-center flex flex-col gap-4 ">
+    <div className="text-center flex flex-col gap-8 ">
       <h3 className="text-xl font-semibold">Your uploaded videos:</h3>
       <Suspense
         fallback={<span className="loading loading-spinner loading-xs"></span>}
@@ -58,7 +58,7 @@ export default function MyVideosPage() {
             <PiVideo size={"40px"} className="mx-auto my-4" />
           </div>
         ) : (
-          <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2">
+          <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2 xl:grid-cols-4">
             {videoCard}
           </div>
         )}

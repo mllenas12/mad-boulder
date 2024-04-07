@@ -36,7 +36,7 @@ export default function Navbar() {
           <img
             src="/logo/logo-menu.webp"
             alt="madboulder logo"
-            className="w-10 ms-4"
+            className="w-10 lg:w-14 ms-4"
           />
         </Link>
       </div>
@@ -76,7 +76,7 @@ export default function Navbar() {
 
           <ul
             tabIndex={0}
-            className="menu menu-md dropdown-content text-black  mt-3 z-2 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-md dropdown-content text-black  z-10 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link href="/profile">PROFILE</Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
                 />
               </label>
               <div
-                className={`absolute mt-1 z-10 w-full p-2 bg-white shadow-lg rounded-bl rounded-br overflow-y-auto ${
+                className={`absolute mt-1 z-10  w-[182px] p-2 bg-white shadow-lg rounded overflow-y-auto ${
                   query == "" && "hidden"
                 }`}
               >
@@ -118,7 +118,9 @@ export default function Navbar() {
                       <Link
                         key={index}
                         href={`areas/${area}/info`}
-                        className={`relative z-40 text-xs p-2 text-start hover:bg-black hover:bg-opacity-10 flex flex-col `}
+                        className={`relative z-40 text-xs p-2 text-start hover:bg-black hover:bg-opacity-10 flex flex-col ${
+                          query == "" && "hidden"
+                        }`}
                       >
                         <p className="text-black">{area}</p>
                       </Link>

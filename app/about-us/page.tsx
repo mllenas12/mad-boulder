@@ -1,6 +1,6 @@
 export default function AboutUsPage() {
   return (
-    <div className="p-8 md:px-24 flex flex-col gap-8 text-center">
+    <div className="p-8 md:w-3/4 lg:w-1/2 flex flex-col gap-6 md:gap-12 text-center md:mx-auto">
       <h2 className="text-2xl font-semibold">WELCOME TO MADBOULDER</h2>
       <p className="text-sm">
         We are a dedicated team working towards a future where outdoor climbing
@@ -16,17 +16,21 @@ export default function AboutUsPage() {
         and requirements of climbers.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center mx-auto">
-        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/example.jpeg')]">
-          <h4>237</h4>
-          <h4>AREAS</h4>
+        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/backgrounds/bg-stats.webp')]">
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">237</h4>
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">AREAS</h4>
         </div>
-        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/example.jpeg')]">
-          <h4>8893</h4>
-          <h4>VIDEOS</h4>
+        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/backgrounds/bg-contributors.webp')]">
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">8893</h4>
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            VIDEOS
+          </h4>
         </div>
-        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/example.jpeg')]">
-          <h4>591</h4>
-          <h4>CONTRIBUTORS</h4>
+        <div className="flex flex-col justify-center h-24 w-44 rounded text-white font-semibold  text-center text-xl bg-cover bg-[url('/images/backgrounds/bg-evans.jpeg')]">
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">591</h4>
+          <h4 className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            CONTRIBUTORS
+          </h4>
         </div>
       </div>
       <p className="text-sm">

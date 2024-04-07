@@ -8,9 +8,9 @@ export const AreaFinder = () => {
   const [query, setQuery] = useState("");
 
   return (
-    <div className="text-center p-12 flex flex-col gap-4">
+    <div className="text-center p-8 flex flex-col gap-4">
       <h3 className="font-semibold">AREA FINDER</h3>
-      <div className="relative">
+      <div className="relative md:w-3/4 lg:w-1/2 md:mx-auto">
         <label className="relative block">
           <span className="absolute inset-y-0 right-0 flex items-center pr-2">
             <img src="/lupa.svg" alt="" className="w-4" />

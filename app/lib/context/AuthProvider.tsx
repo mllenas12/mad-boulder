@@ -68,7 +68,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logOut = (router: AppRouterInstance) => {
     signOut(auth)
       .then(() => {
-        console.log("Successfult logout");
         router.replace("/");
       })
       .catch((err) => console.log(err));

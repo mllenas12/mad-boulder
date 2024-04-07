@@ -4,6 +4,8 @@ import { FaCircle } from "react-icons/fa";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { setRandomNumber } from "@/app/lib/utils/utils";
+import { FiEye } from "react-icons/fi";
+import { FaRegCalendar } from "react-icons/fa";
 
 export const VideoCards = ({ video }: { video: IFormData }) => {
   const [color, setColor] = useState("");
@@ -22,7 +24,7 @@ export const VideoCards = ({ video }: { video: IFormData }) => {
   };
 
   return (
-    <div key={video.id} className="flex w-full px-4">
+    <div key={video.id} className="flex w-full px-4 rounded-xl">
       <video
         controls
         width="100%"
@@ -32,13 +34,17 @@ export const VideoCards = ({ video }: { video: IFormData }) => {
         <source src={video.file} type="video/mp4" />
       </video>
       <div className="py-2 w-2/3 text-start px-4 flex flex-col gap-2 bg-white rounded-r shadow-xl">
-        <h5 className="font-semibold">{video.problem}</h5>
-        <p className="text-xs ps-2">{video.createdAt}</p>
-        <div className="text-xs flex gap-2 ps-2">
-          <FaCircle fill={color} className="my-auto" />
+        <h5 className="font-semibold">- {video.problem} -</h5>
+        <p className=" ps-2 flex gap-2">
+          <FaRegCalendar className="my-auto" />
+          {video.createdAt}
+        </p>
+        <div className="flex gap-2 ps-2">
+          <FaCircle fill={color} className="my-auto text-xs" />
           <p>{video.state} </p>
         </div>
-        <p className="text-xs ps-2">
+        <p className=" ps-2 flex gap-2">
+          <FiEye className="my-auto" />
           Views: {video.state == "Published" ? setRandomNumber(1, 1500) : 0}
         </p>
       </div>

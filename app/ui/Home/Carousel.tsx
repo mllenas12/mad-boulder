@@ -2,14 +2,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 export default function Carousel() {
   const data = [
-    {
-      zone: "Fontainebleau",
-      img: "https://i.ytimg.com/vi/bdOutNHHFQY/maxresdefault.jpg",
-      description:
-        "Fontainebleau is a world-renowned bouldering destination in France boasting an incredible array of sandstone boulders.",
-    },
     {
       zone: "Albarracín",
       img: "https://i.ytimg.com/vi/gzYvLc6M_cY/maxresdefault.jpg",
@@ -35,6 +30,12 @@ export default function Carousel() {
         "Red Rocks, in Las Vegas, stands as a bouldering gem, renowned for its beautiful sandstone boulders under the desert sun.",
     },
     {
+      zone: "Fontainebleau",
+      img: "https://i.ytimg.com/vi/bdOutNHHFQY/maxresdefault.jpg",
+      description:
+        "Fontainebleau is a world-renowned bouldering destination in France boasting an incredible array of sandstone boulders.",
+    },
+    {
       zone: "Targasonne",
       img: "https://i.ytimg.com/vi/YitmF3ybluM/maxresdefault.jpg",
       description:
@@ -53,45 +54,100 @@ export default function Carousel() {
     centerMode: true,
     centerPadding: "60px",
     speed: 500,
-    slidesToShow: 3,
-    //slidesToScroll: 3,
+    slidesToShow: 7,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 2140,
+        settings: {
+          slidesToShow: 5,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1590,
+        settings: {
+          slidesToShow: 4,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1340,
         settings: {
           slidesToShow: 3,
           infinite: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1040,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 540,
         settings: {
           slidesToShow: 1,
         },
       },
     ],
   };
+
+  //   infinite: true,
+  //   className: "center",
+  //   centerMode: true,
+  //   centerPadding: "60px",
+  //   speed: 500,
+  //   slidesToShow: 6,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 6,
+  //         infinite: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 900,
+  //       settings: {
+  //         slidesToShow: 3,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 3,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //       },
+  //     },
+  //   ],
+  // };
   return (
-    <div className="px-2 mx-4">
+    <div className="px-2 mx-4 md:w-3/4  md:mx-auto">
       <div className="mt-4">
         <Slider {...settings}>
           {data.map((d, index) => (
-            <div
-              key={d.zone}
-              className={`bg-white h-[370px] lg:h-[330px]  text-black rounded`}
+            <Link
+              href={`/areas/${d.zone}/info`}
+              key={index}
+              className={`bg-white h-[320px] lg:h-[330px]  text-black rounded-xl`}
             >
-              <img src={d.img} alt="" className={`rounded-t h-48 w-full `} />
+              <img src={d.img} alt="" className={`rounded-t-xl h-40 w-full `} />
               <div className="text-center flex flex-col gap-2 p-3">
-                <p className="font-semibold md:text-xl">{d.zone}</p>
+                <p className="font-semibold md:text-xl">- {d.zone} -</p>
                 <p className="text-xs">{d.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </Slider>
       </div>

@@ -62,10 +62,12 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
           className="rounded-lg "
         >
           <div
-            style={{ backgroundImage: "url(/images/stats-sectors.webp)" }}
+            style={{
+              backgroundImage: "url(/images/backgrounds/bg-evans.jpeg)",
+            }}
             className="relative bg-no-repeat h-40 w-40 bg-cover bg-center text-center flex flex-col text-white justify-center rounded-lg shadow-xl"
           >
-            <div className="absolute inset-0 bg-black opacity-20 rounded-lg  "></div>
+            <div className="absolute inset-0 bg-black opacity-0 rounded-lg  "></div>
             <div className="relative z-10 px-2 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               <h3 className="font-semibold ">
                 {currentAreaData?.sectors.length} Sector
@@ -79,10 +81,13 @@ export default function InfoPage({ params }: { params: { areaName: string } }) {
           className="rounded-lg "
         >
           <div
-            style={{ backgroundImage: "url(/images/stats-videos.webp)" }}
+            style={{
+              backgroundImage:
+                "url(/images/backgrounds/bouldering-background.webp)",
+            }}
             className="relative bg-no-repeat h-40 w-40 bg-cover bg-center text-center flex flex-col text-white justify-center rounded-lg shadow-xl"
           >
-            <div className="absolute inset-0 bg-black opacity-20 rounded-lg  "></div>
+            <div className="absolute inset-0 bg-black opacity-0 rounded-lg  "></div>
             <div className="relative z-10 px-2 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               <h3 className="font-semibold ">
                 {currentAreaData?.video_count} video

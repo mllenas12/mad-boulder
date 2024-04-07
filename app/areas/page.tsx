@@ -85,7 +85,9 @@ export default function AreasPage({
           <div className="">
             <SortButtons />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">{cards}</div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+            {cards}
+          </div>
         </div>
       </div>
     </div>

@@ -75,7 +75,7 @@ export default function ProblemPage({
           <li>
             <strong>Sector:</strong>{" "}
             <Link
-              href={`/areas/${currentProblemData?.zone}/explore?sectors=${currentProblemData?.sector}`}
+              href={`/areas/${currentProblemData?.zone}/problems?sectors=${currentProblemData?.sector}`}
             >
               {currentProblemData?.sector}
             </Link>

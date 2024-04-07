@@ -7,7 +7,7 @@ export const AreaCard = ({ area }: { area: IArea }) => {
         style={{ backgroundImage: `url(${area.thumbnail})` }}
         className="relative bg-no-repeat h-48 lg:h-52 bg-cover bg-center text-center flex flex-col text-white justify-center rounded-lg shadow-xl"
       >
-        <div className="absolute inset-0 bg-black opacity-40 rounded-lg  "></div>
+        <div className="absolute inset-0 bg-black opacity-30 hover:opacity-0 rounded-lg  "></div>
         <div className="relative z-2 px-2 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           <h3 className="font-semibold ">{area.name}</h3>
           <h4 className="">

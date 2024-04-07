@@ -154,7 +154,7 @@ export const UploadForm = () => {
       <div className="col-span-2 md:col-span-1">
         <input
           type="text"
-          placeholder="Area"
+          placeholder="Zone"
           onChange={handleChange}
           name="area"
           value={formData.area}
@@ -204,19 +204,21 @@ export const UploadForm = () => {
           required
         />
       </div>
-      <div className="col-span-2 flex items-start">
-        <input
-          type="checkbox"
-          id="permission"
-          name="permission"
-          className="mr-2 my-auto"
-          required
-        />
-        <label htmlFor="permission" className="text-xs">
-          I grant permission to MadBoulder to use the submitted video on YouTube
-          for public display.
-        </label>
-      </div>
+      {!user && (
+        <div className="col-span-2 flex items-start">
+          <input
+            type="checkbox"
+            id="permission"
+            name="permission"
+            className="mr-2 my-auto"
+            required
+          />
+          <label htmlFor="permission" className="text-xs">
+            I grant permission to MadBoulder to use the submitted video on
+            YouTube for public display.
+          </label>
+        </div>
+      )}
       <div className="col-span-2 flex items-start">
         <input
           type="checkbox"
