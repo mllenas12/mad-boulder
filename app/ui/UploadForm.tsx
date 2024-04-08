@@ -197,42 +197,43 @@ export const UploadForm = () => {
         <input
           type="file"
           onChange={handelVideoChange}
-          //onChange={(e) => handelVideoChange(e.target.files[0])}
           name="file"
           accept="file"
           className="file-input file-input-bordered file-input-xs w-full max-w-xs"
           required
         />
       </div>
+
+      <div className="col-span-2 flex items-start">
+        <input
+          type="checkbox"
+          id="permission"
+          name="permission"
+          className="mr-2 my-auto"
+          required
+        />
+        <label htmlFor="permission" className="text-xs">
+          I grant permission to MadBoulder to use the submitted video on YouTube
+          for public display.
+        </label>
+      </div>
+
       {!user && (
         <div className="col-span-2 flex items-start">
           <input
             type="checkbox"
-            id="permission"
-            name="permission"
+            id="isSubscribed"
+            name="isSubscribed"
+            checked={formData.isSubscribed}
+            onChange={handleChange}
             className="mr-2 my-auto"
-            required
           />
-          <label htmlFor="permission" className="text-xs">
-            I grant permission to MadBoulder to use the submitted video on
-            YouTube for public display.
+          <label htmlFor="isSubscribed" className="text-xs">
+            {" "}
+            I wish to subscribe to MadBoulder&apos;s newsletter
           </label>
         </div>
       )}
-      <div className="col-span-2 flex items-start">
-        <input
-          type="checkbox"
-          id="isSubscribed"
-          name="isSubscribed"
-          checked={formData.isSubscribed}
-          onChange={handleChange}
-          className="mr-2 my-auto"
-        />
-        <label htmlFor="isSubscribed" className="text-xs">
-          {" "}
-          I wish to subscribe to MadBoulder&apos;s newsletter
-        </label>
-      </div>
       <button
         disabled={isButtonDisabled}
         className={`col-span-2   text-neutral-700 font-semibold rounded w-fit px-4 py-2 mx-auto ${
