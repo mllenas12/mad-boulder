@@ -59,7 +59,7 @@ export default function MyVideosPage() {
             <PiVideo size={"40px"} className="mx-auto my-4" />
           </div>
         ) : (
-          <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2 xl:grid-cols-4">
+          <div className="flex flex-col gap-y-6 md:px-8 md:grid md:grid-cols-2 xl:grid-cols-3 xl:px-16">
             {videoCard}
           </div>
         )}
