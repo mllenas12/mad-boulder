@@ -1,11 +1,10 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
-import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link.js";
-import { IFormErrors } from "@/app/lib/types";
-import { useAuth } from "../lib/context/AuthProvider";
+import { IFormErrors } from "@/lib/types";
+import { useAuth } from "@/lib/context/AuthProvider";
 
 export const SignInForm = () => {
   const [email, setEmail] = useState("");

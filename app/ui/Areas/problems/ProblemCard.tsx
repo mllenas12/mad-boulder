@@ -1,7 +1,6 @@
-import { IProblem } from "@/app/lib/types";
+import { IProblem } from "@/lib/types";
 import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa6";
-import { GiCarabiner } from "react-icons/gi";
 import { PiMapPin, PiStar } from "react-icons/pi";
 
 import { nanoid } from "nanoid";

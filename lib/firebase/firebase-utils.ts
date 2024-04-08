@@ -2,8 +2,8 @@
 import { db } from "./firebase-config";
 import { addDoc, collection } from "firebase/firestore";
 import { User } from "firebase/auth";
-import { IFormData } from "../types";
-import { getFormattedActualDate } from "../utils/utils";
+import { IFormData } from "@/lib/types";
+import { getFormattedActualDate } from "@/lib/utils/utils";
 
 export const uploadFormToDb = async (formData: IFormData, user: User | null, videoUrl: string) => {
     try {

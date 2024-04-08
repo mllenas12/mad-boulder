@@ -1,12 +1,12 @@
 "use client";
-import { storage } from "../lib/firebase/firebase-config";
+import { storage } from "@/lib/firebase/firebase-config";
 import { useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
-import { uploadFormToDb } from "../lib/firebase/firebase-utils";
-import { useAuth } from "../lib/context/AuthProvider";
+import { uploadFormToDb } from "@/lib/firebase/firebase-utils";
+import { useAuth } from "@/lib/context/AuthProvider";
 import { uploadBytesResumable } from "firebase/storage";
 import { useRouter } from "next/navigation";
-import { IFormData } from "../lib/types";
+import { IFormData } from "@/lib/types";
 
 export const UploadForm = () => {
   const { getUser } = useAuth();
@@ -198,7 +198,7 @@ export const UploadForm = () => {
           type="file"
           onChange={handelVideoChange}
           name="file"
-          accept="file"
+          accept="video/*"
           className="file-input file-input-bordered file-input-xs w-full max-w-xs"
           required
         />

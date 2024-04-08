@@ -1,5 +1,5 @@
-import { IWeatherData } from "@/app/lib/types";
-import { getIdUrl } from "@/app/lib/utils/utils";
+import { IWeatherData } from "@/lib/types";
+import { getIdUrl } from "@/lib/utils/utils";
 
 export const Forecast = ({ data }: { data: IWeatherData }) => {
   const iconUrl = getIdUrl(data.info.icon);

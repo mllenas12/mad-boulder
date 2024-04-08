@@ -2,12 +2,12 @@
 import React from "react";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
-import zoneData from "@/app/lib/data/zoneData.json";
+import zoneData from "@/lib/data/zoneData.json";
 import { useEffect, useState } from "react";
-import { useAuth } from "../lib/context/AuthProvider";
+import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 import { FiMenu } from "react-icons/fi";
-import { IArea } from "../lib/types";
+import { IArea } from "@/lib/types";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -36,7 +36,7 @@ export default function Navbar() {
           <img
             src="/logo/logo-menu.webp"
             alt="madboulder logo"
-            className="w-10 lg:w-14 ms-4"
+            className="w-10 ms-4"
           />
         </Link>
       </div>

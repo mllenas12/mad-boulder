@@ -1,6 +1,6 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
-import { useAuth } from "@/app/lib/context/AuthProvider";
+import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 
 export const SignUpGoogle = () => {

@@ -1,4 +1,4 @@
-import { ArrowProps } from "../lib/types";
+import { ArrowProps } from "@/lib/types";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
 const SortArrow = ({ isOrdered }: ArrowProps) => {
   return (

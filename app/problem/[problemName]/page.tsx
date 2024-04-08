@@ -1,6 +1,6 @@
-import problemsData from "@/app/lib/data/problemsData.json";
-import zoneData from "@/app/lib/data/zoneData.json";
-import { IProblem, IProblemArea } from "@/app/lib/types";
+import problemsData from "@/lib/data/problemsData.json";
+import zoneData from "@/lib/data/zoneData.json";
+import { IProblem, IProblemArea } from "@/lib/types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";

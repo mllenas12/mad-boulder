@@ -1,8 +1,7 @@
-import { IArea } from "@/app/lib/types";
-import zoneData from "@/app/lib/data/zoneData.json";
+import { IArea } from "@/lib/types";
+import zoneData from "@/lib/data/zoneData.json";
 import Link from "next/link";
-import { capitalizeFirstLetter } from "@/app/lib/utils/utils";
-import { PiMountains } from "react-icons/pi";
+import { capitalizeFirstLetter } from "@/lib/utils/utils";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>

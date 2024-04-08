@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { TOptions, ISelectOptions } from "@/app/lib/types";
+import { TOptions, ISelectOptions } from "@/lib/types";
 import Select from "react-select";
 
 export const SelectInput = ({

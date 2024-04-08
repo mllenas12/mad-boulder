@@ -9,11 +9,11 @@ import {
   PiVideoBold,
   PiGearBold,
 } from "react-icons/pi";
-import isAuth from "./IsAuth";
 import { BiLike } from "react-icons/bi";
 import { IoLanguage } from "react-icons/io5";
 import { BsGraphUp } from "react-icons/bs";
 import Link from "next/link";
+
 function ProfilePage() {
   return (
     <>

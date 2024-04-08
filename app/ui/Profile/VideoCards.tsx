@@ -1,11 +1,9 @@
 "use client";
-import { IFormData } from "@/app/lib/types";
-import { FaCircle } from "react-icons/fa";
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { setRandomNumber } from "@/app/lib/utils/utils";
+import { IFormData } from "@/lib/types";
+import React, { useEffect, useState } from "react";
+import { setRandomNumber } from "@/lib/utils/utils";
 import { FiEye } from "react-icons/fi";
-import { FaRegCalendar } from "react-icons/fa";
+import { FaRegCalendar, FaCircle } from "react-icons/fa";
 
 export const VideoCards = ({ video }: { video: IFormData }) => {
   const [color, setColor] = useState("");

@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IFormErrors } from "@/app/lib/types";
+import { IFormErrors } from "@/lib/types";
 import Link from "next/link";
-import { useAuth } from "@/app/lib/context/AuthProvider";
+import { useAuth } from "@/lib/context/AuthProvider";
 import { nanoid } from "nanoid";
+
 export const SignUpForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

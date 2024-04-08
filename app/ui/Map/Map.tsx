@@ -3,7 +3,7 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-import { IArea } from "@/app/lib/types";
+import { IArea } from "@/lib/types";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { nanoid } from "nanoid";
 

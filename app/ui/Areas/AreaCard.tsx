@@ -1,4 +1,4 @@
-import { IArea } from "@/app/lib/types";
+import { IArea } from "@/lib/types";
 import Link from "next/link";
 export const AreaCard = ({ area }: { area: IArea }) => {
   return (

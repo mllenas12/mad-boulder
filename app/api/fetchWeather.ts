@@ -1,7 +1,7 @@
 import {
     IWeatherDataForecast,
     IOpenWeatherData,
-} from "@/app/lib/types";
+} from "@/lib/types";
 
 export async function getWeatherInfoByCoord(
     LAT: number | undefined,

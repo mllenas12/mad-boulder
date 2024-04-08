@@ -1,13 +1,14 @@
 "use client";
-import { IFormData } from "@/app/lib/types";
+import { IFormData } from "@/lib/types";
 import { PiVideo } from "react-icons/pi";
-import { useAuth } from "@/app/lib/context/AuthProvider";
+import { useAuth } from "@/lib/context/AuthProvider";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "@/app/lib/firebase/firebase-config";
+import { db } from "@/lib/firebase/firebase-config";
 import { useEffect, useState } from "react";
 import { VideoCards } from "@/app/ui/Profile/VideoCards";
 import Link from "next/link";
 import { Suspense } from "react";
+
 export default function MyVideosPage() {
   const { currentUser } = useAuth();
   const user = currentUser;

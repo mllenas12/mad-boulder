@@ -9,6 +9,7 @@ import {
   PiNotebook,
 } from "react-icons/pi";
 import { usePathname } from "next/navigation";
+
 export const AreaHeader = ({ areaName }: { areaName: string }) => {
   const pathname = usePathname();
 

@@ -1,6 +1,6 @@
 import { CardFlip } from "@/app/ui/Areas/CardFlip";
-import zoneData from "@/app/lib/data/zoneData.json";
-import { IArea } from "@/app/lib/types";
+import zoneData from "@/lib/data/zoneData.json";
+import { IArea } from "@/lib/types";
 import FeatherIcon from "feather-icons-react";
 
 export async function generateStaticParams() {

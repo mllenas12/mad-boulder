@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { SignUpForm } from "../ui/SignUpForm";
-import { SignUpGoogle } from "../ui/SignUpGoogle";
+import { SignUpForm } from "@/app/ui/SignUpForm";
+import { SignUpGoogle } from "@/app/ui/SignUpGoogle";
+
 export default function SignUpPage() {
   return (
     <div className="flex flex-col text-center bg-neutral-100 py-16">

@@ -1,9 +1,9 @@
 import "./globals.css";
 import * as React from "react";
 import Navbar from "@/app/ui/Navbar";
-import { montserrat, raleway } from "@/app/ui/fonts";
+import { raleway } from "@/app/ui/fonts";
 import { Footer } from "@/app/ui/Footer";
-import { AuthProvider } from "./lib/context/AuthProvider";
+import { AuthProvider } from "@/lib/context/AuthProvider";
 
 export default function RootLayout({
   children,

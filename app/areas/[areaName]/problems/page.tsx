@@ -1,13 +1,13 @@
-import zoneData from "@/app/lib/data/zoneData.json";
-import problemsData from "@/app/lib/data/problemsData.json";
-import { IArea, IProblemArea, IProblem, TSector } from "@/app/lib/types";
+import zoneData from "@/lib/data/zoneData.json";
+import problemsData from "@/lib/data/problemsData.json";
+import { IArea, IProblemArea, IProblem, TSector } from "@/lib/types";
 import { nanoid } from "nanoid";
 import Search from "@/app/ui/Search";
 import { SelectInput } from "@/app/ui/SelectInput";
 import SortB from "@/app/ui/SortB";
-import { orderSelectOptionsByGrade } from "@/app/lib/utils/utils";
+import { orderSelectOptionsByGrade } from "@/lib/utils/utils";
 import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
-import { useRouter } from "next/navigation";
+
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)

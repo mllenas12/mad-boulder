@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import zoneData from "@/app/lib/data/zoneData.json";
-import { IArea } from "@/app/lib/types";
+import zoneData from "@/lib/data/zoneData.json";
+import { IArea } from "@/lib/types";
 import Link from "next/link";
+
 export const AreaFinder = () => {
   const areaList = zoneData.items.map((area: IArea) => area.name);
   const [query, setQuery] = useState("");

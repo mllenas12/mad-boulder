@@ -1,6 +1,6 @@
 import Search from "@/app/ui/Search";
-import { SelectInput } from "../SelectInput";
-import { ISelectOptions } from "@/app/lib/types";
+import { SelectInput } from "@/app/ui/SelectInput";
+import { ISelectOptions } from "@/lib/types";
 import { nanoid } from "nanoid";
 
 export const AreasFilter = ({

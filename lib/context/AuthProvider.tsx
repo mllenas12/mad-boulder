@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useContext, createContext, Suspense } from "react";
-import { auth } from "@/app/lib/firebase/firebase-config";
+import React, { useEffect, useContext, createContext } from "react";
+import { auth } from "@/lib/firebase/firebase-config";
 import { useState } from "react";
 import { User } from "firebase/auth";
 import {
@@ -12,12 +12,7 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
-
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-interface IContext {
-  user: User | null;
-  useUser: () => User | null;
-}
 
 export const AuthContext = createContext<any>("");
 
