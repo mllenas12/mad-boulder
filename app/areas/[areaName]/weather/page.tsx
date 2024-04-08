@@ -5,8 +5,8 @@ import {
   getCurrentTemperature,
 } from "@/app/api/fetchWeather";
 import { formatWeatherData } from "@/lib/utils/utils";
-import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
-import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
+import { Forecast } from "@/ui/Areas/Weather/Forecast";
+import { CurrentWeather } from "@/ui/Areas/Weather/CurrentWeather";
 
 export function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>

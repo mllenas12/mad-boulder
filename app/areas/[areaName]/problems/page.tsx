@@ -2,11 +2,11 @@ import zoneData from "@/lib/data/zoneData.json";
 import problemsData from "@/lib/data/problemsData.json";
 import { IArea, IProblemArea, IProblem, TSector } from "@/lib/types";
 import { nanoid } from "nanoid";
-import Search from "@/app/ui/Search";
-import { SelectInput } from "@/app/ui/SelectInput";
-import SortB from "@/app/ui/SortB";
+import Search from "@/ui/Search";
+import { SelectInput } from "@/ui/SelectInput";
+import SortB from "@/ui/SortB";
 import { orderSelectOptionsByGrade } from "@/lib/utils/utils";
-import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
+import { ProblemCard } from "@/ui/Areas/problems/ProblemCard";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>

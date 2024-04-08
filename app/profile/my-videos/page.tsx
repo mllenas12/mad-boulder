@@ -5,7 +5,7 @@ import { useAuth } from "@/lib/context/AuthProvider";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/firebase-config";
 import { useEffect, useState } from "react";
-import { VideoCards } from "@/app/ui/Profile/VideoCards";
+import { VideoCards } from "@/ui/Profile/VideoCards";
 import Link from "next/link";
 import { Suspense } from "react";
 

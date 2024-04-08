@@ -1,7 +1,7 @@
-import { AreaCard } from "@/app/ui/Areas/AreaCard";
-import Map from "@/app/ui/Map/Map";
+import { AreaCard } from "@/ui/Areas/AreaCard";
+import Map from "@/ui/Map/Map";
 import zoneData from "@/lib/data/zoneData.json";
-import { AreasFilter } from "@/app/ui/Areas/AreasFilter";
+import { AreasFilter } from "@/ui/Areas/AreasFilter";
 import SortButtons from "./SortButtons";
 import countries from "@/lib/data/countries.json";
 import { ICountry } from "@/lib/types";

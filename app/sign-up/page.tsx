@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SignUpForm } from "@/app/ui/SignUpForm";
-import { SignUpGoogle } from "@/app/ui/SignUpGoogle";
+import { SignUpForm } from "@/ui/SignUpForm";
+import { SignUpGoogle } from "@/ui/SignUpGoogle";
 
 export default function SignUpPage() {
   return (

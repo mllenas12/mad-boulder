@@ -1,4 +1,4 @@
-import { UploadForm } from "@/app/ui/UploadForm";
+import { UploadForm } from "@/ui/UploadForm";
 export default function VideoUploaderPage() {
   return (
     <div className="relative flex flex-col h-[950px] md:h-[700px]">

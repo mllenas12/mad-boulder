@@ -1,4 +1,4 @@
-import Success from "@/app/ui/Success";
+import Success from "@/ui/Success";
 export default function SuccessUploadPage() {
   return (
     <Success
