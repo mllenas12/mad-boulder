@@ -1,4 +1,4 @@
-import { CardFlip } from "@/ui/Areas/CardFlip";
+import { CardFlip } from "@/app/ui/Areas/CardFlip";
 import zoneData from "@/lib/data/zoneData.json";
 import { IArea } from "@/lib/types";
 import FeatherIcon from "feather-icons-react";

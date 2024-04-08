@@ -1,5 +1,5 @@
 "use client";
-import { ProfileHeader } from "@/ui/Profile/ProfileHeader";
+import { ProfileHeader } from "@/app/ui/Profile/ProfileHeader";
 import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter, redirect } from "next/navigation";
 import { useEffect } from "react";

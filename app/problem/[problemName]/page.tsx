@@ -3,7 +3,7 @@ import zoneData from "@/lib/data/zoneData.json";
 import { IProblem, IProblemArea } from "@/lib/types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import GeneralSkeleton from "@/ui/Skeletons/GeneralSkeleton";
+import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
@@ -14,19 +14,22 @@ export async function generateStaticParams() {
   }));
 }
 
-const DynamicMap = dynamic(() => import("@/ui/Map/Map"), {
+const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
   ssr: false,
   loading: () => <GeneralSkeleton />,
 });
 
-const DynamicVideoProblem = dynamic(() => import("@/ui/VideoProblem"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-[250px] lg:h-[400px]">
-      <GeneralSkeleton />
-    </div>
-  ),
-});
+const DynamicVideoProblem = dynamic(
+  () => import("@/app/ui/Profile/VideoProblem"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[250px] lg:h-[400px]">
+        <GeneralSkeleton />
+      </div>
+    ),
+  }
+);
 
 export default function ProblemPage({
   params,

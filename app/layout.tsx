@@ -1,8 +1,8 @@
-import "@/styles/globals.css";
+import "@/app/globals.css";
 import * as React from "react";
-import Navbar from "@/ui/Navbar";
-import { raleway } from "@/ui/fonts";
-import { Footer } from "@/ui/Footer";
+import Navbar from "@/app/ui/Layout/Navbar";
+import { raleway } from "@/app/ui/fonts";
+import { Footer } from "@/app/ui/Layout/Footer";
 import { AuthProvider } from "@/lib/context/AuthProvider";
 
 export default function RootLayout({

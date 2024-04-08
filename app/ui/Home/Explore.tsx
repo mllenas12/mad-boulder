@@ -1,5 +1,5 @@
-import Button from "@/ui/Button";
-import Carousel from "@/ui/Home/Carousel";
+import Button from "@/app/ui/Buttons/Button";
+import Carousel from "@/app/ui/Home/Carousel";
 
 export const Explore = () => {
   return (

@@ -1,5 +1,5 @@
-import Search from "@/ui/Search";
-import { SelectInput } from "@/ui/SelectInput";
+import Search from "@/app/ui/Inputs/Search";
+import { SelectInput } from "@/app/ui/Inputs/SelectInput";
 import { ISelectOptions } from "@/lib/types";
 import { nanoid } from "nanoid";
 

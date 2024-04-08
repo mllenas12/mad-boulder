@@ -1,5 +1,5 @@
 "use client";
-import SortArrow from "@/ui/SortArrow";
+import SortArrow from "@/app/ui/Buttons/SortArrow";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
 

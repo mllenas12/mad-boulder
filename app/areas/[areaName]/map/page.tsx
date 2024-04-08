@@ -2,9 +2,9 @@ import zoneData from "@/lib/data/zoneData.json";
 import { IArea, TSector, IParking } from "@/lib/types";
 import { nanoid } from "nanoid";
 import Link from "next/link";
-import Search from "@/ui/Search";
+import Search from "@/app/ui/Inputs/Search";
 import dynamic from "next/dynamic";
-import GeneralSkeleton from "@/ui/Skeletons/GeneralSkeleton";
+import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 import { PiMapPin } from "react-icons/pi";
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   return areaNames.map((name) => ({ areaName: name }));
 }
 
-const DynamicMap = dynamic(() => import("@/ui/Map/Map"), {
+const DynamicMap = dynamic(() => import("@/app/ui/Map/Map"), {
   ssr: false,
   loading: () => <GeneralSkeleton />,
 });

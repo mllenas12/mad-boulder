@@ -1,4 +1,4 @@
-import Button from "@/ui/Button";
+import Button from "@/app/ui/Buttons/Button";
 export const Shop = () => {
   return (
     <div className="h-[540px] flex flex-col gap-4 justify-center text-center">

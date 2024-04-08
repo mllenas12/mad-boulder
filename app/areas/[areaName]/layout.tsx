@@ -1,4 +1,4 @@
-import { AreaHeader } from "@/ui/Areas/AreaHeader";
+import { AreaHeader } from "@/app/ui/Areas/AreaHeader";
 
 export default function AreaNameLayout({
   children,
