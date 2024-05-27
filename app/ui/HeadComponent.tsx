@@ -9,8 +9,8 @@ const HeadComponent = ({
 }) => {
   return (
     <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <title>{title ? title : ""}</title>
+      <meta name="description" content={description ? description : ""} />
     </Head>
   );
 };

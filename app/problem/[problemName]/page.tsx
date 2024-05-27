@@ -56,7 +56,7 @@ export default function ProblemPage({
     <>
       <HeadComponent
         title={currentProblemData?.name}
-        description={`Info of ${currentProblemData.name} problem`}
+        description={`Info of ${currentProblemData?.name} problem`}
       />
       <header className="py-8 bg-neutral-200 text-center">
         <h2 className="font-semibold">{currentProblemData?.name}</h2>
