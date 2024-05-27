@@ -4,7 +4,7 @@ const HeadComponent = ({
   title,
   description,
 }: {
-  title: string;
+  title?: string;
   description?: string;
 }) => {
   return (
