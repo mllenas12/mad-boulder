@@ -5,6 +5,7 @@ import { AreasFilter } from "@/app/ui/Areas/AreasFilter";
 import SortButtons from "@/app/ui/Buttons/SortButtons";
 import countries from "@/lib/data/countries.json";
 import { ICountry } from "@/lib/types";
+import HeadComponent from "../ui/HeadComponent";
 export default function AreasPage({
   searchParams,
 }: {
@@ -70,26 +71,32 @@ export default function AreasPage({
   });
 
   return (
-    <div className="flex flex-col md:gap-8">
-      {/* MAP: */}
-      <div className="h-[300px] md:h-[420px]">
-        {filteredData && <Map data={filteredData} className="" />}
-      </div>
-      <div className="flex flex-col gap-6 md:w-4/5 mx-auto mb-10 p-6 bg-neutral-100 lg:p-8 rounded-lg">
-        {/* FINDER: */}
-        <h2 className="font-semibold ">FIND YOUR AREA:</h2>
-        <AreasFilter optionsList={optionsList} />
-        {/* LIST OF AREA CARDS: */}
-        <div className=" ">
-          {/* <div className="hidden md:block"> */}
-          <div className="">
-            <SortButtons />
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
-            {cards}
+    <>
+      <HeadComponent
+        title="Areas"
+        description="Explore climbing areas around the world."
+      />
+      <div className="flex flex-col md:gap-8">
+        {/* MAP: */}
+        <div className="h-[300px] md:h-[420px]">
+          {filteredData && <Map data={filteredData} className="" />}
+        </div>
+        <div className="flex flex-col gap-6 md:w-4/5 mx-auto mb-10 p-6 bg-neutral-100 lg:p-8 rounded-lg">
+          {/* FINDER: */}
+          <h2 className="font-semibold ">FIND YOUR AREA:</h2>
+          <AreasFilter optionsList={optionsList} />
+          {/* LIST OF AREA CARDS: */}
+          <div className=" ">
+            {/* <div className="hidden md:block"> */}
+            <div className="">
+              <SortButtons />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+              {cards}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

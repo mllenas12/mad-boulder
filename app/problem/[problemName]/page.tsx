@@ -4,6 +4,7 @@ import { IProblem, IProblemArea } from "@/lib/types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
+import HeadComponent from "@/app/ui/HeadComponent";
 
 export async function generateStaticParams() {
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
@@ -53,6 +54,10 @@ export default function ProblemPage({
 
   return (
     <>
+      <HeadComponent
+        title={currentProblemData?.name}
+        description={`Info of ${currentProblemData.name} problem`}
+      />
       <header className="py-8 bg-neutral-200 text-center">
         <h2 className="font-semibold">{currentProblemData?.name}</h2>
         <h5>

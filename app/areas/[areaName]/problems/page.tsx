@@ -7,6 +7,7 @@ import { SelectInput } from "@/app/ui/Inputs/SelectInput";
 import SortB from "@/app/ui/Buttons/SortB";
 import { orderSelectOptionsByGrade } from "@/lib/utils/utils";
 import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
+import HeadComponent from "@/app/ui/HeadComponent";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -93,49 +94,56 @@ export default function ExplorePage({
   });
 
   return (
-    <div className="px-6 py-6 bg-neutral-100 rounded">
-      {/* Search: */}
-      <div className="flex flex-col gap-2">
-        <h3 className="font-semibold">Problems in this area:</h3>
-        <div className=" py-2 grid grid-cols-2 md:flex gap-4 md:gap-2 ">
-          <div className="col-span-2 md:w-1/3">
-            <Search
-              placeholder="Search by name"
-              paramName="name"
-              className="px-4 rounded border block w-full border-[#b3b3b3] placeholder:text-bneutral-300 h-[38px]"
-            />
-          </div>
+    <>
+      <HeadComponent
+        title={currentArea}
+        description={currentAreaData?.overview[0]}
+      />
 
-          <div className="col-span-2 md:col-span-1 md:w-1/3">
-            <SelectInput
-              placeholder={"Select Sector"}
-              optionsList={sectorOptionsList}
-              filterBy={"sectors"}
-              defaultValue={defaultValue}
-              id={nanoid()}
-            />
-          </div>
-          <div className="col-span-2 md:col-span-1 md:w-1/3">
-            <SelectInput
-              placeholder={"Select grade"}
-              optionsList={sortedGradeOptionList}
-              filterBy={"grade"}
-              id={nanoid()}
-              defaultValue={[]}
-            />
+      <div className="px-6 py-6 bg-neutral-100 rounded">
+        {/* Search: */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold">Problems in this area:</h3>
+          <div className=" py-2 grid grid-cols-2 md:flex gap-4 md:gap-2 ">
+            <div className="col-span-2 md:w-1/3">
+              <Search
+                placeholder="Search by name"
+                paramName="name"
+                className="px-4 rounded border block w-full border-[#b3b3b3] placeholder:text-bneutral-300 h-[38px]"
+              />
+            </div>
+
+            <div className="col-span-2 md:col-span-1 md:w-1/3">
+              <SelectInput
+                placeholder={"Select Sector"}
+                optionsList={sectorOptionsList}
+                filterBy={"sectors"}
+                defaultValue={defaultValue}
+                id={nanoid()}
+              />
+            </div>
+            <div className="col-span-2 md:col-span-1 md:w-1/3">
+              <SelectInput
+                placeholder={"Select grade"}
+                optionsList={sortedGradeOptionList}
+                filterBy={"grade"}
+                id={nanoid()}
+                defaultValue={[]}
+              />
+            </div>
           </div>
         </div>
+        {/* List of videos */}
+        <div className="py-4">
+          <nav className="font-semibold flex p-2 justify-end text-start">
+            <div className="w-3/5 flex justify-end px-2">
+              <SortB sortBy="Grade" />
+            </div>
+            <hr />
+          </nav>
+          <div className="flex flex-col gap-6 ">{problemList}</div>
+        </div>
       </div>
-      {/* List of videos */}
-      <div className="py-4">
-        <nav className="font-semibold flex p-2 justify-end text-start">
-          <div className="w-3/5 flex justify-end px-2">
-            <SortB sortBy="Grade" />
-          </div>
-          <hr />
-        </nav>
-        <div className="flex flex-col gap-6 ">{problemList}</div>
-      </div>
-    </div>
+    </>
   );
 }

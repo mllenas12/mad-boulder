@@ -7,6 +7,7 @@ import {
 import { formatWeatherData } from "@/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
+import HeadComponent from "@/app/ui/HeadComponent";
 
 export function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -45,16 +46,27 @@ export default async function WeatherPage({
   });
 
   return (
-    <div className="px-6  rounded flex flex-col gap-6 py-6">
-      <h3 className="font-semibold">
-        Weather Forecast in {currentArea} Boulder
-      </h3>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="md:w-1/2 ">
-          <CurrentWeather data={currentWeatherInfo} currentTemp={currentTemp} />
+    <>
+      <HeadComponent
+        title={`Weather Forecast in ${currentArea}`}
+        description={`Detailed weather forecast in ${currentArea}`}
+      />
+      <div className="px-6  rounded flex flex-col gap-6 py-6">
+        <h3 className="font-semibold">
+          Weather Forecast in {currentArea} Boulder
+        </h3>
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="md:w-1/2 ">
+            <CurrentWeather
+              data={currentWeatherInfo}
+              currentTemp={currentTemp}
+            />
+          </div>
+          <div className="flex flex-col gap-4  md:w-1/2 ">
+            {displayForecast}
+          </div>
         </div>
-        <div className="flex flex-col gap-4  md:w-1/2 ">{displayForecast}</div>
       </div>
-    </div>
+    </>
   );
 }
