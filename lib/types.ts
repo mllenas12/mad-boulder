@@ -244,9 +244,9 @@ export interface IFormattedUser {
 export interface IFormData {
     area: string,
     climber?: string,
-    createdAt?: any,
+    createdAt?: string,
     email: string,
-    file?: any,
+    file?: File | null,
     grade: string,
     id?: string,
     isSubscribed?: boolean,
@@ -256,3 +256,7 @@ export interface IFormData {
     state?: string,
     userId?: string,
 }
+
+export type TVideoList = {
+    id: string
+}[]

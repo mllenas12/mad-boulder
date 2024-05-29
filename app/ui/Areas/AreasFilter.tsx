@@ -20,7 +20,6 @@ export const AreasFilter = ({
         optionsList={optionsList}
         filterBy={"countries"}
         id={nanoid()}
-        defaultValue=""
       />
     </div>
   );

@@ -14,7 +14,7 @@ export const SelectInput = ({
   optionsList: ISelectOptions[] | undefined;
   filterBy: string;
   id: string;
-  defaultValue: any;
+  defaultValue?: { value: string; label: string }[];
 }) => {
   const { replace } = useRouter();
   const pathname = usePathname();

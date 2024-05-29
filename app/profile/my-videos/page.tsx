@@ -1,5 +1,5 @@
 "use client";
-import { IFormData } from "@/lib/types";
+import { IFormData, TVideoList } from "@/lib/types";
 import { PiVideo } from "react-icons/pi";
 import { useAuth } from "@/lib/context/AuthProvider";
 import { collection, getDocs, query, where } from "firebase/firestore";

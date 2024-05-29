@@ -27,7 +27,7 @@ export const UploadForm = () => {
     sector: "",
     grade: "",
     message: "",
-    file: "",
+    file: null,
     isSubscribed: true,
   });
 

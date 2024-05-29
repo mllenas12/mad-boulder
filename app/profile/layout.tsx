@@ -10,7 +10,6 @@ export default function ProfileLayout({
 }) {
   const { getUser } = useAuth();
   const user = getUser();
-  const router = useRouter();
 
   useEffect(() => {
     if (!user) {

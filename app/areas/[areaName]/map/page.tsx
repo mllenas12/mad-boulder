@@ -27,7 +27,7 @@ export default function MapAreaPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const currentArea = decodeURIComponent(params.areaName);
-  const currentAreaData: any = zoneData.items.find(
+  const currentAreaData: IArea | undefined = zoneData.items.find(
     (zone: IArea) => zone.name == currentArea
   );
 
@@ -56,7 +56,7 @@ export default function MapAreaPage({
       </Link>
     );
   });
-  const parkingList = currentAreaData.parkings.map((parking: IParking) => {
+  const parkingList = currentAreaData?.parkings.map((parking: IParking) => {
     return (
       <p key={nanoid()} className="px-4 flex gap-1">
         <PiMapPin className="my-auto" /> Parking:
@@ -100,7 +100,7 @@ export default function MapAreaPage({
                 <p className="w-1/4 text-center">Problems</p>
               </nav>
               <hr />
-              {currentAreaData.sectors.length == 0 ? (
+              {currentAreaData?.sectors.length == 0 ? (
                 <p className="p-2">- No sectors available -</p>
               ) : (
                 sectors
@@ -113,7 +113,7 @@ export default function MapAreaPage({
           <h3 className="text-lg font-semibold">
             Access and Parking Information
           </h3>
-          {currentAreaData.parkings.length == 0 ? (
+          {currentAreaData?.parkings.length == 0 ? (
             <p className="p-2">- No parking available -</p>
           ) : (
             parkingList

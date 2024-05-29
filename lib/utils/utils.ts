@@ -1,5 +1,5 @@
 
-import { IWeatherDataForecast, IUniqueGrades, IWeatherData, IDayWeather, IProblem, ISelectOptions } from "@/lib/types";
+import { IWeatherDataForecast, IWeatherForecast, IWeatherData, IDayWeather, IProblem } from "@/lib/types";
 
 export function formatWeatherData(data: IWeatherDataForecast): IWeatherData[] {
     const weatherPerDay = groupWeatherByDay(data);
@@ -54,7 +54,7 @@ function initializeDayWeather(
     };
 }
 
-function updateDayWeather(dayWeather: IDayWeather, forecast: any): void {
+function updateDayWeather(dayWeather: IDayWeather, forecast: IWeatherForecast): void {
     dayWeather.tempMax = Math.round(
         Math.max(dayWeather.tempMax, forecast.main.temp_max)
     );

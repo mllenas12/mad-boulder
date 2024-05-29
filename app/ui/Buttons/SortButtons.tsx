@@ -23,7 +23,10 @@ export default function SortButtons() {
     setOrderDirection(orderDirectionParam);
   }, [searchParams]);
 
-  const handleSort = (orderBy: string, event: any) => {
+  const handleSort = (
+    orderBy: string,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
     changeArrow(orderBy);
     let direction = "asc";
@@ -59,14 +62,6 @@ export default function SortButtons() {
         Number of Videos
         <SortArrow isOrdered={isSortedByVideos} />
       </button>
-      {/* <button
-        onClick={(event) => handleSort("name", event)}
-        className="font-semibold text-xs flex gap-1 p-2 my-auto bg-white rounded justify-center"
-        type="submit"
-      >
-        Alphabetically
-        <SortArrow isOrdered={isSortedAlph} />
-      </button> */}
     </div>
   );
 }
