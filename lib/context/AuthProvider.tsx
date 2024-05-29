@@ -1,40 +1,41 @@
 "use client";
-import React, { useEffect, useContext, createContext } from "react";
+import React, { useEffect, useContext, createContext, useMemo } from "react";
 import { auth } from "@/lib/firebase/firebase-config";
 import { useState } from "react";
 import { User } from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
   onAuthStateChanged,
   updateProfile,
   signOut,
 } from "firebase/auth";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const AuthContext = createContext<any>("");
+export type TAuthContext = {
+  currentUser: User | null;
+  getUser: () => User | null;
+  signUp: (
+    email: string,
+    password: string,
+    displayName: string,
+    router: AppRouterInstance
+  ) => void;
+  logOut: (router: AppRouterInstance) => void;
+  isLoading: boolean;
+};
+export const AuthContext = createContext<TAuthContext | null>(null);
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const logIn = (
-    email: string,
-    password: string,
-    router: AppRouterInstance
-  ) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => router.push("/video-uploader"))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const signUp = async (
     email: string,
@@ -53,11 +54,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const loginWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
   };
 
   const logOut = (router: AppRouterInstance) => {
@@ -89,10 +85,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         currentUser,
         getUser,
-        logIn,
         signUp,
         logOut,
-        loginWithGoogle,
         isLoading,
       }}
     >

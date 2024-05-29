@@ -4,14 +4,17 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link.js";
 import { IFormErrors } from "@/lib/types";
-import { useAuth } from "@/lib/context/AuthProvider";
+import { useLogin } from "@/lib/hooks/useLogin";
+import { useLoginWithGoogle } from "@/lib/hooks/useLoginWithGoogle";
 
 export const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
-  const { loginWithGoogle, logIn } = useAuth();
+  const { logIn } = useLogin();
+  const { loginWithGoogle } = useLoginWithGoogle();
+
   const validateEmail = (email: string) => {
     const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     return re.test(email.trim());
