@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IFormErrors } from "@/lib/types";
 import Link from "next/link";
-import { useAuth } from "@/lib/context/AuthProvider";
 import { nanoid } from "nanoid";
+import { useSignUp } from "@/lib/hooks/useSignUp";
 
 export const SignUpForm = () => {
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ export const SignUpForm = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmedPassword, setConfifmedPassword] = useState("");
   const [displayErrors, setDisplayErrors] = useState<any>();
-  const { signUp } = useAuth();
+  const { signUp } = useSignUp();
   const router = useRouter();
 
   const validatePassword = (password: string) => {

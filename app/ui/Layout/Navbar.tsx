@@ -8,14 +8,15 @@ import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
 import { FiMenu } from "react-icons/fi";
 import { IArea } from "@/lib/types";
+import { useLogout } from "@/lib/hooks/useLogout";
 
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const areaList = zoneData.items.map((area: IArea) => area.name);
   const [query, setQuery] = useState("");
-
-  const { logOut, getUser } = useAuth();
+  const { logOut } = useLogout();
+  const { getUser } = useAuth();
   const router = useRouter();
   const user = getUser();
   useEffect(() => {

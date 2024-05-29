@@ -1,10 +1,10 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
-import { useAuth } from "@/lib/context/AuthProvider";
 import { useRouter } from "next/navigation";
+import { useLoginWithGoogle } from "@/lib/hooks/useLoginWithGoogle";
 
 export const SignUpGoogle = () => {
-  const { loginWithGoogle } = useAuth();
+  const { loginWithGoogle } = useLoginWithGoogle();
   const router = useRouter();
 
   const handleLoginWithGoogle = () => {
