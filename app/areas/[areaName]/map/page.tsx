@@ -110,9 +110,9 @@ export default function MapAreaPage({
         </div>
         {/* DESCRIPTION HOW TO ARRIVE */}
         <div className="p-6 bg-white md:bg-neutral-100 rounded">
-          <h3 className="text-lg font-semibold">
+          <h4 className="text-lg font-semibold">
             Access and Parking Information
-          </h3>
+          </h4>
           {currentAreaData?.parkings.length == 0 ? (
             <p className="p-2">- No parking available -</p>
           ) : (
