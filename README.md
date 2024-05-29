@@ -34,8 +34,9 @@ You can take a look here [here](https://mad-boulder.vercel.app)!
 Upcoming features planned for this project include:
 
 - **Implement testing:** Ensure the reliability and stability of the website through comprehensive testing procedures.
-- **Language Localization:** Add language selection functionality to the website to cater to a diverse user base.
 - **Database Implementation:** Create a solid database system to manage and organize climbing data efficiently.
+- **Implement Admin Profile:** Add an administrator profile to manage user profiles and uploaded videos.-
+- **Languages:** Add language selection functionality.
 - **User Experience Enhancement:** Continuously refine the design and user interface to optimize the user experience.
 
 ## Contributions:

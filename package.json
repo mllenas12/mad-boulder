@@ -9,9 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/leaflet": "^1.9.8",
-    "@types/leaflet.markercluster": "^1.5.4",
-    "@types/react-leaflet-markercluster": "^3.0.4",
     "feather-icons-react": "^0.7.0",
     "firebase": "^10.7.2",
     "firebase-admin": "^12.0.0",
@@ -34,6 +31,9 @@
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.8",
+    "@types/leaflet.markercluster": "^1.5.4",
+    "@types/react-leaflet-markercluster": "^3.0.4",
     "@types/feather-icons": "^4.29.4",
     "@types/node": "^20",
     "@types/react": "^18",

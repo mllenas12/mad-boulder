@@ -3,7 +3,7 @@ import { IArea, IWeatherData } from "@/lib/types";
 import {
   getWeatherInfoByCoord,
   getCurrentTemperature,
-} from "@/app/api/fetchWeather";
+} from "@/lib/api/fetchWeather";
 import { formatWeatherData } from "@/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";

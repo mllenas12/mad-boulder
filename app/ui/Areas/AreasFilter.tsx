@@ -12,7 +12,7 @@ export const AreasFilter = ({
     <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
       <Search
         placeholder="Search by area"
-        paramName="zone"
+        paramName="areaName"
         className="px-2 rounded border block w-full border-[#CCCCCC] placeholder:text-bneutral-300 h-[38px]"
       />
       <SelectInput

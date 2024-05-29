@@ -1,5 +1,5 @@
 
-import { IWeatherDataForecast, IWeatherForecast, IWeatherData, IDayWeather, IProblem } from "@/lib/types";
+import { IWeatherDataForecast, IWeatherForecast, IWeatherData, IDayWeather, IProblem, ICountry } from "@/lib/types";
 
 export function formatWeatherData(data: IWeatherDataForecast): IWeatherData[] {
     const weatherPerDay = groupWeatherByDay(data);
@@ -152,7 +152,6 @@ export const orderSelectOptionsByGrade = (array: IProblem[]) => {
         }
     });
     uniqueGrades.sort((a, b) => a.localeCompare(b))
-    //uniqueGrades.sort();
     const gradeList = uniqueGrades.map((grade: string) => {
         return { value: grade, label: grade }
     })

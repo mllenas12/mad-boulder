@@ -10,7 +10,7 @@ export const AreaCard = ({ area }: { area: IArea }) => {
         <div className="absolute inset-0 bg-black opacity-30 rounded-lg transition-opacity group-hover:opacity-10 "></div>
         <div className="relative z-2 px-2 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           <h3 className="font-semibold ">{area.name}</h3>
-          <h4 className="">
+          <h4>
             {area.video_count} video{area.video_count > 1 && "s"}
           </h4>
         </div>
