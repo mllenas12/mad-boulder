@@ -9,9 +9,15 @@ export const useGetCountryList = () => {
     };
   });
 
-  return countryList.sort((a, b) => {
+  countryList.sort((a, b) => {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
     return 0;
   });
+
+  const optionsCountryList = countryList.map((country) => {
+    return { value: country.code, label: country.name };
+  });
+
+  return { countryList, optionsCountryList };
 };

@@ -1,6 +1,6 @@
 import zoneData from "@/lib/data/zoneData.json";
 
-export const useAreaData = (params: {
+export const useFilterAreaData = (params: {
   [key: string]: string | string[] | undefined;
 }) => {
   const areas = zoneData.items;
@@ -12,13 +12,19 @@ export const useAreaData = (params: {
 
   const selectedCountries =
     typeof params.countries === "string"
-      ? decodeURIComponent(params.countries).split(",")
+      ? decodeURIComponent(params.countries).toLowerCase().split(",")
       : [];
 
-  const filteredAreas = areas.filter(
-    (area) =>
-      selectedCountries.length == 0 || selectedCountries.includes(area.country)
-  );
+  const filteredAreas = areas.filter((area) => {
+    let includedArea = true;
+    if (searchQuery) {
+      includedArea = area.name.toLowerCase().includes(searchQuery);
+    }
+    if (includedArea && selectedCountries.length > 0) {
+      includedArea = selectedCountries.includes(area.country);
+    }
+    return includedArea;
+  });
 
   let sortedAreas = [...filteredAreas];
 

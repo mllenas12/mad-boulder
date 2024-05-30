@@ -7,7 +7,7 @@ import { IArea } from "@/lib/types";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { nanoid } from "nanoid";
 
-const Map = ({ data, className }: { data: IArea[]; className: string }) => {
+const Map = ({ data, className }: { data: IArea[]; className?: string }) => {
   const areaMarker = data.map((area: IArea) => {
     const icon = new Icon({
       iconUrl: "/logo/marker.webp",
