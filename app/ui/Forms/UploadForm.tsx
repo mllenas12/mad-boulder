@@ -1,10 +1,7 @@
 "use client";
-import { storage } from "@/lib/firebase/firebase-config";
 import { useState } from "react";
-import { getDownloadURL, ref } from "firebase/storage";
 import { uploadFormToDb } from "@/lib/firebase/firebase-utils";
 import { useAuth } from "@/lib/context/AuthProvider";
-import { uploadBytesResumable } from "firebase/storage";
 import { useRouter } from "next/navigation";
 import { IFormData } from "@/lib/types";
 import { useUploadVideo } from "@/lib/hooks/useUploadVideo";
@@ -13,13 +10,6 @@ export const UploadForm = () => {
   const { getUser } = useAuth();
   const router = useRouter();
   const user = getUser();
-
-  const FORM_STATES = {
-    USER_NOT_KNOWN: 0,
-    LOADING: 1,
-    SUCCESS: 2,
-    ERROR: -1,
-  };
 
   const [formData, setFormData] = useState<IFormData>({
     climber: "",
@@ -33,9 +23,8 @@ export const UploadForm = () => {
     isSubscribed: true,
   });
 
-  // const [uploadProgress, setUploadProgress] = useState(2);
   const { uploadVideo, uploadProgress, error } = useUploadVideo();
-  const [status, setStatus] = useState(FORM_STATES.USER_NOT_KNOWN);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
@@ -67,52 +56,33 @@ export const UploadForm = () => {
     }));
   };
 
-  // const uploadVideo = (file: any): Promise<string> => {
-  //   return new Promise((resolve, reject) => {
-  //     const videoRef = ref(storage, `videos/${file.name}`);
-  //     const uploadTask = uploadBytesResumable(videoRef, file);
-
-  //     uploadTask.on(
-  //       "state_changed",
-  //       (snapshot) => {
-  //         const progress =
-  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //         setUploadProgress(progress);
-  //       },
-  //       (error) => {
-  //         console.error("Error uploading file:", error);
-  //         reject(error);
-  //       },
-  //       () => {
-  //         getDownloadURL(uploadTask.snapshot.ref)
-  //           .then((downloadURL) => {
-  //             console.log("Success upload");
-  //             resolve(downloadURL);
-  //           })
-  //           .catch((error) => {
-  //             console.error("Error getting download URL:", error);
-  //             reject(error);
-  //           });
-  //       }
-  //     );
-  //   });
+  // const handleFormChange = (
+  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value, type } = event.target;
+  //   const newValue =
+  //     type === "checkbox" ? (event.target as HTMLInputElement).checked : value;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: newValue,
+  //   }));
   // };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setStatus(FORM_STATES.LOADING);
+    setIsLoading(true);
     try {
       const url = await uploadVideo(formData.file);
       await uploadFormToDb(formData, user, url);
-      setStatus(FORM_STATES.SUCCESS);
+      setIsLoading(false);
       router.push("/video-uploader/success-upload");
     } catch (err) {
       console.error(err);
-      setStatus(FORM_STATES.ERROR);
+      setIsLoading(false);
     }
   };
-  const isButtonDisabled = status === FORM_STATES.LOADING;
+  const isButtonDisabled = isLoading === true;
   return (
     <form
       className="bg-neutral-100 grid grid-cols-2 p-8 rounded-lg shadow-lg w-64 md:w-96 mx-auto gap-4"

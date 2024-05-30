@@ -7,7 +7,7 @@ export const useUploadVideo = () => {
   const [uploadProgress, setUploadProgress] = useState(2);
   const [error, setErrors] = useState<string | null>(null);
 
-  const uploadVideo = (file: any): Promise<string> => {
+  const uploadVideo = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const videoRef = ref(storage, `videos/${file.name}`);
       const uploadTask = uploadBytesResumable(videoRef, file);
@@ -32,6 +32,7 @@ export const useUploadVideo = () => {
             })
             .catch((error) => {
               console.error("Error getting download URL:", error);
+              setErrors("Error getting download URL");
               reject(error);
             });
         }
