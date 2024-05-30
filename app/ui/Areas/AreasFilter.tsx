@@ -5,8 +5,10 @@ import { nanoid } from "nanoid";
 
 export const AreasFilter = ({
   optionsList,
+  defaultInputValue,
 }: {
   optionsList: ISelectOptions[] | undefined;
+  defaultInputValue?: ISelectOptions[] | undefined;
 }) => {
   return (
     <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
@@ -20,6 +22,7 @@ export const AreasFilter = ({
         optionsList={optionsList}
         filterBy={"countries"}
         id={nanoid()}
+        defaultValue={defaultInputValue}
       />
     </div>
   );

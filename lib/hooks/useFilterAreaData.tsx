@@ -40,5 +40,5 @@ export const useFilterAreaData = (params: {
     }
   }
 
-  return { areas, selectedCountries, searchQuery, filteredAreas, sortedAreas };
+  return { filteredAreas, selectedCountries };
 };

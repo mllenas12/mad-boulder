@@ -40,14 +40,5 @@ export default function Search({
         className={className}
       />
     </label>
-
-    // <input
-    //   type="text"
-    //   placeholder={placeholder}
-    //   name={paramName}
-    //   onChange={(event) => handleSearch(event.target.value)}
-    //   defaultValue={searchParams.get(paramName)?.toString()}
-    //   className={className}
-    // />
   );
 }

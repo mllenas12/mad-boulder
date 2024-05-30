@@ -5,15 +5,16 @@ import SortButtons from "@/app/ui/Buttons/SortButtons";
 import { useGetCountryList } from "@/lib/hooks/useGetCountryList";
 import HeadComponent from "../ui/HeadComponent";
 import { useFilterAreaData } from "@/lib/hooks/useFilterAreaData";
+import { useGetSelectedCountryList } from "@/lib/hooks/useGetSelectedCountryList";
 
 export default function AreasPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const { filteredAreas } = useFilterAreaData(searchParams);
+  const { filteredAreas, selectedCountries } = useFilterAreaData(searchParams);
   const { optionsCountryList } = useGetCountryList();
-
+  const selectedCountriesOptions = useGetSelectedCountryList(selectedCountries);
   const cards = filteredAreas.map((area) => (
     <AreaCard area={area} key={area.name} />
   ));
@@ -32,7 +33,10 @@ export default function AreasPage({
         <div className="flex flex-col gap-6 md:w-4/5 mx-auto mb-10 p-6 bg-neutral-100 lg:p-8 rounded-lg">
           {/* FINDER: */}
           <h2 className="font-semibold ">FIND YOUR AREA:</h2>
-          <AreasFilter optionsList={optionsCountryList} />
+          <AreasFilter
+            optionsList={optionsCountryList}
+            defaultInputValue={selectedCountriesOptions}
+          />
           {/* LIST OF AREA CARDS: */}
           <div>
             <div>
