@@ -1,10 +1,5 @@
 import zoneData from "@/lib/data/zoneData.json";
 import { IArea, IWeatherData } from "@/lib/types";
-import {
-  getWeatherInfoByCoord,
-  getCurrentTemperature,
-} from "@/lib/api/fetchWeather";
-import { formatWeatherData } from "@/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
 import HeadComponent from "@/app/ui/HeadComponent";

@@ -3,7 +3,7 @@ import { orderSelectOptionsByGrade } from "../utils/utils";
 
 export const useGetProblemsInfo = (
   areaName: string,
-  params?: any | undefined
+  params?: { [key: string]: string | string[] | undefined }
 ) => {
   const currentArea = decodeURIComponent(areaName);
 
@@ -16,15 +16,15 @@ export const useGetProblemsInfo = (
   );
 
   const nameQuery =
-    typeof params.name === "string" ? params.name.toLowerCase() : undefined;
+    typeof params?.name === "string" ? params.name.toLowerCase() : undefined;
 
   const selectedSectors =
-    typeof params.sectors === "string"
+    typeof params?.sectors === "string"
       ? decodeURIComponent(params.sectors).split(",")
       : [];
 
   const selectedGrade =
-    typeof params.grade === "string"
+    typeof params?.grade === "string"
       ? decodeURIComponent(params.grade).split(",")
       : [];
 
@@ -43,8 +43,8 @@ export const useGetProblemsInfo = (
     : [];
 
   let sortedByGrade = [...filteredProblems];
-  const orderDirection = params.order;
-  if (params.sortby && params.order) {
+  const orderDirection = params?.order;
+  if (params?.sortby && params.order) {
     sortedByGrade.sort((a, b) =>
       orderDirection === "asc"
         ? a.grade_with_info.localeCompare(b.grade_with_info)

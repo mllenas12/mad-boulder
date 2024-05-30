@@ -5,8 +5,13 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 import HeadComponent from "@/app/ui/HeadComponent";
+import { useGetProblemData } from "@/lib/hooks/useGetProblemData";
 
 export async function generateStaticParams() {
+  const problemsData: {
+    items: IProblemArea[];
+  } = require("@/lib/data/problemsData.json");
+
   const problemsList = problemsData.items.flatMap((area: IProblemArea) =>
     area.problem_list.map((problem: IProblem) => problem.name)
   );
@@ -37,20 +42,8 @@ export default function ProblemPage({
 }: {
   params: { problemName: string };
 }) {
-  const currentProblem = decodeURIComponent(params.problemName);
-  const allProblems = problemsData.items.flatMap(
-    (area: IProblemArea) => area.problem_list
-  );
-
-  const currentProblemData = allProblems.find(
-    (problem: IProblem) => problem.name == currentProblem
-  );
-
-  const url = currentProblemData?.url.replace("watch?v=", "embed/");
-
-  const currentAreaData = zoneData?.items.find(
-    (zone) => zone?.name == currentProblemData?.zone
-  );
+  const { currentProblemData, url, currentAreaData } =
+    useGetProblemData(params);
 
   return (
     <>
@@ -59,7 +52,7 @@ export default function ProblemPage({
         description={`Info of ${currentProblemData?.name} problem`}
       />
       <header className="py-8 bg-neutral-200 text-center">
-        <h2 className="font-semibold">{currentProblemData?.name}</h2>
+        <h2 className="font-semibold pb-2">{currentProblemData?.name}</h2>
         <h5>
           {currentProblemData?.grade_with_info}, {currentProblemData?.sector},{" "}
           {currentProblemData?.zone}

@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 
 export const useGetCurrentAreaData = (
   areaName: string,
-  params?: any | undefined
+  params?: { [key: string]: string | string[] | undefined }
 ) => {
   const currentArea = decodeURIComponent(areaName);
   const currentAreaData = zoneData.items.find(

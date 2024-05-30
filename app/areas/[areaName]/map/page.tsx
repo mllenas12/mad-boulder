@@ -1,6 +1,5 @@
 import zoneData from "@/lib/data/zoneData.json";
-import { IArea, TSector, IParking } from "@/lib/types";
-import { nanoid } from "nanoid";
+import { IArea } from "@/lib/types";
 import Link from "next/link";
 import Search from "@/app/ui/Inputs/Search";
 import dynamic from "next/dynamic";
