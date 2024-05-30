@@ -1,8 +1,8 @@
 import { CardFlip } from "@/app/ui/Areas/CardFlip";
 import HeadComponent from "@/app/ui/HeadComponent";
 import zoneData from "@/lib/data/zoneData.json";
+import { useGetCurrentAreaData } from "@/lib/hooks/useGetCurrentAreaData";
 import { IArea } from "@/lib/types";
-import FeatherIcon from "feather-icons-react";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -10,28 +10,15 @@ export async function generateStaticParams() {
   );
   return areaNames.map((name) => ({ areaName: name }));
 }
+
 export default function GuidesPage({
   params,
 }: {
   params: { areaName: string };
 }) {
-  const currentArea = decodeURIComponent(params.areaName);
-  const currentAreaData = zoneData.items.find(
-    (zone: IArea) => zone.name == currentArea
+  const { currentArea, currentAreaData, links } = useGetCurrentAreaData(
+    decodeURIComponent(params.areaName)
   );
-
-  const links = currentAreaData?.links.map((link) => {
-    return (
-      <a
-        key={link.link}
-        href={link.link}
-        target="_blank"
-        className="flex gap-2 border rounded p-2 bg-neutral-100 font-semibold"
-      >
-        <FeatherIcon icon="book" className="text-neutral-600" /> {link.name}
-      </a>
-    );
-  });
 
   return (
     <>

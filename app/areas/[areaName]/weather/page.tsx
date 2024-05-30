@@ -8,6 +8,8 @@ import { formatWeatherData } from "@/lib/utils/utils";
 import { Forecast } from "@/app/ui/Areas/Weather/Forecast";
 import { CurrentWeather } from "@/app/ui/Areas/Weather/CurrentWeather";
 import HeadComponent from "@/app/ui/HeadComponent";
+import { useGetCurrentAreaData } from "@/lib/hooks/useGetCurrentAreaData";
+import { useGetInfoWeather } from "@/lib/hooks/useGetInfoWeather";
 
 export function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -21,25 +23,11 @@ export default async function WeatherPage({
 }: {
   params: { areaName: string };
 }) {
-  const currentArea = decodeURIComponent(params.areaName);
-  const currentAreaData = zoneData.items.find(
-    (area: IArea) => area.name == currentArea
+  const { currentArea, currentAreaCoord } = useGetCurrentAreaData(
+    decodeURIComponent(params.areaName)
   );
-
-  const LAT = currentAreaData?.latitude;
-  const LON = currentAreaData?.longitude;
-  const apiKey = process.env.WEATHER_API_KEY;
-
-  const data = await getWeatherInfoByCoord(LAT, LON, apiKey);
-  const weatherInfo = formatWeatherData(data);
-
-  const currentData = getCurrentTemperature(LAT, LON, apiKey);
-  const currentTemp = Math.round((await currentData).main.temp);
-
-  const currentWeatherInfo = weatherInfo[0];
-
-  let forecastInfo = [...weatherInfo];
-  forecastInfo.shift();
+  const { forecastInfo, currentWeatherInfo, currentTemp } =
+    await useGetInfoWeather(currentAreaCoord, process.env.WEATHER_API_KEY);
 
   const displayForecast = forecastInfo.map((dayData: IWeatherData) => {
     return <Forecast data={dayData} key={dayData.date} />;

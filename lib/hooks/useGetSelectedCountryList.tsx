@@ -1,5 +1,3 @@
-import { ICountry } from "../types";
-import countriesData from "../data/countries.json";
 import { useGetCountryList } from "./useGetCountryList";
 
 export const useGetSelectedCountryList = (selectedCountries: string[]) => {

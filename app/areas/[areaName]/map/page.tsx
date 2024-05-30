@@ -5,8 +5,8 @@ import Link from "next/link";
 import Search from "@/app/ui/Inputs/Search";
 import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
-import { PiMapPin } from "react-icons/pi";
 import HeadComponent from "@/app/ui/HeadComponent";
+import { useGetCurrentAreaData } from "@/lib/hooks/useGetCurrentAreaData";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -27,50 +27,8 @@ export default function MapAreaPage({
   params: { areaName: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const currentArea = decodeURIComponent(params.areaName);
-  const currentAreaData: IArea | undefined = zoneData.items.find(
-    (zone: IArea) => zone.name == currentArea
-  );
-
-  const query =
-    typeof searchParams.sector === "string"
-      ? searchParams.sector.toLowerCase()
-      : undefined;
-
-  let filteredData = query
-    ? currentAreaData?.sectors.filter((sector: TSector) =>
-        sector.name.toLowerCase().includes(query)
-      )
-    : currentAreaData?.sectors;
-
-  const sectors = filteredData?.map((sector: TSector) => {
-    return (
-      <Link
-        href={`/areas/${currentArea}/problems?sectors=${decodeURIComponent(
-          sector.name
-        )}`}
-        key={sector.id}
-        className="flex flex-row p-2 text-center text-sm gap-2"
-      >
-        <p className="w-3/4 my-auto font-semibold text-start">{sector.name}</p>
-        <p className="w-1/4 my-auto text-center">{sector.video_count}</p>
-      </Link>
-    );
-  });
-  const parkingList = currentAreaData?.parkings.map((parking: IParking) => {
-    return (
-      <p key={nanoid()} className="px-4 flex gap-1">
-        <PiMapPin className="my-auto" /> Parking:
-        <a
-          href={`https://www.google.com/maps/place/${parking.parking_latitude},${parking.parking_longitude}`}
-          target="_blank"
-          className="text-blue-400 underline"
-        >
-          Google Maps Location
-        </a>
-      </p>
-    );
-  });
+  const { currentAreaData, currentArea, parkingList, sectors } =
+    useGetCurrentAreaData(params.areaName, searchParams);
 
   return (
     <>
@@ -101,10 +59,27 @@ export default function MapAreaPage({
                 <p className="w-1/4 text-center">Problems</p>
               </nav>
               <hr />
-              {currentAreaData?.sectors.length == 0 ? (
+              {sectors?.length == 0 ? (
                 <p className="p-2">- No sectors available -</p>
               ) : (
-                sectors
+                sectors?.map((sector) => {
+                  return (
+                    <Link
+                      href={`/areas/${currentArea}/problems?sectors=${decodeURIComponent(
+                        sector.name
+                      )}`}
+                      key={sector.id}
+                      className="flex flex-row p-2 text-center text-sm gap-2"
+                    >
+                      <p className="w-3/4 my-auto font-semibold text-start">
+                        {sector.name}
+                      </p>
+                      <p className="w-1/4 my-auto text-center">
+                        {sector.video_count}
+                      </p>
+                    </Link>
+                  );
+                })
               )}
             </div>
           </div>

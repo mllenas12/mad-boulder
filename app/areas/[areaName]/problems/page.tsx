@@ -1,13 +1,13 @@
 import zoneData from "@/lib/data/zoneData.json";
-import problemsData from "@/lib/data/problemsData.json";
-import { IArea, IProblemArea, IProblem, TSector } from "@/lib/types";
+import { IArea, IProblem } from "@/lib/types";
 import { nanoid } from "nanoid";
 import Search from "@/app/ui/Inputs/Search";
 import { SelectInput } from "@/app/ui/Inputs/SelectInput";
 import SortButton from "@/app/ui/Buttons/SortButton";
-import { orderSelectOptionsByGrade } from "@/lib/utils/utils";
 import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
 import HeadComponent from "@/app/ui/HeadComponent";
+import { useGetCurrentAreaData } from "@/lib/hooks/useGetCurrentAreaData";
+import { useGetProblemsInfo } from "@/lib/hooks/useGetProblemsInfo";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -23,74 +23,22 @@ export default function ExplorePage({
   params: { areaName: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const currentArea = decodeURIComponent(params.areaName);
-
-  const currentAreaData: IArea | undefined = zoneData.items.find(
-    (zone: IArea) => zone.name == currentArea
+  const { currentArea, currentAreaData, sectors } = useGetCurrentAreaData(
+    params.areaName,
+    searchParams
   );
+  const { selectedSectors, sortedGradeOptionList, sortedByGrade } =
+    useGetProblemsInfo(params.areaName, searchParams);
 
-  const nameQuery =
-    typeof searchParams.name === "string"
-      ? searchParams.name.toLowerCase()
-      : undefined;
-
-  const selectedSectors =
-    typeof searchParams.sectors === "string"
-      ? decodeURIComponent(searchParams.sectors).split(",")
-      : [];
-
-  const selectedGrade =
-    typeof searchParams.grade === "string"
-      ? decodeURIComponent(searchParams.grade).split(",")
-      : [];
-
-  const problemsData: {
-    items: IProblemArea[];
-  } = require("@/lib/data/problemsData.json");
-
-  const areaInfo = problemsData.items.find(
-    (area: IProblemArea) => area.name == currentArea
-  );
-
-  const filteredProblems = areaInfo
-    ? areaInfo.problem_list.filter((problem: IProblem) => {
-        const isNameMatch = nameQuery
-          ? problem.name.toLowerCase().includes(nameQuery)
-          : true;
-        const isSectorMatch =
-          selectedSectors.length === 0 ||
-          selectedSectors.includes(problem.sector);
-        const isGradeMatch =
-          selectedGrade.length === 0 || selectedGrade.includes(problem.grade);
-        return isNameMatch && isSectorMatch && isGradeMatch;
-      })
-    : [];
-
-  let sortedByGrade = [...filteredProblems];
-  const orderDirection = searchParams.order;
-  if (searchParams.sortby && searchParams.order) {
-    sortedByGrade.sort((a, b) =>
-      orderDirection === "asc"
-        ? a.grade_with_info.localeCompare(b.grade_with_info)
-        : b.grade_with_info.localeCompare(a.grade_with_info)
-    );
-  }
-
-  const sectorsList = currentAreaData?.sectors.map((sector: TSector) => {
-    return { name: sector.name };
-  });
-
-  const sectorOptionsList = sectorsList?.map((sector) => {
+  const sectorsOptionsList = sectors?.map((sector) => {
     return { value: sector.name, label: sector.name };
   });
-
-  const sortedGradeOptionList = orderSelectOptionsByGrade(filteredProblems);
 
   const problemList = sortedByGrade.map((problem: IProblem) => {
     return <ProblemCard problem={problem} key={problem.name} />;
   });
 
-  const defaultValue = selectedSectors.map((sector: string) => {
+  const sectorsDefaultValue = selectedSectors.map((sector: string) => {
     return {
       label: sector,
       value: sector,
@@ -120,9 +68,9 @@ export default function ExplorePage({
             <div className="col-span-2 md:col-span-1 md:w-1/3">
               <SelectInput
                 placeholder={"Select Sector"}
-                optionsList={sectorOptionsList}
+                optionsList={sectorsOptionsList}
                 filterBy={"sectors"}
-                defaultValue={defaultValue}
+                defaultValue={sectorsDefaultValue}
                 id={nanoid()}
               />
             </div>

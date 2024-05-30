@@ -3,6 +3,7 @@ import zoneData from "@/lib/data/zoneData.json";
 import Link from "next/link";
 import { capitalizeFirstLetter } from "@/lib/utils/utils";
 import HeadComponent from "@/app/ui/HeadComponent";
+import { useGetCurrentAreaData } from "@/lib/hooks/useGetCurrentAreaData";
 
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
@@ -12,12 +13,9 @@ export async function generateStaticParams() {
 }
 
 export default function InfoPage({ params }: { params: { areaName: string } }) {
-  const currentArea = decodeURIComponent(params.areaName);
-  const currentAreaData = zoneData.items.find(
-    (zone: IArea) => zone.name == currentArea
+  const { currentArea, currentAreaData, imageUrl } = useGetCurrentAreaData(
+    decodeURIComponent(params.areaName)
   );
-
-  const imageUrl = currentAreaData?.thumbnail || "/images/example.jpeg";
 
   return (
     <>

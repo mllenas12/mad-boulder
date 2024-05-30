@@ -260,3 +260,8 @@ export interface IFormData {
 export type TVideoList = {
     id: string
 }[]
+
+export type TCoord = {
+    LAT: number | undefined;
+    LON: number | undefined;
+}
