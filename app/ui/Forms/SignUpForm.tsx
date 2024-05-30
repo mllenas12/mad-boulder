@@ -12,8 +12,7 @@ export const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmedPassword, setConfifmedPassword] = useState("");
-  const [displayErrors, setDisplayErrors] = useState<any>();
-  const { signUp } = useSignUp();
+  const { signUp, error: signUpError } = useSignUp();
   const router = useRouter();
 
   const validatePassword = (password: string) => {
@@ -26,6 +25,7 @@ export const SignUpForm = () => {
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+    setErrors([]);
     let formErrors: string[] = [];
 
     if (!validatePassword(password)) {
@@ -100,17 +100,7 @@ export const SignUpForm = () => {
           onChange={(e) => setConfifmedPassword(e.target.value)}
           className="w-full h-9 mx-auto px-4 rounded"
         />
-
-        <div className="flex flex-col">{displayErrors}</div>
-
-        {/* {errors.password && (
-          <p className="text-red-500 text-xs font-semibold ">
-            {errors.password}
-          </p>
-        )}
-        {errors.email && (
-          <p className="text-red-500 text-xs font-semibold">{errors.email}</p>
-        )} */}
+        <div className="flex flex-col">{getErrors}</div>
         <div className="w-full mx-auto text-start flex flex-col gap-1">
           <div className="flex gap-2">
             <input
@@ -146,6 +136,9 @@ export const SignUpForm = () => {
         >
           SIGN UP
         </button>
+        {signUpError && (
+          <p className="text-red-500 text-xs font-semibold">{signUpError}</p>
+        )}
       </form>
     </div>
   );

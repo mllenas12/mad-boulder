@@ -7,12 +7,12 @@ import { IFormErrors } from "@/lib/types";
 import { useLogin } from "@/lib/hooks/useLogin";
 import { useLoginWithGoogle } from "@/lib/hooks/useLoginWithGoogle";
 
-export const SignInForm = () => {
+export const LogInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const router = useRouter();
-  const { logIn } = useLogin();
+  const { logIn, error } = useLogin();
   const { loginWithGoogle } = useLoginWithGoogle();
 
   const validateEmail = (email: string) => {
@@ -79,6 +79,7 @@ export const SignInForm = () => {
         <button type="submit" className="w-full bg-amber-400 text-white p-1">
           LOG IN
         </button>
+        {error && <p className="text-red-500 text-xs font-semibold">{error}</p>}
         <p className="text-center">
           Don&apos;t you have an account?{" "}
           <Link

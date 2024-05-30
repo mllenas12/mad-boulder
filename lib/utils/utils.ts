@@ -1,5 +1,6 @@
 
 import { IWeatherDataForecast, IWeatherForecast, IWeatherData, IDayWeather, IProblem, ICountry } from "@/lib/types";
+import { FirestoreError } from "firebase/firestore";
 
 export function formatWeatherData(data: IWeatherDataForecast): IWeatherData[] {
     const weatherPerDay = groupWeatherByDay(data);
@@ -156,4 +157,8 @@ export const orderSelectOptionsByGrade = (array: IProblem[]) => {
         return { value: grade, label: grade }
     })
     return gradeList
+};
+
+export const formatFirebaseError = (err: FirestoreError) => {
+    return err.code.split("auth/")[1].replaceAll("-", " ").toUpperCase();
 };
