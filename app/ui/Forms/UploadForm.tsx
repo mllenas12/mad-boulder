@@ -7,11 +7,13 @@ import { useAuth } from "@/lib/context/AuthProvider";
 import { uploadBytesResumable } from "firebase/storage";
 import { useRouter } from "next/navigation";
 import { IFormData } from "@/lib/types";
+import { useUploadVideo } from "@/lib/hooks/useUploadVideo";
 
 export const UploadForm = () => {
   const { getUser } = useAuth();
   const router = useRouter();
   const user = getUser();
+
   const FORM_STATES = {
     USER_NOT_KNOWN: 0,
     LOADING: 1,
@@ -31,8 +33,10 @@ export const UploadForm = () => {
     isSubscribed: true,
   });
 
-  const [uploadProgress, setUploadProgress] = useState(2);
+  // const [uploadProgress, setUploadProgress] = useState(2);
+  const { uploadVideo, uploadProgress, error } = useUploadVideo();
   const [status, setStatus] = useState(FORM_STATES.USER_NOT_KNOWN);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = event.target;
     setFormData((prevData) => {
@@ -63,36 +67,36 @@ export const UploadForm = () => {
     }));
   };
 
-  const uploadVideo = (file: any): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const videoRef = ref(storage, `videos/${file.name}`);
-      const uploadTask = uploadBytesResumable(videoRef, file);
+  // const uploadVideo = (file: any): Promise<string> => {
+  //   return new Promise((resolve, reject) => {
+  //     const videoRef = ref(storage, `videos/${file.name}`);
+  //     const uploadTask = uploadBytesResumable(videoRef, file);
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setUploadProgress(progress);
-        },
-        (error) => {
-          console.error("Error uploading file:", error);
-          reject(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((downloadURL) => {
-              console.log("Success upload");
-              resolve(downloadURL);
-            })
-            .catch((error) => {
-              console.error("Error getting download URL:", error);
-              reject(error);
-            });
-        }
-      );
-    });
-  };
+  //     uploadTask.on(
+  //       "state_changed",
+  //       (snapshot) => {
+  //         const progress =
+  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //         setUploadProgress(progress);
+  //       },
+  //       (error) => {
+  //         console.error("Error uploading file:", error);
+  //         reject(error);
+  //       },
+  //       () => {
+  //         getDownloadURL(uploadTask.snapshot.ref)
+  //           .then((downloadURL) => {
+  //             console.log("Success upload");
+  //             resolve(downloadURL);
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error getting download URL:", error);
+  //             reject(error);
+  //           });
+  //       }
+  //     );
+  //   });
+  // };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -248,6 +252,9 @@ export const UploadForm = () => {
           style={{ width: `${uploadProgress}%` }}
         ></div>
       </div>
+      {error && (
+        <p className="col-span-2 text-red-500 text-center mt-2">{error}</p>
+      )}
     </form>
   );
 };
