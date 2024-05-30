@@ -4,7 +4,7 @@ import { IArea, IProblemArea, IProblem, TSector } from "@/lib/types";
 import { nanoid } from "nanoid";
 import Search from "@/app/ui/Inputs/Search";
 import { SelectInput } from "@/app/ui/Inputs/SelectInput";
-import SortB from "@/app/ui/Buttons/SortB";
+import SortButton from "@/app/ui/Buttons/SortButton";
 import { orderSelectOptionsByGrade } from "@/lib/utils/utils";
 import { ProblemCard } from "@/app/ui/Areas/problems/ProblemCard";
 import HeadComponent from "@/app/ui/HeadComponent";
@@ -43,6 +43,10 @@ export default function ExplorePage({
     typeof searchParams.grade === "string"
       ? decodeURIComponent(searchParams.grade).split(",")
       : [];
+
+  const problemsData: {
+    items: IProblemArea[];
+  } = require("@/lib/data/problemsData.json");
 
   const areaInfo = problemsData.items.find(
     (area: IProblemArea) => area.name == currentArea
@@ -137,7 +141,7 @@ export default function ExplorePage({
         <div className="py-4">
           <nav className="font-semibold flex p-2 justify-end text-start">
             <div className="w-3/5 flex justify-end px-2">
-              <SortB sortBy="Grade" />
+              <SortButton sortBy="Grade" label="Grade" />
             </div>
             <hr />
           </nav>

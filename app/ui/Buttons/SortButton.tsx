@@ -3,7 +3,13 @@ import SortArrow from "@/app/ui/Buttons/SortArrow";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
 
-export default function SortB({ sortBy }: { sortBy: string }) {
+export default function SortButton({
+  sortBy,
+  label,
+}: {
+  sortBy: string;
+  label: string;
+}) {
   const { replace } = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -27,7 +33,7 @@ export default function SortB({ sortBy }: { sortBy: string }) {
 
   return (
     <button onClick={() => handleSort()} className="flex gap-2">
-      <p>{sortBy}</p>
+      <p>{label}</p>
       <SortArrow isOrdered={isSorted} />
     </button>
   );

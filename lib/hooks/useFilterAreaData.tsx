@@ -26,13 +26,13 @@ export const useFilterAreaData = (params: {
     return includedArea;
   });
 
-  let sortedAreas = [...filteredAreas];
+  let sortedFilteredAreas = [...filteredAreas];
 
   if (params.sortby && params.order) {
     const orderBy = params.sortby;
     const orderDirection = params.order;
     if (orderBy === "videoCount") {
-      sortedAreas.sort((a, b) =>
+      sortedFilteredAreas.sort((a, b) =>
         orderDirection === "asc"
           ? b.video_count - a.video_count
           : a.video_count - b.video_count
@@ -40,5 +40,5 @@ export const useFilterAreaData = (params: {
     }
   }
 
-  return { filteredAreas, selectedCountries };
+  return { sortedFilteredAreas, selectedCountries };
 };
