@@ -40,7 +40,8 @@ export const Card = ({
         <img
           className={`${styles.flipCardFront} w-full h-full text-white rounded-lg `}
           src={imageThumbnail}
-        ></img>
+          alt={`Guide thumbnail for ${title}`}
+        />
 
         <div
           className={`${styles.flipCardBack} w-[100%] h-[100%] bg-cover border-[1px] text-center rounded-lg p-4 bg-neutral-300 flex flex-col justify-center gap-4`}

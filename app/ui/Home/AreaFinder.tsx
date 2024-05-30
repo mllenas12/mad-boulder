@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import zoneData from "@/lib/data/zoneData.json";
 import { IArea } from "@/lib/types";
 import Link from "next/link";
+import Image from "next/image";
 
 export const AreaFinder = () => {
   const areaList = zoneData.items.map((area: IArea) => area.name);
@@ -14,7 +15,12 @@ export const AreaFinder = () => {
       <div className="relative md:w-3/4 lg:w-1/2 md:mx-auto">
         <label className="relative block">
           <span className="absolute inset-y-0 right-0 flex items-center pr-2">
-            <img src="/lupa.svg" alt="" className="w-4" />
+            <Image
+              src="/lupa.svg"
+              alt="magnifying glass"
+              width={16}
+              height={16}
+            />
           </span>
           <input
             className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border text-black border-slate-300 rounded-md py-2 pl-3  shadow-sm focus:outline-none  "
