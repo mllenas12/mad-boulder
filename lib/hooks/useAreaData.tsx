@@ -1,4 +1,5 @@
 import zoneData from "@/lib/data/zoneData.json";
+
 export const useAreaData = (params: {
   [key: string]: string | string[] | undefined;
 }) => {

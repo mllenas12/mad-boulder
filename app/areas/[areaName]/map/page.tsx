@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import GeneralSkeleton from "@/app/ui/Skeletons/GeneralSkeleton";
 import { PiMapPin } from "react-icons/pi";
 import HeadComponent from "@/app/ui/HeadComponent";
+
 export async function generateStaticParams() {
   const areaNames = zoneData.items.map((area: IArea) =>
     decodeURIComponent(area.name)

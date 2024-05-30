@@ -3,8 +3,7 @@ import React, { useEffect, useContext, createContext } from "react";
 import { auth } from "@/lib/firebase/firebase-config";
 import { useState } from "react";
 import { User } from "firebase/auth";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { onAuthStateChanged } from "firebase/auth";
 
 export type TAuthContext = {
   currentUser: User | null;

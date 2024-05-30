@@ -1,5 +1,6 @@
 import { IArea } from "@/lib/types";
 import Link from "next/link";
+
 export const AreaCard = ({ area }: { area: IArea }) => {
   return (
     <Link href={`/areas/${area.name}/info`} className="rounded-lg">

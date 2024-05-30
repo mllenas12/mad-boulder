@@ -2,6 +2,7 @@
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { PiMagnifyingGlass } from "react-icons/pi";
+
 export default function Search({
   placeholder,
   paramName,

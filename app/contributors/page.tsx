@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaCheck } from "react-icons/fa6";
+
 export default function ContributorsPage() {
   return (
     <div className="flex flex-col text-center gap-4 p-8 md:py-6 lg:w-3/5 md:mx-auto">

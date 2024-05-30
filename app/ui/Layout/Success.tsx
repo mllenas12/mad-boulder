@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FiCheckCircle } from "react-icons/fi";
+
 export default function Success({
   route,
   h2Text,

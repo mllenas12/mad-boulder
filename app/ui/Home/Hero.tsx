@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@/app/ui/Buttons/Button";
+
 const Hero = () => {
   return (
     <div

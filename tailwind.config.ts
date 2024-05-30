@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { FaCheck } from "react-icons/fa";
 const colors = require('tailwindcss/colors')
 const config: Config = {
   content: [

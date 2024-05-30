@@ -1,4 +1,5 @@
 import Success from "@/app/ui/Layout/Success";
+
 export default function SuccessUploadPage() {
   return (
     <Success

@@ -3,6 +3,7 @@ import { Explore } from "@/app/ui/Home/Explore";
 import Hero from "@/app/ui/Home/Hero";
 import { AreaFinder } from "@/app/ui/Home/AreaFinder";
 import Head from "next/head";
+
 export default function HomePage() {
   return (
     <>
