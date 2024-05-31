@@ -13,16 +13,15 @@ export default function MyVideosPage() {
   const { currentUser } = useAuth();
   const user = currentUser;
   const uid = user?.uid;
-
-  const [videos, setVideos] = useState<IFormData[]>([]);
+  const [videoForms, setVideoForms] = useState<IFormData[]>([]);
 
   useEffect(() => {
     if (uid) {
-      getVideos();
+      getVideoForms();
     }
   }, [uid]);
 
-  const getVideos = async () => {
+  const getVideoForms = async () => {
     const q = query(collection(db, "videos"), where("userId", "==", uid));
     getDocs(q)
       .then((querySnapshot) => {
@@ -30,15 +29,14 @@ export default function MyVideosPage() {
         querySnapshot.forEach((doc) => {
           videoList.push({ id: doc.id, ...doc.data() });
         });
-        setVideos(videoList);
+        setVideoForms(videoList);
       })
       .catch((error) => {
         console.error("Error fetching videos:", error);
       });
   };
-
-  const videoCard = videos.map((video: IFormData) => {
-    return <VideoCards key={video.id} video={video} />;
+  const videoCard = videoForms.map((video: IFormData) => {
+    return <VideoCards key={video.id} videoForm={video} />;
   });
 
   return (
@@ -47,7 +45,7 @@ export default function MyVideosPage() {
       <Suspense
         fallback={<span className="loading loading-spinner loading-xs"></span>}
       >
-        {videos.length == 0 ? (
+        {videoForms.length == 0 ? (
           <div className="py-10 mx-auto">
             No videos uploaded yet. Try to upload your first video{" "}
             <Link

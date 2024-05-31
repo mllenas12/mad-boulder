@@ -2,7 +2,7 @@ import React from "react";
 import { LogInForm } from "@/app/ui/Forms/LogInForm";
 import Image from "next/image";
 
-export default function SignInPage() {
+export default function LogInPage() {
   return (
     <div className="flex flex-col text-center bg-neutral-100 py-16">
       {/* Header */}

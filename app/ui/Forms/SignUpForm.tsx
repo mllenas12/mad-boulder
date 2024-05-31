@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { IFormErrors } from "@/lib/types";
 import Link from "next/link";
 import { nanoid } from "nanoid";
 import { useSignUp } from "@/lib/hooks/useSignUp";
@@ -49,7 +48,7 @@ export const SignUpForm = () => {
     setErrors((prevErrors: string[]) => [...prevErrors, ...formErrors]);
   };
 
-  const getErrors = errors.map((errors: string) => {
+  const showErrors = errors.map((errors: string) => {
     return (
       <p key={nanoid()} className="text-red-500 text-xs font-semibold ">
         {errors}
@@ -100,7 +99,7 @@ export const SignUpForm = () => {
           onChange={(e) => setConfifmedPassword(e.target.value)}
           className="w-full h-9 mx-auto px-4 rounded"
         />
-        <div className="flex flex-col">{getErrors}</div>
+        <div className="flex flex-col">{showErrors}</div>
         <div className="w-full mx-auto text-start flex flex-col gap-1">
           <div className="flex gap-2">
             <input
