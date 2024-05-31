@@ -7,10 +7,8 @@ import { IFormData } from "@/lib/types";
 import { useUploadVideo } from "@/lib/hooks/useUploadVideo";
 
 export const UploadForm = () => {
-  const { getUser } = useAuth();
   const router = useRouter();
-  const user = getUser();
-
+  const { currentUser } = useAuth();
   const [formData, setFormData] = useState<IFormData>({
     climber: "",
     email: "",
@@ -56,25 +54,13 @@ export const UploadForm = () => {
     }));
   };
 
-  // const handleFormChange = (
-  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const { name, value, type } = event.target;
-  //   const newValue =
-  //     type === "checkbox" ? (event.target as HTMLInputElement).checked : value;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: newValue,
-  //   }));
-  // };
-
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setIsLoading(true);
     try {
       const url = await uploadVideo(formData.file);
-      await uploadFormToDb(formData, user, url);
+      await uploadFormToDb(formData, currentUser, url);
       setIsLoading(false);
       router.push("/video-uploader/success-upload");
     } catch (err) {
@@ -88,7 +74,7 @@ export const UploadForm = () => {
       className="bg-neutral-100 grid grid-cols-2 p-8 rounded-lg shadow-lg w-64 md:w-96 mx-auto gap-4"
       onSubmit={handleSubmit}
     >
-      {!user && (
+      {!currentUser && (
         <>
           <div className="col-span-2">
             <input
@@ -192,7 +178,7 @@ export const UploadForm = () => {
         </label>
       </div>
 
-      {!user && (
+      {!currentUser && (
         <div className="col-span-2 flex items-start">
           <input
             type="checkbox"

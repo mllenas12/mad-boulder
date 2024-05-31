@@ -3,21 +3,20 @@ import { ProfileHeader } from "@/app/ui/Profile/ProfileHeader";
 import { useAuth } from "@/lib/context/AuthProvider";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
+
 export default function ProfileLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { getUser } = useAuth();
-  const user = getUser();
-
+  const currentUser = useAuth();
   useEffect(() => {
-    if (!user) {
+    if (!currentUser) {
       redirect("/log-in");
     }
-  }, [user]);
+  }, [currentUser]);
 
-  if (!user) {
+  if (!currentUser) {
     return null;
   }
 

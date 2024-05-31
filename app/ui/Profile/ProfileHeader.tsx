@@ -4,17 +4,18 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/context/AuthProvider";
 
 export const ProfileHeader = () => {
-  const { getUser } = useAuth();
-  const user = getUser();
+  const { currentUser } = useAuth();
   const [userPhotoUrl, setUserPhotoUrl] = useState("");
   useEffect(() => {
-    if (user) {
-      const url = user.photoURL ? user.photoURL : "/images/profile.jpeg";
+    if (currentUser) {
+      const url = currentUser.photoURL
+        ? currentUser.photoURL
+        : "/images/profile.jpeg";
       setUserPhotoUrl(url);
     } else {
       setUserPhotoUrl("/images/user.png");
     }
-  }, [user]);
+  }, [currentUser]);
 
   return (
     <div className="h-[370px] ">
@@ -27,7 +28,9 @@ export const ProfileHeader = () => {
           />
 
           <div className="text-center">
-            <h3 className="font-semibold text-2xl ">{user?.displayName}</h3>
+            <h3 className="font-semibold text-2xl ">
+              {currentUser?.displayName}
+            </h3>
             <p className="text-sm text-neutral-400">Welcome to MadBoulder</p>
             <PiMedal size="67px" color="#FAC12F" className="mx-auto mt-4" />
           </div>
